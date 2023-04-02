@@ -1,6 +1,6 @@
 name: deck_string_parser
 description: Parses string representations of Pokemon TCG decks for CastFORM.
-version: 0.0.1
+version: 1.0.0
 # repository: https://github.com/BAA-Studios/CastFORM
 
 environment:
