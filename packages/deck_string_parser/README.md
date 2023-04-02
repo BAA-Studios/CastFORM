@@ -1,43 +1,35 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
 This package houses the business logic for parsing deck strings provided by users into relevant objects.
 
 ## Features
-For logic diagrams, refer to [this issue post](https://github.com/BAA-Studios/CastFORM/issues/1).
 
-The provided string should be split into a map of string to string array pairs.
-The resulting map should then be further processed into objects, with unnecessary details stripped out.
-Lastly, some level of validation should be offered to allow downstream packages to notify the user if the provided deck is illegal to play. 
+PTCGO or PTCGL deck strings will be processed into `Deck` objects, which have `Pokemon`, `Trainer`, and `Energy` object
+lists as attribute.
+These in turn have the relevant data (e.g. name and quantity) as attribute.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+No additional third-party libraries are required for use. Simply import `deck_string_parser`, and you may call
+the `parseDeck()` function.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+This package is fairly straightforward to use. Refer to `/example` folder for a console-based workflow.
 
 ```dart
-const like = 'sample';
+import 'package:deck_string_parser/deck_string_parser.dart';
+
+var deck = parseDeck(someDeckString); // convert deck string to deck object
+var pokemonList = deck.pokemonList; // access the list of pokemon objects
+
+void printFirstPokemon() {
+  print(pokemonList[0].name); // print the name of the first pokemon in the deck
+}
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Core parsing functionality developed by [Amos Chua](https://github.com/KOOKIIEStudios).
 
-This package is intended to be used and included as a core component of [CastFORM](https://github.com/BAA-Studios/CastFORM).
+This package is intended to be used and included as a core component
+of [CastFORM](https://github.com/BAA-Studios/CastFORM). Please direct any queries or bug reports to the issues page of
+the CastFORM repository.
