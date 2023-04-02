@@ -4,6 +4,13 @@ import 'package:deck_string_parser/src/energy.dart';
 import 'package:deck_string_parser/src/pokemon.dart';
 import 'package:deck_string_parser/src/trainer.dart';
 
+/// Checks if a given string is numeric
+///
+/// Used for checking `PH` Pokemon cards
+bool isNumeric(String s) {
+  return double.tryParse(s) != null;
+}
+
 /// Splits a provided deck string based on their sections
 ///
 /// Each element is a section, rather than a particular line
