@@ -164,5 +164,7 @@ Total Cards: 60""";
       expect(parseEnergyCards(deck)[0].quantity, "4");
       expect(parseEnergyCards(deck)[0].name, "V Guard Energy");
     });
+
+    // TODO: Add test involving delta energy
   });
 }

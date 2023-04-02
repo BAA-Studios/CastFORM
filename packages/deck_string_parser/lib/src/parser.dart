@@ -7,45 +7,144 @@ import 'package:deck_string_parser/src/trainer.dart';
 
 const splitter = LineSplitter();
 
-/*
-// For debug use
-void main() {
-  // Sample PTCGO format
-  var deckString = """Pokémon (13)
-4 Mew V CRZ 60
-3 Mew VMAX FST 114
-4 Genesect V FST 185
-1 Aerodactyl V LOR 92
-1 Aerodactyl VSTAR LOR 93
-
-Trainer (43)
-3 Judge FST 235
-2 Boss's Orders BRS 132
-1 Roxanne ASR 150
-1 Cyllene ASR 138
-4 Power Tablet FST 236
-4 Battle VIP Pass FST 225
-4 Quick Ball FST 237
-4 Ultra Ball CRZ 146
-3 Cram-o-matic FST 229
-3 Rotom Phone CPA 64
-2 Lost Vacuum CRZ 135
-2 Escape Rope BST 125
-1 Switch CRZ 144
-1 Pal Pad SSH 172
-1 Hisuian Heavy Ball ASR 146
-1 Forest Seal Stone SIT 156
-1 Choice Belt BRS 135
-1 Big Charm SSH 158
-2 Path to the Peak CRE 148
-2 Lost City LOR 161
-
-Energy (4)
-4 Double Turbo Energy BRS 151""";
-
-  // Debug code
-}
-*/
+const Set<String> setAbbreviations = {
+  "BS",
+  "JU",
+  "FO",
+  "B2",
+  "TR",
+  "G1",
+  "G2",
+  "N1",
+  "N2",
+  "N3",
+  "N4",
+  "LC",
+  "EX",
+  "AQ",
+  "SK",
+  "RS",
+  "SS",
+  "DR",
+  "MA",
+  "HL",
+  "FL",
+  "TRR",
+  "DX",
+  "EM",
+  "UF",
+  "DS",
+  "LM",
+  "HP",
+  "CG",
+  "DF",
+  "PK",
+  "DP",
+  "MT",
+  "SW",
+  "GE",
+  "MD",
+  "LA",
+  "SF",
+  "PL",
+  "RR",
+  "SV",
+  "AR",
+  "HS",
+  "UL",
+  "UD",
+  "TM",
+  "CL",
+  "BLW",
+  "EPO",
+  "NVI",
+  "NXD",
+  "DEX",
+  "DRX",
+  "BCR",
+  "PLS",
+  "PLF",
+  "PLB",
+  "LTR",
+  "XY",
+  "FLF",
+  "FFI",
+  "PHF",
+  "PRC",
+  "ROS",
+  "AOR",
+  "BKT",
+  "BKP",
+  "FCO",
+  "STS",
+  "EVO",
+  "SUM",
+  "GRI",
+  "BUS",
+  "CIN",
+  "UPR",
+  "FLI",
+  "CES",
+  "LOT",
+  "TEU",
+  "UNB",
+  "UNM",
+  "CEC",
+  "SSH",
+  "RCL",
+  "DAA",
+  "VIV",
+  "BST",
+  "CRE",
+  "EVS",
+  "FST",
+  "BRS",
+  "ASR",
+  "LOR",
+  "SIT",
+  "SVI",
+  "DRV",
+  "KSS",
+  "DCR",
+  "GEN",
+  "SLG",
+  "DRM",
+  "DET",
+  "HIF",
+  "CPA",
+  "SHF",
+  "CEL",
+  "PGO",
+  "CRZ",
+  "BWP",
+  "XYP",
+  "SMP",
+  "SVP",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "SI",
+  "CC",
+  "RM",
+  "MCD11",
+  "MCD12",
+  "MCD13",
+  "MCD14",
+  "MCD15",
+  "MCD16",
+  "MCD17",
+  "MCD18",
+  "MCD19",
+  "FUT20",
+  "MCD21",
+  "MCD22",
+};
 
 /// Checks if a given string is numeric
 ///
@@ -132,6 +231,17 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
   var section = crudeDeckList[2];
   for (var line in section) {
     var words = line.split(" ");
+
+    // strip set information, if present
+    var indexOfSetAbbreviation = words.length - 2;
+    if (setAbbreviations.contains(words[indexOfSetAbbreviation])) {
+      words.removeAt(indexOfSetAbbreviation);
+    }
+
+    buffer.add(Energy(
+      quantity: words[0],
+      name: words.sublist(1, words.length - 1).join(" "),
+    ));
   }
   return buffer;
 }
