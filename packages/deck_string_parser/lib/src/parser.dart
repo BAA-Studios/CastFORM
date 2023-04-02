@@ -35,16 +35,16 @@ List<String> fineSplit(String section) {
 }
 
 /// Extract pokemon cards
-List<Pokemon> parsePokemonCards(List<String> deck {
+List<Pokemon> parsePokemonCards(List<String> deck) {
 
 }
 
 /// Extract trainer cards
-List<Trainer> parseTrainerCards(List<String> deck {
+List<Trainer> parseTrainerCards(List<String> deck) {
 
 }
 
 /// Extract energy cards
-List<Energy> parseEnergyCards(List<String> deck {
+List<Energy> parseEnergyCards(List<String> deck) {
 
 }
