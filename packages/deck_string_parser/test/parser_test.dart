@@ -5,7 +5,7 @@ import 'package:deck_string_parser/src/parser.dart';
 void main() {
   group('Initial string pre-processing', () {
     // Deck strings
-    var PTCGODeckString = """Pokémon (13)
+    var ptcgoDeckString = """Pokémon (13)
 4 Mew V CRZ 60
 3 Mew VMAX FST 114
 4 Genesect V FST 185
@@ -36,7 +36,7 @@ Trainer (43)
 
 Energy (4)
 4 Double Turbo Energy BRS 151""";
-    var PTCGLDeckString = """Pokémon: 9
+    var ptcglDeckString = """Pokémon: 9
 4 Lechonk SVI 156
 3 Oinkologne ex SVI 158
 4 Ralts ASR 60
@@ -69,31 +69,31 @@ Energy: 1
 Total Cards: 60""";
 
     test('`crudeSplit` correctly splits a PTCGO deck string into 3 sections', () {
-      expect(crudeSplit(PTCGODeckString).length, 3);
+      expect(crudeSplit(ptcgoDeckString).length, 3);
     });
 
     test('`crudeSplit` correctly splits a PTCGL deck string into 3 sections', () {
-      expect(crudeSplit(PTCGLDeckString).length, 3);
+      expect(crudeSplit(ptcglDeckString).length, 3);
     });
 
     test('`crudeSplit` extracts the correct number of lines for pokemon', () {
-      expect(crudeSplit(PTCGODeckString)[0].length, 6);
+      expect(crudeSplit(ptcgoDeckString)[0].length, 6);
     });
 
     test('`crudeSplit` extracts the correct number of lines for trainer', () {
-      expect(crudeSplit(PTCGODeckString)[1].length, 21);
+      expect(crudeSplit(ptcgoDeckString)[1].length, 21);
     });
 
     test('`crudeSplit` extracts the correct number of lines for energy', () {
-      expect(crudeSplit(PTCGODeckString)[2].length, 2);
+      expect(crudeSplit(ptcgoDeckString)[2].length, 2);
     });
 
     test('`stripHeaders` does not change number of sections', () {
-      expect(stripHeaders(crudeSplit(PTCGODeckString)).length, 3);
+      expect(stripHeaders(crudeSplit(ptcgoDeckString)).length, 3);
     });
 
     test('`stripHeaders` produces the correct number of lines for pokemon', () {
-      expect(stripHeaders(crudeSplit(PTCGODeckString))[0].length, 5);
+      expect(stripHeaders(crudeSplit(ptcgoDeckString))[0].length, 5);
     });
   });
 
