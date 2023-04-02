@@ -148,7 +148,7 @@ const Set<String> setAbbreviations = {
 
 /// Checks if a given string is numeric
 ///
-/// Used for checking `PH` Pokemon cards
+/// Used for checking `PH` and other odd trailing characters
 bool isNumeric(String s) {
   return double.tryParse(s) != null;
 }
@@ -197,8 +197,8 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
   var section = crudeDeckList[0];
   for (var line in section) {
     var words = line.split(" ");
-    if (words.last == "PH") {  // strip holo card info (PTCGL format)
-      words.removeLast();
+    if (!isNumeric(words.last)) {
+      words.removeLast();  // strip holo card info (PTCGL format)
     }
     var indexOfSetAbbreviation = words.length - 2;
     buffer.add(Pokemon(
