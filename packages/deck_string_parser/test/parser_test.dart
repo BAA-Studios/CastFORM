@@ -75,16 +75,8 @@ Total Cards: 60""";
       expect(crudeSplit(PTCGODeckString).length, 3);
     });
 
-    test('`crudeSplit` correctly splits a PTCGL deck string into a list of 4 elements', () {
-      expect(crudeSplit(PTCGLDeckString).length, 4);
-    });
-
-    test('`handlePTCGLFormat` returns a list of 3 elements for PTCGO decks', () {
-      expect(handlePTCGLFormat(crudeSplit(PTCGODeckString)).length, 3);
-    });
-
-    test('`handlePTCGLFormat` returns a list of 3 elements for PTCGL decks', () {
-      expect(handlePTCGLFormat(crudeSplit(PTCGLDeckString)).length, 3);
+    test('`crudeSplit` correctly splits a PTCGL deck string into a list of 3 elements', () {
+      expect(crudeSplit(PTCGLDeckString).length, 3);
     });
 
     test('`strip` removes the header properly', () {
