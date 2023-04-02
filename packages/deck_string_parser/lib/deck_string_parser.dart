@@ -1,11 +1,13 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// Utility functions for parsing of PTCGO/PTCGL decks
 library deck_string_parser;
 
-export 'src/deck_string_parser_base.dart';
+import 'src/deck.dart';
+
 export 'src/energy.dart';
 export 'src/pokemon.dart';
 export 'src/trainer.dart';
+export 'src/deck.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+Deck parseDeck(String deckString) {
+
+}
