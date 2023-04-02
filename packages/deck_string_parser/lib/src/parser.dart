@@ -167,6 +167,11 @@ List<List<String>> crudeSplit(String deck) {
     }
   }
 
+  // Sanity check
+  if (breaks.length < 2 || breaks.length > 3) {
+    throw FormatException("Expected either 3 or 4 paragraphs. Received ${breaks.length + 1}.");
+  }
+
   // Split into a list of list, based on section
   List<List<String>> buffer = [];
   buffer.add(lines.sublist(0, breaks[0]));  // Pokemon section
