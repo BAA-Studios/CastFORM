@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 
-import 'package:deck_string_parser/src/deck.dart';
 import 'package:deck_string_parser/src/energy.dart';
 import 'package:deck_string_parser/src/parser.dart';
 import 'package:deck_string_parser/src/pokemon.dart';
@@ -120,29 +119,61 @@ Total Cards: 60""";
   });
 
   group('Data extraction', () {
+    var deck = [
+      """Pokémon: 9
+4 Lechonk SVI 156
+3 Oinkologne ex SVI 158
+4 Ralts ASR 60
+4 Kirlia SIT 68
+2 Gallade ASR 62 PH
+1 Radiant Gardevoir LOR 69
+1 Manaphy BRS 41
+1 Dunsparce FST 207""",
+      """Trainer: 16
+3 Judge FST 235
+2 Cheren's Care BRS 134
+1 Boss's Orders RCL 154
+1 Serena SIT 193
+1 Roxanne ASR 150
+4 Level Ball AOR 76
+4 Nest Ball SVI 181
+4 Capturing Aroma SIT 153
+4 Battle VIP Pass FST 225
+2 Pal Pad SVI 182
+1 Escape Rope BST 125
+1 Switch SVI 194
+1 Full Face Guard EVS 148
+4 Path to the Peak CRE 148
+3 Professor's Research CEL 24""",
+      """Energy: 1
+4 V Guard Energy SIT 169""",
+    ];
 
-    test('`parsePokemonCards` extracts the correct number of cards from the crude deck list', () {
-      // expect(fooBar, isTrue);
+    test('`parsePokemonCards` extracts the correct number of lines from the crude deck list', () {
+      expect(parsePokemonCards(deck).length, 8);
     });
 
-    test('`parseTrainerCards` extracts the correct number of cards from the crude deck list', () {
-      // expect(fooBar, isTrue);
+    test('`parseTrainerCards` extracts the correct number of lines from the crude deck list', () {
+      expect(parseTrainerCards(deck).length, 15);
     });
 
-    test('`parseEnergyCards` extracts the correct number of cards from the crude deck list', () {
-      // expect(fooBar, isTrue);
+    test('`parseEnergyCards` extracts the correct number of lines from the crude deck list', () {
+      expect(parseEnergyCards(deck).length, 1);
     });
 
     test('`parsePokemonCards` extracts the first card correctly as a Pokemon object', () {
-      // expect(fooBar, isTrue);
+      var pokemon = Pokemon(quantity: "4", name: "Lechonk", set: "SVI");
+      expect(parsePokemonCards(deck)[0], pokemon);
     });
 
     test('`parseTrainerCards` extracts the first card correctly as a Trainer object', () {
-      // expect(fooBar, isTrue);
+      var trainer = Trainer(quantity: "2", name: "Judge");
+      expect(parseTrainerCards(deck)[0], trainer);
     });
 
     test('`parseEnergyCards` extracts the first card correctly as a Energy object', () {
-      // expect(fooBar, isTrue);
+      var energy = Energy(quantity: "4", name: "V Guard Energy");
+      expect(parseEnergyCards(deck)[0], energy);
     });
   });
 }
