@@ -1,9 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:deck_string_parser/src/energy.dart';
 import 'package:deck_string_parser/src/parser.dart';
-import 'package:deck_string_parser/src/pokemon.dart';
-import 'package:deck_string_parser/src/trainer.dart';
 
 void main() {
   group('Initial string pre-processing', () {
@@ -159,7 +156,7 @@ Total Cards: 60""";
     });
 
     test('`parseTrainerCards` extracts the first card correctly as a Trainer object', () {
-      expect(parseTrainerCards(deck)[0].quantity, "2");
+      expect(parseTrainerCards(deck)[0].quantity, "3");
       expect(parseTrainerCards(deck)[0].name, "Judge");
     });
 

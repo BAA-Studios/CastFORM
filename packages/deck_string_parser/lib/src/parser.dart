@@ -105,7 +105,7 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
     buffer.add(Pokemon(
         quantity: words[0],
         name: words.sublist(1, indexOfSetAbbreviation).join(" "),
-        set: words[indexOfSetAbbreviation]
+        set: words[indexOfSetAbbreviation],
     ));
   }
   return buffer;
@@ -117,6 +117,11 @@ List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
   var section = crudeDeckList[1];
   for (var line in section) {
     var words = line.split(" ");
+    var indexOfSetAbbreviation = words.length - 2;
+    buffer.add(Trainer(
+        quantity: words[0],
+        name: words.sublist(1, indexOfSetAbbreviation).join(" "),
+    ));
   }
   return buffer;
 }
