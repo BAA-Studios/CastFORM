@@ -93,16 +93,40 @@ List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
 }
 
 /// Extract pokemon cards
-List<Pokemon> parsePokemonCards(List<String> deck) {
-
+List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
+  List<Pokemon> buffer = [];
+  var section = crudeDeckList[0];
+  for (var line in section) {
+    var words = line.split(" ");
+    if (words.last == "PH") {  // strip holo card info (PTCGL format)
+      words.removeLast();
+    }
+    var indexOfSetAbbreviation = words.length - 2;
+    buffer.add(Pokemon(
+        quantity: words[0],
+        name: words.sublist(1, indexOfSetAbbreviation).join(" "),
+        set: words[indexOfSetAbbreviation]
+    ));
+  }
+  return buffer;
 }
 
 /// Extract trainer cards
-List<Trainer> parseTrainerCards(List<String> deck) {
-
+List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
+  List<Trainer> buffer = [];
+  var section = crudeDeckList[1];
+  for (var line in section) {
+    var words = line.split(" ");
+  }
+  return buffer;
 }
 
 /// Extract energy cards
-List<Energy> parseEnergyCards(List<String> deck) {
-
+List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
+  List<Energy> buffer = [];
+  var section = crudeDeckList[2];
+  for (var line in section) {
+    var words = line.split(" ");
+  }
+  return buffer;
 }
