@@ -6,7 +6,7 @@ import 'package:deck_string_parser/src/pokemon.dart';
 import 'package:deck_string_parser/src/trainer.dart';
 
 void main() {
-  group('Initial string processing', () {
+  group('Initial string pre-processing', () {
     // Deck strings
     var PTCGODeckString = """Pokémon (13)
 4 Mew V CRZ 60
@@ -71,42 +71,32 @@ Energy: 1
 
 Total Cards: 60""";
 
-    test('`crudeSplit` correctly splits a PTCGO deck string into a list of 3 elements', () {
+    test('`crudeSplit` correctly splits a PTCGO deck string into 3 sections', () {
       expect(crudeSplit(PTCGODeckString).length, 3);
     });
 
-    test('`crudeSplit` correctly splits a PTCGL deck string into a list of 3 elements', () {
+    test('`crudeSplit` correctly splits a PTCGL deck string into 3 sections', () {
       expect(crudeSplit(PTCGLDeckString).length, 3);
     });
 
-    test('`strip` removes the header properly', () {
-      var splitSection = [
-        "Pokémon: 9",
-        "4 Lechonk SVI 156",
-        "3 Oinkologne ex SVI 158",
-        "4 Ralts ASR 60",
-        "4 Kirlia SIT 68",
-        "2 Gallade ASR 62 PH",
-        "1 Radiant Gardevoir LOR 69",
-        "1 Manaphy BRS 41",
-        "1 Dunsparce FST 207",
-      ];
-      
-      expect(strip(splitSection).length, splitSection.length - 1);
+    test('`crudeSplit` extracts the correct number of lines for pokemon', () {
+      expect(crudeSplit(PTCGODeckString)[0].length, 6);
     });
 
-    test('`fineSplit` splits and formats a given section', () {
-      var section = """Pokémon: 9
-4 Lechonk SVI 156
-3 Oinkologne ex SVI 158
-4 Ralts ASR 60
-4 Kirlia SIT 68
-2 Gallade ASR 62 PH
-1 Radiant Gardevoir LOR 69
-1 Manaphy BRS 41
-1 Dunsparce FST 207""";
+    test('`crudeSplit` extracts the correct number of lines for trainer', () {
+      expect(crudeSplit(PTCGODeckString)[1].length, 21);
+    });
 
-      expect(fineSplit(section), 8);
+    test('`crudeSplit` extracts the correct number of lines for energy', () {
+      expect(crudeSplit(PTCGODeckString)[2].length, 2);
+    });
+
+    test('`stripHeaders` does not change number of sections', () {
+      expect(stripHeaders(crudeSplit(PTCGODeckString)).length, 3);
+    });
+
+    test('`stripHeaders` produces the correct number of lines for pokemon', () {
+      expect(stripHeaders(crudeSplit(PTCGODeckString))[0].length, 5);
     });
   });
 

@@ -47,7 +47,6 @@ Energy (4)
 }
 */
 
-
 /// Checks if a given string is numeric
 ///
 /// Used for checking `PH` Pokemon cards
@@ -84,15 +83,13 @@ List<List<String>> crudeSplit(String deck) {
   return buffer;
 }
 
-/// Strips off section labels (used by fineSplit)
-List<String> strip(List<String> section) {
-
-}
-
-/// Splits a section into individual lines, and removes the header
-/// (Used by the parse functions below)
-List<String> fineSplit(String section) {
-
+/// Strips off section labels
+List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
+  List<List<String>> buffer = [];
+  for (var section in crudeDeckList) {
+    buffer.add(section.sublist(1));
+  }
+  return buffer;
 }
 
 /// Extract pokemon cards
