@@ -18,4 +18,20 @@ Deck parseDeck(String deckString) {
   );
 }
 
-// TODO: Validation functions
+bool isValidDeckCount(Deck deck) {
+  var quantity = 0;
+
+  for (var element in deck.pokemonList) {
+    quantity += int.parse(element.quantity);
+  }
+
+  for(var element in deck.trainerList) {
+    quantity += int.parse(element.quantity);
+  }
+
+  for(var element in deck.energyList) {
+    quantity += int.parse(element.quantity);
+  }
+
+  return quantity == 60;
+}
