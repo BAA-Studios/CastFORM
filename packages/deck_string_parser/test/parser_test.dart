@@ -36,6 +36,34 @@ Trainer (43)
 
 Energy (4)
 4 Double Turbo Energy BRS 151""";
+    var duraludonDeckString = """Pokémon (11)
+4 Arceus V BRS 122
+2 Arceus VSTAR BRS 123
+2 Duraludon V CPA 47
+3 Duraludon VMAX CRZ 104
+
+Trainer (36)
+4 Boss's Orders BRS 132
+4 Colress's Experiment LOR 155
+3 Marnie CPA 56
+1 Raihan CRZ 140
+1 Single Strike Style Mustard BST 134
+4 Ultra Ball CRZ 146
+4 Pokégear 3.0 SSH 174
+3 Quick Ball FST 237
+2 Hyper Potion CPA 54
+2 Evolution Incense SSH 163
+1 Switch CRZ 144
+1 Escape Rope BST 125
+2 Big Parasol DAA 157
+1 Choice Belt BRS 135
+2 Lost City LOR 161
+1 Temple of Sinnoh ASR 155
+
+Energy (13)
+6 Metal Energy 8
+4 Double Turbo Energy BRS 151
+3 Fighting Energy 6""";
     var ptcglDeckString = """Pokémon: 9
 4 Lechonk SVI 156
 3 Oinkologne ex SVI 158
@@ -131,12 +159,36 @@ Total Cards: 60""";
       ],
     ];
 
+    var irregularlyDistributedTrainers = [
+      [""],
+      [
+        "3 Judge FST 235",
+        "1 Judge SVI 125"
+        "1 Cheren's Care BRS 134",
+        "1 Cheren's Care BRS 139",
+      ],
+      [""],
+    ];
+
     test('`parsePokemonCards` extracts the correct number of lines from the crude deck list', () {
       expect(parsePokemonCards(deck).length, 8);
     });
 
     test('`parseTrainerCards` extracts the correct number of lines from the crude deck list', () {
       expect(parseTrainerCards(deck).length, 15);
+    });
+
+    test('`parseTrainerCards` extracts the first card correctly as a Trainer object', () {
+      expect(parseTrainerCards(deck)[0].quantity, "3");
+      expect(parseTrainerCards(deck)[0].name, "Judge");
+    });
+
+    test('`parseTrainerCards` normalizes un-uniformed trainers', () {
+      var trainers = parseTrainerCards(irregularlyDistributedTrainers);
+      expect(trainers[0].quantity, "4");
+      expect(trainers[0].name, "Judge");
+      expect(trainers[1].quantity, "2");
+      expect(trainers[1].name, "Cheren's Care");
     });
 
     test('`parseEnergyCards` extracts the correct number of lines from the crude deck list', () {
@@ -155,15 +207,11 @@ Total Cards: 60""";
       expect(parsePokemonCards(deck)[4].set, "ASR");
     });
 
-    test('`parseTrainerCards` extracts the first card correctly as a Trainer object', () {
-      expect(parseTrainerCards(deck)[0].quantity, "3");
-      expect(parseTrainerCards(deck)[0].name, "Judge");
-    });
-
     test('`parseEnergyCards` extracts the first card correctly as a Energy object', () {
       expect(parseEnergyCards(deck)[0].quantity, "4");
       expect(parseEnergyCards(deck)[0].name, "V Guard Energy");
     });
+
 
     // TODO: Add test involving delta energy
   });
