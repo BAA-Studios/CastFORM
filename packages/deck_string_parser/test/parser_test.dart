@@ -227,7 +227,7 @@ Total Cards: 60""";
       [""],
       [
         "3 Judge FST 235",
-        "1 Judge SVI 125"
+        "1 Judge SVI 125",
         "1 Cheren's Care BRS 134",
         "1 Cheren's Care BRS 139",
       ],
