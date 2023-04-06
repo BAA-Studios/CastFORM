@@ -2,7 +2,7 @@ This package houses the business logic for parsing deck strings provided by user
 
 ## Features
 
-PTCGO or PTCGL deck strings will be processed into `Deck` objects, which have `Pokemon`, `Trainer`, and `Energy` object
+PTCGO, PTCGL, and LimitlessTCG deck strings will be processed into `Deck` objects, which have `Pokemon`, `Trainer`, and `Energy` object
 lists as attribute.
 These in turn have the relevant data (e.g. name and quantity) as attribute.
 
