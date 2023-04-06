@@ -187,9 +187,16 @@ List<List<String>> crudeSplit(String deck) {
   return buffer;
 }
 
-/// Strips off section labels
+/// Strips off section labels, if they exist
 List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
   List<List<String>> buffer = [];
+
+  // Check if headers exist
+  var firstWord = crudeDeckList[0][0].split(" ")[0];
+  if (!isNumeric(firstWord)) {  // LimitlessTCG format; no headers
+    return buffer;
+  }
+
   for (var section in crudeDeckList) {
     buffer.add(section.sublist(1));
   }
