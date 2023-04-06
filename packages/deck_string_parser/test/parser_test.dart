@@ -96,6 +96,39 @@ Energy: 1
 
 Total Cards: 60""";
 
+    var limitlessTcgDeckString = """4 Ralts ASR 60
+4 Kirlia SIT 68
+2 Gardevoir ex SVI 86
+1 Gardevoir CRE 61
+1 Mewtwo V-UNION PR-SW 159
+1 Mewtwo V-UNION PR-SW 162
+1 Mewtwo V-UNION PR-SW 160
+1 Mewtwo V-UNION PR-SW 161
+1 Zacian V CEL 16
+1 Manaphy BRS 41
+1 Mew CEL 11
+1 Radiant Greninja ASR 46
+1 Klefki SVI 96
+
+3 Professor's Research SVI 189
+1 Judge SVI 176
+1 Miriam SVI 179
+1 Peonia CRE 149
+1 Klara CRE 145
+1 Serena SIT 164
+1 Roxanne ASR 150
+1 Boss's Orders BRS 132
+4 Level Ball BST 129
+4 Battle VIP Pass FST 225
+3 Ultra Ball SVI 196
+3 Fog Crystal CRE 140
+1 Rescue Carrier CRZ 142
+1 Pal Pad SVI 182
+1 Sky Seal Stone CRZ 143
+2 Temple of Sinnoh ASR 155
+
+11 Psychic Energy 5""";
+
     test('`crudeSplit` correctly splits a PTCGO deck string into 3 sections', () {
       expect(crudeSplit(ptcgoDeckString).length, 3);
     });
@@ -104,6 +137,65 @@ Total Cards: 60""";
       expect(crudeSplit(ptcglDeckString).length, 3);
     });
 
+    // Limitless TCG Deck Strings
+    test('`crudeSplit` correctly splits a LimitlessTCG deck string into 3 sections', () {
+      expect(crudeSplit(limitlessTcgDeckString).length, 3);
+    });
+
+    test('`crudeSplit` extracts the correct number of pokemon for LimitlessTCG', () {
+      expect(crudeSplit(limitlessTcgDeckString)[0].length, 13);
+    });
+
+    test('`crudeSplit` extracts the correct number of trainers for LimitlessTCG', () {
+      expect(crudeSplit(limitlessTcgDeckString)[1].length, 16);
+    });
+
+    test('`crudeSplit` extracts the correct number of energies for LimitlessTCG', () {
+      expect(crudeSplit(limitlessTcgDeckString)[2].length, 1);
+    });
+
+    test('`crudeSplit` extracts the exact pokemon deckList for LimitlessTCG', () {
+      var expectedDeckList = [
+        [
+          "4 Ralts ASR 60",
+          "4 Kirlia SIT 68",
+          "2 Gardevoir ex SVI 86",
+          "1 Gardevoir CRE 61",
+          "1 Mewtwo V-UNION PR-SW 159",
+          "1 Mewtwo V-UNION PR-SW 162",
+          "1 Mewtwo V-UNION PR-SW 160",
+          "1 Mewtwo V-UNION PR-SW 161",
+          "1 Zacian V CEL 16",
+          "1 Manaphy BRS 41",
+          "1 Mew CEL 11",
+          "1 Radiant Greninja ASR 46",
+          "1 Klefki SVI 96",
+        ],
+        [
+          "3 Professor's Research SVI 189",
+          "1 Judge SVI 176",
+          "1 Miriam SVI 179",
+          "1 Peonia CRE 149",
+          "1 Klara CRE 145",
+          "1 Serena SIT 164",
+          "1 Roxanne ASR 150",
+          "1 Boss's Orders BRS 132",
+          "4 Level Ball BST 129",
+          "4 Battle VIP Pass FST 225",
+          "3 Ultra Ball SVI 196",
+          "3 Fog Crystal CRE 140",
+          "1 Rescue Carrier CRZ 142",
+          "1 Pal Pad SVI 182",
+          "1 Sky Seal Stone CRZ 143",
+          "2 Temple of Sinnoh ASR 155",
+        ],
+        [
+          "11 Psychic Energy 5"
+        ],
+      ];
+      expect(crudeSplit(limitlessTcgDeckString), expectedDeckList);
+    });
+    // Limitless TCG Deck Strings End.
     test('`crudeSplit` extracts the correct number of lines for pokemon', () {
       expect(crudeSplit(ptcgoDeckString)[0].length, 6);
     });
