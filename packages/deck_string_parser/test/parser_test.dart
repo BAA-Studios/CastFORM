@@ -36,34 +36,6 @@ Trainer (43)
 
 Energy (4)
 4 Double Turbo Energy BRS 151""";
-    var duraludonDeckString = """Pokémon (11)
-4 Arceus V BRS 122
-2 Arceus VSTAR BRS 123
-2 Duraludon V CPA 47
-3 Duraludon VMAX CRZ 104
-
-Trainer (36)
-4 Boss's Orders BRS 132
-4 Colress's Experiment LOR 155
-3 Marnie CPA 56
-1 Raihan CRZ 140
-1 Single Strike Style Mustard BST 134
-4 Ultra Ball CRZ 146
-4 Pokégear 3.0 SSH 174
-3 Quick Ball FST 237
-2 Hyper Potion CPA 54
-2 Evolution Incense SSH 163
-1 Switch CRZ 144
-1 Escape Rope BST 125
-2 Big Parasol DAA 157
-1 Choice Belt BRS 135
-2 Lost City LOR 161
-1 Temple of Sinnoh ASR 155
-
-Energy (13)
-6 Metal Energy 8
-4 Double Turbo Energy BRS 151
-3 Fighting Energy 6""";
     var ptcglDeckString = """Pokémon: 9
 4 Lechonk SVI 156
 3 Oinkologne ex SVI 158
