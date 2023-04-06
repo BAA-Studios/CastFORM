@@ -1,5 +1,5 @@
 class Trainer {
-  final String quantity;
+  String quantity;
   final String name;
 
   /// This represents Trainer-cards
@@ -7,4 +7,8 @@ class Trainer {
     required this.quantity,
     required this.name,
   });
+
+  void setQuantity(String quantity) {
+    this.quantity = quantity;
+  }
 }

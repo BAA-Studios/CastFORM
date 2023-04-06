@@ -222,6 +222,36 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
   return buffer;
 }
 
+/// Checks if a particular card name already exists
+///
+/// Trainers with the same name, but from different sets can be merged into
+/// the same line, since the set name doesn't need to be filled out.
+/// If a trainer of the same name is found, the index is returned.
+/// `-1` is returned if there are no matches.
+int findExistingTrainer(String name, List<Trainer> buffer) {
+  if (buffer.isEmpty) {
+    return -1;
+  }
+  for (var i = 0; i < buffer.length; i++) {
+    if (buffer[i].name == name) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+/// Adds 2 int-like strings, and returns the result as a string
+String addQuantities(String firstOperand, String secondOperand) {
+  int? i = int.tryParse(firstOperand);
+  int? j = int.tryParse(secondOperand);
+
+  if (i == null || j == null) {
+    throw FormatException("Expected 2 int-like operands.");
+  }
+
+  return (i + j).toString();
+}
+
 /// Extract trainer cards
 List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
   List<Trainer> buffer = [];
@@ -229,10 +259,20 @@ List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
   for (var line in section) {
     var words = line.split(" ");
     var indexOfSetAbbreviation = words.length - 2;
-    buffer.add(Trainer(
+    var name = words.sublist(1, indexOfSetAbbreviation).join(" ");
+    var existingTrainerIndex = findExistingTrainer(name, buffer);
+
+    if (existingTrainerIndex == -1) {
+      buffer.add(Trainer(  // No cards with the same name
         quantity: words[0],
-        name: words.sublist(1, indexOfSetAbbreviation).join(" "),
-    ));
+        name: name,
+      ));
+    } else {  // Merge with existing entry
+      var existingQuantity = buffer[existingTrainerIndex].quantity;
+      buffer[existingTrainerIndex].setQuantity(
+          addQuantities(existingQuantity, words[0])
+      );
+    }
   }
   return buffer;
 }
