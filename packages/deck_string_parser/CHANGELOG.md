@@ -1,4 +1,21 @@
-## 1.0.0
+## 1.1.0 Feature Update
+### New Features
+- Merge same-name trainer cards into the same entry
+- Add function to check the total number of cards in the deck
+- LimitlessTCG format support
+- Expand unit test comprehensiveness
+  - Check same-name trainer card mergers
+  - Check deck validation functionality
+  - Expand current test suite to include similar tests for LimitlessTCG format
+
+### Bug Fixes
+- Handling for LimitlessTCG non-header format
+  - Erroneously returning empty buffer
+  - Stray negation in conditional (resulting in checking for the opposite condition)
+- Missing delimiter in unit test variable
+
+## 1.0.0 Feature Update
+### New Features
 - Implement core parsing functionality (MVP milestone 1)
   - PTCGO format support
   - PTCGL format support
