@@ -253,6 +253,7 @@ Total Cards: 60""";
       expect(trainers[0].name, "Judge");
       expect(trainers[1].quantity, "2");
       expect(trainers[1].name, "Cheren's Care");
+      expect(trainers.length, 2);
     });
 
     test('`parseEnergyCards` extracts the correct number of lines from the crude deck list', () {
