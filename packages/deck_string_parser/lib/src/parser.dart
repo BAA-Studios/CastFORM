@@ -194,7 +194,7 @@ List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
   // Check if headers exist
   var firstWord = crudeDeckList[0][0].split(" ")[0];
   if (!isNumeric(firstWord)) {  // LimitlessTCG format; no headers
-    return buffer;
+    return crudeDeckList;
   }
 
   for (var section in crudeDeckList) {
