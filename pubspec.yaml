@@ -46,6 +46,10 @@ dependencies:
   # Logger
   logger: ^1.3.0  # https://pub.dev/packages/logger
 
+  # our own custom parser:
+  deck_string_parser:
+    path: packages/deck_string_parser/
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
