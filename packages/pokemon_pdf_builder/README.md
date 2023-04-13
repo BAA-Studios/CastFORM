@@ -21,9 +21,9 @@ Future<void> main() async {
   print("Starting PDF Builder");
 
   var deck = parseDeck(deckString);
-  final pokemonDoc = PokemonPdf(pokemonFormImage: "pokemon_decklist_a4", deck: deck);
+  final pokemonDoc = getA4FormHandler(formTemplate, font);
 
-  final pdf = pokemonDoc.build();
+  final pdf = pokemonDoc.buildPdf();
 
   final file = File("../example.pdf");
   await file.writeAsBytes(await pdf.save());
