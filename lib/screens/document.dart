@@ -23,12 +23,6 @@ class _DocumentState extends State<Document> {
   late Future<Uint8List> _lastDocument;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     /*String deckString = context.select<UserProvider, String?>((userProvider) => userProvider.deckString) ?? "";
     String name = context.select<UserProvider, String?>((userProvider) => userProvider.playerName) ?? "";
