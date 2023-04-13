@@ -1,0 +1,1 @@
+enum PaperType { a4, letter }
