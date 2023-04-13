@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:castform/constants.dart';
-import 'package:castform/models/user.dart';
+import 'package:castform/providers/user_provider.dart';
 
 class FormColumn extends StatefulWidget {
   const FormColumn({Key? key}) : super(key: key);
@@ -11,8 +12,11 @@ class FormColumn extends StatefulWidget {
 
 class _FormColumnState extends State<FormColumn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // TODO: Refactor out field (and their states) to individual modules
+  final _nameController = TextEditingController();
+  final _idController = TextEditingController();
   final _dateController = TextEditingController();  // Overriding for custom date handling
-  final _user = User();
+  final _deckController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,30 +28,34 @@ class _FormColumnState extends State<FormColumn> {
         children: [
           Padding(
             padding: defaultPadding,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Player Name",
+            child: Focus(
+              child: TextFormField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: "Player Name",
+                ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return "Name is a required field!";
+                  }
+                  return null;
+                },
+                onSaved: (_) => context.read<UserProvider>().setName(_nameController.text),
               ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Name is a required field!";
-                }
-                return null;
-              },
-              onSaved: (String? value) {
-                setState(() => _user.playerName = value);
-              },
+              onFocusChange: (_) => context.read<UserProvider>().setName(_nameController.text),
             ),
           ),
           Padding(
             padding: defaultPadding,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Player ID (Optional)",
+            child: Focus(
+              child: TextFormField(
+                controller: _idController,
+                decoration: const InputDecoration(
+                  labelText: "Player ID (Optional)",
+                ),
+                onSaved: (_) => context.read<UserProvider>().setId(_nameController.text),
               ),
-              onSaved: (String? value) {
-                setState(() => _user.playerId = value);
-              },
+              onFocusChange: (_) => context.read<UserProvider>().setId(_nameController.text),
             ),
           ),
           Padding(
@@ -70,11 +78,10 @@ class _FormColumnState extends State<FormColumn> {
                   } else {  // Clear the field, if "cancel" is clicked
                     _dateController.text = "";
                   }
+                  context.read<UserProvider>().setDate(_dateController.text);
                 });
               },
-              onSaved: (String? value) {
-                setState(() => _user.dateOfBirth = value);
-              },
+              onSaved: (_) => context.read<UserProvider>().setDate(_dateController.text),
             ),
           ),
           Expanded(
@@ -95,9 +102,8 @@ class _FormColumnState extends State<FormColumn> {
                 maxLines: null,
                 expands: true,
                 keyboardType: TextInputType.multiline,
-                onSaved: (String? value) {
-                  setState(() => _user.deckString = value);
-                },
+                onChanged: (_) => context.read<UserProvider>().setDeckString(_deckController.text),
+                onSaved: (_) => context.read<UserProvider>().setDeckString(_deckController.text),
               ),
             ),
           ),
@@ -110,25 +116,22 @@ class _FormColumnState extends State<FormColumn> {
                   child: RadioListTile<PaperType>(
                     title: const Text("A4"),
                     value: PaperType.a4,
-                    groupValue: _user.paperType,
-                    onChanged: (PaperType? value) {
-                      setState(() => _user.paperType = value);
-                    },
+                    groupValue: context.select<UserProvider, PaperType?>((userProvider) => userProvider.paperType),
+                    onChanged: (PaperType? value) => context.read<UserProvider>().setPaperType(value),
                   ),
                 ),
                 Expanded(
                   child: RadioListTile<PaperType>(
                     title: const Text("Letter"),
                     value: PaperType.letter,
-                    groupValue: _user.paperType,
-                    onChanged: (PaperType? value) {
-                      setState(() => _user.paperType = value);
-                    },
+                    groupValue: context.select<UserProvider, PaperType?>((userProvider) => userProvider.paperType),
+                    onChanged: (PaperType? value) => context.read<UserProvider>().setPaperType(value),
                   ),
                 ),
               ],
             ),
           ),
+          // TODO: Add switch for open folder after export
           Padding(
             padding: defaultPadding,
             child: ElevatedButton(
@@ -136,12 +139,14 @@ class _FormColumnState extends State<FormColumn> {
                 final form = _formKey.currentState;
                 if (form!.validate()) {
                   form.save();
-                  _user.save();
+                  context.read<UserProvider>().save();
                 }
               },
               child: const Text("Save"),
             ),
           ),
+          // TODO: Add 'clear deck list' button
+          // TODO: Add 'about' button
         ],
       ),
     );
