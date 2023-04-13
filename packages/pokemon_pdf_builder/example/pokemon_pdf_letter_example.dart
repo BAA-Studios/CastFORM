@@ -38,27 +38,17 @@ Total Cards: 60
 """;
 
 Future<void> main() async {
-  print("Starting PDF Builder for fully filled forms");
+  print("Starting PDF Builder for fully filled Letter forms.");
 
-  /*
-  First grab the font and form template.
-  This example uses the files local to the package for convenience.
-  Please don't actually do this. This is for running this example file standalone only.
-
-  The proper way to do it in Flutter:
-  final ByteData font = await rootBundle.load("assets/fonts/RobotoSlab-Regular.ttf");
-  final ByteData _templateBytes = await rootBundle.load("assets/form_templates/pokemon_decklist_a4.webp");
-  final Uint8List formTemplate = _templateBytes.buffer.asUint8List();
-  */
   final ByteData font = File("./lib/assets/RobotoSlab-Regular.ttf")
       .readAsBytesSync()
       .buffer
       .asByteData();
-  final Uint8List formTemplate = File("./lib/assets/pokemon_decklist_a4.webp")
+  final Uint8List formTemplate = File("./lib/assets/pokemon_decklist_letter.webp")
       .readAsBytesSync();
 
   // Instantiate the form handler
-  final pokemonDoc = getA4FormHandler(formTemplate, font);
+  final pokemonDoc = getLetterFormHandler(formTemplate, font);
 
   // Extract information from the deck string
   var deck = parseDeck(deckString);
@@ -71,7 +61,7 @@ Future<void> main() async {
   // Hydrate!
   final pdf = pokemonDoc.build();
 
-  final file = File("D:/GitHub/CastFORM/example_full.pdf");
+  final file = File("D:/GitHub/CastFORM/example.pdf");
   await file.writeAsBytes(await pdf.save());
 
   print("Done!");
