@@ -38,7 +38,7 @@ Total Cards: 60
 """;
 
 Future<void> main() async {
-  print("Starting PDF Builder for fully filled forms");
+  print("Starting PDF Builder for fully filled forms for a4");
 
   /*
   First grab the font and form template.
@@ -71,7 +71,7 @@ Future<void> main() async {
   // Hydrate!
   final pdf = pokemonDoc.build();
 
-  final file = File("D:/GitHub/CastFORM/example_full.pdf");
+  final file = File("D:/GitHub/CastFORM/example.pdf");
   await file.writeAsBytes(await pdf.save());
 
   print("Done!");
