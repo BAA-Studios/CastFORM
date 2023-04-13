@@ -13,16 +13,18 @@ class _HomeMaterialState extends State<HomeMaterial> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(  // Left side for forms; right side for live preview
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(  // Left side
-            constraints: const BoxConstraints.expand(width: 500.0),
-            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-            child: const FormColumn(),
-          )
-        ],
+      body: SafeArea(
+        child: Row(  // Left side for forms; right side for live preview
+          children: const [
+            Flexible(
+              child: FormColumn(),
+            ),
+            Expanded(
+              flex: 2,
+              child: Placeholder(),
+            ),
+          ],
+        ),
       ),
     );
   }

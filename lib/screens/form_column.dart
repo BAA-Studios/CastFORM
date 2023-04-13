@@ -11,6 +11,7 @@ class FormColumn extends StatefulWidget {
 
 class _FormColumnState extends State<FormColumn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _dateController = TextEditingController();
   final _user = User();
 
   @override
@@ -18,72 +19,65 @@ class _FormColumnState extends State<FormColumn> {
     return Form(
       key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: defaultPadding,
-            child: SizedBox(
-              width: 100.0,
-              height: 50.0,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Player Name",
-                ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Name is a required field!";
+            child: TextFormField(
+              decoration: const InputDecoration(
+                labelText: "Player Name",
+              ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Name is a required field!";
+                }
+                return null;
+              },
+              onSaved: (String? value) {
+                setState(() => _user.playerName = value);
+              },
+            ),
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: TextFormField(
+              decoration: const InputDecoration(
+                labelText: "Player ID",
+              ),
+              onSaved: (String? value) {
+                setState(() => _user.playerId = value);
+              },
+            ),
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: TextFormField(
+              readOnly: true,
+              controller: _dateController,
+              decoration: const InputDecoration(
+                labelText: "Date of Birth",
+              ),
+              onTap: () async {
+                await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime.now().subtract(maximumHumanLifespan),
+                  lastDate: DateTime.now(),
+                ).then((DateTime? value) {
+                  if (value != null) {
+                    _dateController.text = "${value.month}/${value.day}/${value.year}";
                   }
-                  return null;
-                },
-                onSaved: (String? value) {
-                  setState(() => _user.playerName = value);
-                },
-              ),
+                });
+              },
+              onSaved: (String? value) {
+                setState(() => _user.dateOfBirth = value);
+              },
             ),
           ),
-          Padding(
-            padding: defaultPadding,
-            child: SizedBox(
-              width: 100.0,
-              height: 50.0,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Player ID",
-                ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "ID is a required field!";
-                  }
-                  return null;
-                },
-                onSaved: (String? value) {
-                  setState(() => _user.playerId = value);
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: defaultPadding,
-            child: SizedBox(
-              width: 100.0,
-              height: 50.0,
-              child: InputDatePickerFormField(
-                // Limit to range from 125 years ago to now:
-                firstDate: DateTime.now().subtract(const Duration(days: maximumHumanLifespan)),
-                lastDate: DateTime.now(),
-                fieldLabelText: "Date of Birth",
-                onDateSaved: (DateTime? value) {
-                  setState(() => _user.dateOfBirth = value);
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: defaultPadding,
-            child: SizedBox(
-              width: 100.0,
-              height: 150.0,
+          Expanded(
+            child: Padding(
+              padding: defaultPadding,
               child: TextFormField(
                 decoration: const InputDecoration(
                   labelText: "Deck String",
@@ -132,9 +126,6 @@ class _FormColumnState extends State<FormColumn> {
                 ),
               ],
             ),
-          ),
-          const SizedBox(  // Spacer
-            height: 200.0,
           ),
           Padding(
             padding: defaultPadding,

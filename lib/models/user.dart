@@ -3,7 +3,7 @@ import 'package:castform/constants.dart';
 class User {
   String? playerName = "";
   String? playerId = "";
-  DateTime? dateOfBirth;
+  String? dateOfBirth;
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
 
