@@ -4,6 +4,7 @@ library deck_string_parser;
 import 'package:deck_string_parser/src/deck.dart';
 import 'package:deck_string_parser/src/parser.dart';
 
+export 'src/card.dart';
 export 'src/energy.dart';
 export 'src/pokemon.dart';
 export 'src/trainer.dart';
