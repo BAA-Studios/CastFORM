@@ -14,7 +14,33 @@ class _FormColumnState extends State<FormColumn> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Container(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Player Name",
+            ),
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Player ID",
+            ),
+          ),
+          InputDatePickerFormField(
+              // Limit to range from 125 years ago to now:
+            firstDate: DateTime.now().subtract(const Duration(days: 45625)),
+            lastDate: DateTime.now(),
+            fieldHintText: "Date of Birth",
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Deck String",
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

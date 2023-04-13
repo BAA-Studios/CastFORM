@@ -18,6 +18,7 @@ class _HomeMaterialState extends State<HomeMaterial> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(  // Left side
+            constraints: const BoxConstraints.expand(width: 500.0),
             padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
             child: const FormColumn(),
           )
