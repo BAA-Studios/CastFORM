@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: d6347d54a2d8028e0437e3c099f66fdb8ae02c4720c1e7534c9f24c10351f85d
+      sha256: "0c8368c9b3f0abbc193b9d6133649a614204b528982bebc7026372d61677ce3a"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.6"
+    version: "3.3.7"
   args:
     dependency: transitive
     description:
@@ -105,6 +105,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  deck_string_parser:
+    dependency: "direct main"
+    description:
+      path: "packages/deck_string_parser"
+      relative: true
+    source: path
+    version: "1.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -231,10 +238,10 @@ packages:
     dependency: "direct main"
     description:
       name: pdf
-      sha256: "6cd57e8e6d052bd1078f18e0dc7cd6701fad6288231c1ce99d66ef5034d14e61"
+      sha256: "586d3debf5432e5377044754032cfa53ab45e9abf371d4865e9ad5019570e246"
       url: "https://pub.dev"
     source: hosted
-    version: "3.9.0"
+    version: "3.10.1"
   petitparser:
     dependency: transitive
     description:
