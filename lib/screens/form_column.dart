@@ -11,7 +11,7 @@ class FormColumn extends StatefulWidget {
 
 class _FormColumnState extends State<FormColumn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _dateController = TextEditingController();
+  final _dateController = TextEditingController();  // Overriding for custom date handling
   final _user = User();
 
   @override
@@ -58,15 +58,17 @@ class _FormColumnState extends State<FormColumn> {
               decoration: const InputDecoration(
                 labelText: "Date of Birth (Optional)",
               ),
-              onTap: () async {
+              onTap: () async {  // valid date from now to 125 years ago
                 await showDatePicker(
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime.now().subtract(maximumHumanLifespan),
                   lastDate: DateTime.now(),
                 ).then((DateTime? value) {
-                  if (value != null) {
+                  if (value != null) {  // Fill the field if input is valid
                     _dateController.text = "${value.month}/${value.day}/${value.year}";
+                  } else {  // Clear the field, if "cancel" is clicked
+                    _dateController.text = "";
                   }
                 });
               },
