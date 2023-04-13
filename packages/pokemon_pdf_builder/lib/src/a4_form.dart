@@ -27,10 +27,10 @@ class A4Form extends GenericForm implements Size {
     super.playerIdY = 71;
 
     // DoB offsets
-    super.dobX = 488; // Indicates the X of the month
+    super.dobX = 490; // Indicates the X of the month
     super.dobY = 71;
-    super.dobDayXOffset = 16; // This is dobX + thisOffset
-    super.dobYearXOffset = 18; // dobX + dobDayXOffset + thisOffset
+    super.dobDayXOffset = 20; // This is dobX + thisOffset
+    super.dobYearXOffset = 17; // dobX + dobDayXOffset + thisOffset
 
     // Deck related fields
     super.nameFieldX = 289;
