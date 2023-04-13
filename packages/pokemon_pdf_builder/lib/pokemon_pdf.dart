@@ -10,7 +10,7 @@ class PokemonPdf {
 
   String name = "";
   String playerId = "";
-  String date = "";
+  String dateOfBirth = "";
 
   static const double fontSize = 10;
 
@@ -33,12 +33,17 @@ class PokemonPdf {
   static const double playerIdX = 273;
   static const double playerIdY = 71;
 
+  // DoB offsets
+  static const double dobX = 488; // Indicates the X of the month
+  static const double dobY = 71;
+  static const double dobDayXOffset = 16; // This is dobX + thisOffset
+  static const double dobYearXOffset = 18; // dobX + dobDayXOffset + thisOffset
+
   // Deck related fields
   static const double nameFieldX = 289;
   static const double quantityFieldX = 263;
+
   // ---------------------------------------------------------------------------
-
-
 
   final _ttf = pw.Font.ttf(
       File("${Directory.current.path}/lib/assets/RobotoSlab-Regular.ttf")
@@ -52,137 +57,154 @@ class PokemonPdf {
 
   List<pw.Widget> _generatePokemonColumn() {
     List<pw.Widget> pokemons = [];
-    pokemons.add(
-      pw.Container( // Empty child to push the text down
-          width: docA4X,
-          height: pokemonRowY
-      )
-    );
+    pokemons.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: pokemonRowY));
     for (var element in deck.pokemonList) {
-      pokemons.add(
-        pw.Text(
-          element.name,
-          style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-        ));
+      pokemons.add(pw.Text(
+        element.name,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return pokemons;
   }
 
   List<pw.Widget> _generatePokemonQuantity() {
     List<pw.Widget> pokemons = [];
-    pokemons.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: pokemonRowY
-        )
-    );
+    pokemons.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: pokemonRowY));
     for (var element in deck.pokemonList) {
-      pokemons.add(
-          pw.Text(
-            element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      pokemons.add(pw.Text(
+        element.quantity,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return pokemons;
   }
 
   List<pw.Widget> _generatePokemonSet() {
     List<pw.Widget> pokemons = [];
-    pokemons.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: pokemonRowY
-        )
-    );
+    pokemons.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: pokemonRowY));
     for (var element in deck.pokemonList) {
-      pokemons.add(
-          pw.Text(
-            element.set,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      pokemons.add(pw.Text(
+        element.set,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return pokemons;
   }
 
   List<pw.Widget> _generateTrainersColumn() {
     List<pw.Widget> trainers = [];
-    trainers.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: trainerRowY
-        )
-    );
+    trainers.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: trainerRowY));
     for (var element in deck.trainerList) {
-      trainers.add(
-          pw.Text(
-            element.name,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      trainers.add(pw.Text(
+        element.name,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return trainers;
   }
 
   List<pw.Widget> _generateTrainerQuantity() {
     List<pw.Widget> trainers = [];
-    trainers.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: trainerRowY
-        )
-    );
+    trainers.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: trainerRowY));
     for (var element in deck.trainerList) {
-      trainers.add(
-          pw.Text(
-            element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      trainers.add(pw.Text(
+        element.quantity,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return trainers;
   }
 
   List<pw.Widget> _generateEnergiesColumn() {
     List<pw.Widget> energies = [];
-    energies.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: energyRowY
-        )
-    );
+    energies.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: energyRowY));
     for (var element in deck.energyList) {
-      energies.add(
-          pw.Text(
-            element.name,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      energies.add(pw.Text(
+        element.name,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return energies;
   }
 
   List<pw.Widget> _generateEnergyQuantity() {
     List<pw.Widget> energies = [];
-    energies.add(
-        pw.Container( // Empty child to push the text down
-            width: docA4X,
-            height: energyRowY
-        )
-    );
+    energies.add(pw.Container(
+        // Empty child to push the text down
+        width: docA4X,
+        height: energyRowY));
     for (var element in deck.energyList) {
-      energies.add(
-          pw.Text(
-            element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
-          ));
+      energies.add(pw.Text(
+        element.quantity,
+        style: pw.TextStyle(font: _ttf, fontSize: fontSize),
+      ));
     }
     return energies;
   }
 
+  pw.Widget _generateDoB() {
+    var date = dateOfBirth.split("/");
+    var month = "";
+    var day = "";
+    var year = "";
+    if (date.length == 3) {
+      month = date[0];
+      day = date[1];
+      year = date[2];
+    }
+    return pw.Row(
+      children: <pw.Widget>[
+        pw.Container(
+          // This positions the X coord of name field
+          width: dobX,
+          height: docA4Y,
+        ),
+        pw.Column(
+          // Helps positions the Y coord of name
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: <pw.Widget>[
+            pw.Container(
+              width: docA4X,
+              height: dobY,
+            ),
+            pw.Row(children: <pw.Widget>[
+              pw.Text(month, style: pw.TextStyle(font: _ttf, fontSize: fontSize)),
+              pw.Container(width: dobDayXOffset, height: 0),
+              pw.Text(day, style: pw.TextStyle(font: _ttf, fontSize: fontSize)),
+              pw.Container(width: dobYearXOffset, height: 0),
+              pw.Text(year, style: pw.TextStyle(font: _ttf, fontSize: fontSize)),
+            ]),
+          ],
+        ),
+      ],
+    );
+  }
 
   // This builds the entire pdf in one go
   pw.Document build() {
     final pdf = pw.Document();
 
-    final pokemonFormImage = pw.MemoryImage(File("${Directory.current.path}/lib/assets/pokemon_decklist_a4.webp")
-        .readAsBytesSync());
+    final pokemonFormImage = pw.MemoryImage(
+        File("${Directory.current.path}/lib/assets/pokemon_decklist_a4.webp")
+            .readAsBytesSync());
 
     pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
@@ -196,18 +218,22 @@ class PokemonPdf {
                   // Name
                   pw.Row(
                     children: <pw.Widget>[
-                      pw.Container( // This positions the X coord of name field
+                      pw.Container(
+                        // This positions the X coord of name field
                         width: nameX,
                         height: docA4Y,
                       ),
-                      pw.Column( // Helps positions the Y coord of name
+                      pw.Column(
+                        // Helps positions the Y coord of name
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: <pw.Widget>[
                           pw.Container(
                             width: docA4X,
                             height: nameY,
                           ),
-                          pw.Text(name, style: pw.TextStyle(font: _ttf, fontSize: fontSize))
+                          pw.Text(name,
+                              style:
+                                  pw.TextStyle(font: _ttf, fontSize: fontSize))
                         ],
                       ),
                     ],
@@ -216,36 +242,45 @@ class PokemonPdf {
                   // Player ID
                   pw.Row(
                     children: <pw.Widget>[
-                      pw.Container( // This positions the X coord of name field
+                      pw.Container(
+                        // This positions the X coord of name field
                         width: playerIdX,
                         height: docA4Y,
                       ),
-                      pw.Column( // Helps positions the Y coord of playerId
+                      pw.Column(
+                        // Helps positions the Y coord of playerId
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: <pw.Widget>[
                           pw.Container(
                             width: docA4X,
                             height: playerIdY,
                           ),
-                          pw.Text(playerId, style: pw.TextStyle(font: _ttf, fontSize: fontSize))
+                          pw.Text(playerId,
+                              style:
+                                  pw.TextStyle(font: _ttf, fontSize: fontSize))
                         ],
                       ),
                     ],
                   ),
 
+                  // Date of Birth
+                  _generateDoB(),
+
                   // The Deck related information
-                  pw.Row(children: <pw.Widget>[ // For Pokemon
+                  pw.Row(children: <pw.Widget>[
+                    // For Pokemon
                     pw.Container(
                       // Empty child to push the text to the right
                       width: nameFieldX,
                       height: docA4Y,
                     ),
                     pw.Column(
-                        crossAxisAlignment: pw.CrossAxisAlignment.start,
-                        children: _generatePokemonColumn(),
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: _generatePokemonColumn(),
                     ),
                   ]),
-                  pw.Row(children: <pw.Widget>[ // For Pokemon Quantities
+                  pw.Row(children: <pw.Widget>[
+                    // For Pokemon Quantities
                     pw.Container(
                       // Empty child to push the text to the right
                       width: quantityFieldX,
@@ -256,7 +291,8 @@ class PokemonPdf {
                       children: _generatePokemonQuantity(),
                     ),
                   ]),
-                  pw.Row(children: <pw.Widget>[ // For Pokemon Set Name
+                  pw.Row(children: <pw.Widget>[
+                    // For Pokemon Set Name
                     pw.Container(
                       // Empty child to push the text to the right
                       width: pokemonSetRowX,
@@ -267,7 +303,8 @@ class PokemonPdf {
                       children: _generatePokemonSet(),
                     ),
                   ]),
-                  pw.Row( // For Trainers
+                  pw.Row(
+                    // For Trainers
                     children: <pw.Widget>[
                       pw.Container(
                         // Empty child to push the text to the right
@@ -280,7 +317,8 @@ class PokemonPdf {
                       ),
                     ],
                   ),
-                  pw.Row(children: <pw.Widget>[ // For Trainer Quantities
+                  pw.Row(children: <pw.Widget>[
+                    // For Trainer Quantities
                     pw.Container(
                       // Empty child to push the text to the right
                       width: quantityFieldX,
@@ -291,7 +329,8 @@ class PokemonPdf {
                       children: _generateTrainerQuantity(),
                     ),
                   ]),
-                  pw.Row( // For Energies
+                  pw.Row(
+                    // For Energies
                     children: <pw.Widget>[
                       pw.Container(
                         // Empty child to push the text to the right
@@ -304,7 +343,8 @@ class PokemonPdf {
                       ),
                     ],
                   ),
-                  pw.Row(children: <pw.Widget>[ // For Energy Quantities
+                  pw.Row(children: <pw.Widget>[
+                    // For Energy Quantities
                     pw.Container(
                       // Empty child to push the text to the right
                       width: quantityFieldX,
