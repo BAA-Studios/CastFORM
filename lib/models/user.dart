@@ -4,5 +4,5 @@ class User {
   String playerName = "";
   String playerId = "";
   DateTime? dateOfBirth;
-  PaperType paperType = PaperType.a4;
+  PaperType? paperType = PaperType.a4;
 }
