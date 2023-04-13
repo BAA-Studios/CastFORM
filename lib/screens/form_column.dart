@@ -43,7 +43,7 @@ class _FormColumnState extends State<FormColumn> {
             padding: defaultPadding,
             child: TextFormField(
               decoration: const InputDecoration(
-                labelText: "Player ID",
+                labelText: "Player ID (Optional)",
               ),
               onSaved: (String? value) {
                 setState(() => _user.playerId = value);
@@ -56,7 +56,7 @@ class _FormColumnState extends State<FormColumn> {
               readOnly: true,
               controller: _dateController,
               decoration: const InputDecoration(
-                labelText: "Date of Birth",
+                labelText: "Date of Birth (Optional)",
               ),
               onTap: () async {
                 await showDatePicker(
