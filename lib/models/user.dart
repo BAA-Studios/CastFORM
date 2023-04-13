@@ -6,6 +6,7 @@ class User {
   String? dateOfBirth;
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
+  bool? isOpenInExplorer = false;
 
   bool isA4() {
     if (paperType == PaperType.a4) {

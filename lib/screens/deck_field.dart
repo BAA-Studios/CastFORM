@@ -11,13 +11,24 @@ class DeckField extends StatefulWidget {
 }
 
 class _DeckFieldState extends State<DeckField> {
+  final _deckController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: const InputDecoration(
+      controller: _deckController,
+      decoration: InputDecoration(
         labelText: "Deck String",
         hintText: "Supports PTCGO, PTCGL, and Limitless formats",
         border: defaultBorder,
+        suffixIcon: IconButton(
+          onPressed: () => {
+            _deckController.clear(),
+            context.read<UserProvider>().setDeckString(""),
+          },
+          icon: const Icon(Icons.clear),
+        ),
+        alignLabelWithHint: true,
       ),
       validator: (String? value) {
         if (value == null || value.isEmpty) {

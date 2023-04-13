@@ -22,3 +22,12 @@ void initPdfConstants() {
       .load("assets/form_templates/pokemon_decklist_a4.webp")
       .then((value) => formTemplate = value.buffer.asUint8List());
 }
+
+const aboutText = Text(
+    "CastFORM is a free and easy to use tool for automatic filling out of Pokemon "
+        "tournament registration sheets!\n"
+        "\n"
+        "Put together with love from Brandon Nguyen and Amos Chua of BAA Studios!\n"
+        "If you enjoy our work, do follow us on GitHub; if you're feeling generous, you can "
+        "drop us some spare change for a coffee on ko-fi too!"
+);

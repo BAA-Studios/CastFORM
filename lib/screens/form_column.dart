@@ -1,3 +1,4 @@
+import 'package:castform/screens/open_in_explorer.dart';
 import 'package:flutter/material.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/screens/buttons.dart';
@@ -57,13 +58,22 @@ class _FormColumnState extends State<FormColumn> {
               ],
             ),
           ),
-          // TODO: Add switch for open folder after export
-          Padding(
+          const Padding(
             padding: defaultPadding,
-            child: SaveButton(formKey: _formKey),
+            child: OpenInExplorer(),
           ),
-          // TODO: Add 'clear deck list' button
-          // TODO: Add 'about' button
+          Row(
+            children: [
+              Padding(
+                padding: defaultPadding,
+                child: SaveButton(formKey: _formKey)
+              ),
+              const Padding(
+                padding: defaultPadding,
+                child: AboutButton(),
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -27,4 +27,9 @@ class UserProvider extends User with ChangeNotifier {
     this.paperType = paperType;
     notifyListeners();
   }
+
+  void toggleOpenInExplorer() {
+    isOpenInExplorer = !(isOpenInExplorer ?? false);
+    notifyListeners();
+  }
 }
