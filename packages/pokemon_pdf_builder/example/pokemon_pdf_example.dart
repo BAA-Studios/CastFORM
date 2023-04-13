@@ -45,6 +45,7 @@ Future<void> main() async {
 
   pokemonDoc.name = "Brandon Nguyen";
   pokemonDoc.playerId = "1234567890";
+  pokemonDoc.dateOfBirth = "04/14/2002";
 
   final pdf = pokemonDoc.build();
 
