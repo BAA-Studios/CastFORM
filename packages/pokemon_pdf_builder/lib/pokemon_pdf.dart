@@ -35,6 +35,7 @@ class PokemonPdf {
 
   // Deck related fields
   static const double nameFieldX = 289;
+  static const double quantityFieldX = 263;
   // ---------------------------------------------------------------------------
 
 
@@ -247,7 +248,7 @@ class PokemonPdf {
                   pw.Row(children: <pw.Widget>[ // For Pokemon Quantities
                     pw.Container(
                       // Empty child to push the text to the right
-                      width: 263,
+                      width: quantityFieldX,
                       height: docA4Y,
                     ),
                     pw.Column(
@@ -282,7 +283,7 @@ class PokemonPdf {
                   pw.Row(children: <pw.Widget>[ // For Trainer Quantities
                     pw.Container(
                       // Empty child to push the text to the right
-                      width: 263,
+                      width: quantityFieldX,
                       height: docA4Y,
                     ),
                     pw.Column(
@@ -306,7 +307,7 @@ class PokemonPdf {
                   pw.Row(children: <pw.Widget>[ // For Energy Quantities
                     pw.Container(
                       // Empty child to push the text to the right
-                      width: 263,
+                      width: quantityFieldX,
                       height: docA4Y,
                     ),
                     pw.Column(
