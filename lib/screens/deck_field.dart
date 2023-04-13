@@ -16,6 +16,7 @@ class _DeckFieldState extends State<DeckField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: _deckController,
       decoration: const InputDecoration(
         labelText: "Deck String",
         hintText: "Supports PTCGO, PTCGL, and Limitless formats",
