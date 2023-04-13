@@ -1,14 +1,13 @@
-class Trainer {
-  String quantity;
-  final String name;
+import 'package:deck_string_parser/src/card.dart';
 
+class Trainer extends Card {
   /// This represents Trainer-cards
   Trainer({
-    required this.quantity,
-    required this.name,
-  });
+    required quantity,
+    required name,
+  }) : super(quantity: quantity, name: name);
 
   void setQuantity(String quantity) {
-    this.quantity = quantity;
+    super.quantity = quantity;
   }
 }
