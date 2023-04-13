@@ -21,78 +21,109 @@ class _FormColumnState extends State<FormColumn> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            width: 100.0,
-            height: 50.0,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Player Name",
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 100.0,
-            height: 50.0,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Player ID",
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 100.0,
-            height: 50.0,
-            child: InputDatePickerFormField(
-              // Limit to range from 125 years ago to now:
-              firstDate: DateTime.now().subtract(const Duration(days: 45625)),
-              lastDate: DateTime.now(),
-              fieldLabelText: "Date of Birth",
-            ),
-          ),
-          SizedBox(
-            width: 100.0,
-            height: 100.0,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Deck String",
-                hintText: "Supports PTCGO, PTCGL, and Limitless formats",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          Padding(
+            padding: defaultPadding,
+            child: SizedBox(
+              width: 100.0,
+              height: 50.0,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  labelText: "Player Name",
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return "Name is a required field!";
+                  }
+                  return null;
+                },
               ),
-              maxLines: null,
-              expands: true,
-              keyboardType: TextInputType.multiline,
             ),
           ),
-          Row(
-            children: [
-              const Text("Paper size"),
-              Expanded(
-                child: RadioListTile<PaperType>(
-                  title: const Text("A4"),
-                  value: PaperType.a4,
-                  groupValue: _user.paperType,
-                  onChanged: (PaperType? value) {
-                    setState(() {
-                      _user.paperType = value;
-                    });
-                  },
+          Padding(
+            padding: defaultPadding,
+            child: SizedBox(
+              width: 100.0,
+              height: 50.0,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  labelText: "Player ID",
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return "ID is a required field!";
+                  }
+                  return null;
+                },
               ),
-              Expanded(
-                child: RadioListTile<PaperType>(
-                  title: const Text("Letter"),
-                  value: PaperType.letter,
-                  groupValue: _user.paperType,
-                  onChanged: (PaperType? value) {
-                    setState(() {
-                      _user.paperType = value;
-                    });
-                  },
+            ),
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: SizedBox(
+              width: 100.0,
+              height: 50.0,
+              child: InputDatePickerFormField(
+                // Limit to range from 125 years ago to now:
+                firstDate: DateTime.now().subtract(const Duration(days: maximumHumanLifespan)),
+                lastDate: DateTime.now(),
+                fieldLabelText: "Date of Birth",
+              ),
+            ),
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: SizedBox(
+              width: 100.0,
+              height: 150.0,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  labelText: "Deck String",
+                  hintText: "Supports PTCGO, PTCGL, and Limitless formats",
+                  border: defaultBorder,
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return "Deck string is a required field!";
+                  }
+                  return null;
+                },
+                maxLines: null,
+                expands: true,
+                keyboardType: TextInputType.multiline,
               ),
-            ],
+            ),
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: Row(
+              children: [
+                const Text("Paper size"),
+                Expanded(
+                  child: RadioListTile<PaperType>(
+                    title: const Text("A4"),
+                    value: PaperType.a4,
+                    groupValue: _user.paperType,
+                    onChanged: (PaperType? value) {
+                      setState(() {
+                        _user.paperType = value;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: RadioListTile<PaperType>(
+                    title: const Text("Letter"),
+                    value: PaperType.letter,
+                    groupValue: _user.paperType,
+                    onChanged: (PaperType? value) {
+                      setState(() {
+                        _user.paperType = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
