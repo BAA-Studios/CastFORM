@@ -11,8 +11,6 @@ class DeckField extends StatefulWidget {
 }
 
 class _DeckFieldState extends State<DeckField> {
-  final _deckController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -30,8 +28,8 @@ class _DeckFieldState extends State<DeckField> {
       maxLines: null,
       expands: true,
       keyboardType: TextInputType.multiline,
-      onChanged: (_) => context.read<UserProvider>().setDeckString(_deckController.text),
-      onSaved: (_) => context.read<UserProvider>().setDeckString(_deckController.text),
+      onChanged: (String? value) => context.read<UserProvider>().setDeckString(value),
+      onSaved: (String? value) => context.read<UserProvider>().setDeckString(value),
     );
   }
 }
