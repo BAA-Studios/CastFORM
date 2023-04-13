@@ -92,4 +92,15 @@ Future<void> main() async {
   emptyDoc.buildPdf().then((value) => emptyFile.writeAsBytes(value));
 
   print("Done!");
+
+  /* To produce a live preview/render in Flutter
+  import 'package:printing/printing.dart';
+
+  ...  // Other higher level widgets in Flutter
+  Widget build(BuildContext context) {
+    return PdfPreview(
+      build: emptyDoc.buildPdf(),
+    );
+  }
+   */
 }
