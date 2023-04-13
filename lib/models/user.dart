@@ -7,6 +7,13 @@ class User {
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
 
+  bool isA4() {
+    if (paperType == PaperType.a4) {
+      return true;
+    }
+    return false;
+  }
+
   save() {
     // TODO: Replace with folder selection logic & PDF saving logic
     print("Form sucessfully submitted");
