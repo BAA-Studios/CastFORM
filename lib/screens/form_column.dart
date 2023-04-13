@@ -36,6 +36,9 @@ class _FormColumnState extends State<FormColumn> {
                   }
                   return null;
                 },
+                onSaved: (String? value) {
+                  setState(() => _user.playerName = value);
+                },
               ),
             ),
           ),
@@ -54,6 +57,9 @@ class _FormColumnState extends State<FormColumn> {
                   }
                   return null;
                 },
+                onSaved: (String? value) {
+                  setState(() => _user.playerId = value);
+                },
               ),
             ),
           ),
@@ -67,6 +73,9 @@ class _FormColumnState extends State<FormColumn> {
                 firstDate: DateTime.now().subtract(const Duration(days: maximumHumanLifespan)),
                 lastDate: DateTime.now(),
                 fieldLabelText: "Date of Birth",
+                onDateSaved: (DateTime? value) {
+                  setState(() => _user.dateOfBirth = value);
+                },
               ),
             ),
           ),
@@ -90,6 +99,9 @@ class _FormColumnState extends State<FormColumn> {
                 maxLines: null,
                 expands: true,
                 keyboardType: TextInputType.multiline,
+                onSaved: (String? value) {
+                  setState(() => _user.deckString = value);
+                },
               ),
             ),
           ),
@@ -104,9 +116,7 @@ class _FormColumnState extends State<FormColumn> {
                     value: PaperType.a4,
                     groupValue: _user.paperType,
                     onChanged: (PaperType? value) {
-                      setState(() {
-                        _user.paperType = value;
-                      });
+                      setState(() => _user.paperType = value);
                     },
                   ),
                 ),
@@ -116,13 +126,27 @@ class _FormColumnState extends State<FormColumn> {
                     value: PaperType.letter,
                     groupValue: _user.paperType,
                     onChanged: (PaperType? value) {
-                      setState(() {
-                        _user.paperType = value;
-                      });
+                      setState(() => _user.paperType = value);
                     },
                   ),
                 ),
               ],
+            ),
+          ),
+          const SizedBox(  // Spacer
+            height: 200.0,
+          ),
+          Padding(
+            padding: defaultPadding,
+            child: ElevatedButton(
+              onPressed: () {
+                final form = _formKey.currentState;
+                if (form!.validate()) {
+                  form.save();
+                  _user.save();
+                }
+              },
+              child: const Text("Save"),
             ),
           ),
         ],
