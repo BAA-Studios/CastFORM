@@ -157,7 +157,8 @@ bool isNumeric(String s) {
 ///
 /// Each element is a section, rather than a particular line
 List<List<String>> crudeSplit(String deck) {
-  var lines = splitter.convert(deck);
+  var trimmedDeck = deck.trim();
+  var lines = splitter.convert(trimmedDeck);
 
   // Find where the paragraph breaks are
   List<int> breaks = [];
