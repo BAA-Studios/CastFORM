@@ -12,6 +12,33 @@ class PokemonPdf {
   String playerId = "";
   String date = "";
 
+  static const double fontSize = 10;
+
+  // A4 Doc related coordinates -------------------------------------------------
+  static const double docA4X = 2339;
+  static const double docA4Y = 1654;
+
+  // This offset tells us where the Pokemon Row on the PDF Starts on the Y-Plane
+  static const double pokemonRowY = 186;
+  static const double trainerRowY = 362;
+  static const double energyRowY = 643;
+
+  static const double pokemonSetRowX = 465;
+
+  // Name offset
+  static const double nameX = 85;
+  static const double nameY = 71;
+
+  // PlayerId offsets
+  static const double playerIdX = 273;
+  static const double playerIdY = 71;
+
+  // Deck related fields
+  static const double nameFieldX = 289;
+  // ---------------------------------------------------------------------------
+
+
+
   final _ttf = pw.Font.ttf(
       File("${Directory.current.path}/lib/assets/RobotoSlab-Regular.ttf")
           .readAsBytesSync()
@@ -26,15 +53,15 @@ class PokemonPdf {
     List<pw.Widget> pokemons = [];
     pokemons.add(
       pw.Container( // Empty child to push the text down
-          width: 2339,
-          height: 186
+          width: docA4X,
+          height: pokemonRowY
       )
     );
     for (var element in deck.pokemonList) {
       pokemons.add(
         pw.Text(
           element.name,
-          style: pw.TextStyle(font: _ttf, fontSize: 10),
+          style: pw.TextStyle(font: _ttf, fontSize: fontSize),
         ));
     }
     return pokemons;
@@ -44,15 +71,15 @@ class PokemonPdf {
     List<pw.Widget> pokemons = [];
     pokemons.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 186
+            width: docA4X,
+            height: pokemonRowY
         )
     );
     for (var element in deck.pokemonList) {
       pokemons.add(
           pw.Text(
             element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return pokemons;
@@ -62,15 +89,15 @@ class PokemonPdf {
     List<pw.Widget> pokemons = [];
     pokemons.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 186
+            width: docA4X,
+            height: pokemonRowY
         )
     );
     for (var element in deck.pokemonList) {
       pokemons.add(
           pw.Text(
             element.set,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return pokemons;
@@ -80,15 +107,15 @@ class PokemonPdf {
     List<pw.Widget> trainers = [];
     trainers.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 362
+            width: docA4X,
+            height: trainerRowY
         )
     );
     for (var element in deck.trainerList) {
       trainers.add(
           pw.Text(
             element.name,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return trainers;
@@ -98,15 +125,15 @@ class PokemonPdf {
     List<pw.Widget> trainers = [];
     trainers.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 362
+            width: docA4X,
+            height: trainerRowY
         )
     );
     for (var element in deck.trainerList) {
       trainers.add(
           pw.Text(
             element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return trainers;
@@ -116,15 +143,15 @@ class PokemonPdf {
     List<pw.Widget> energies = [];
     energies.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 643
+            width: docA4X,
+            height: energyRowY
         )
     );
     for (var element in deck.energyList) {
       energies.add(
           pw.Text(
             element.name,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return energies;
@@ -134,22 +161,22 @@ class PokemonPdf {
     List<pw.Widget> energies = [];
     energies.add(
         pw.Container( // Empty child to push the text down
-            width: 2339,
-            height: 643
+            width: docA4X,
+            height: energyRowY
         )
     );
     for (var element in deck.energyList) {
       energies.add(
           pw.Text(
             element.quantity,
-            style: pw.TextStyle(font: _ttf, fontSize: 10),
+            style: pw.TextStyle(font: _ttf, fontSize: fontSize),
           ));
     }
     return energies;
   }
 
 
-
+  // This builds the entire pdf in one go
   pw.Document build() {
     final pdf = pw.Document();
 
@@ -169,17 +196,17 @@ class PokemonPdf {
                   pw.Row(
                     children: <pw.Widget>[
                       pw.Container( // This positions the X coord of name field
-                        width: 85,
-                        height: 1654,
+                        width: nameX,
+                        height: docA4Y,
                       ),
                       pw.Column( // Helps positions the Y coord of name
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: <pw.Widget>[
                           pw.Container(
-                            width: 2339,
-                            height: 71,
+                            width: docA4X,
+                            height: nameY,
                           ),
-                          pw.Text(name, style: pw.TextStyle(font: _ttf, fontSize: 10))
+                          pw.Text(name, style: pw.TextStyle(font: _ttf, fontSize: fontSize))
                         ],
                       ),
                     ],
@@ -189,17 +216,17 @@ class PokemonPdf {
                   pw.Row(
                     children: <pw.Widget>[
                       pw.Container( // This positions the X coord of name field
-                        width: 273,
-                        height: 1654,
+                        width: playerIdX,
+                        height: docA4Y,
                       ),
                       pw.Column( // Helps positions the Y coord of playerId
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: <pw.Widget>[
                           pw.Container(
-                            width: 2339,
-                            height: 71,
+                            width: docA4X,
+                            height: playerIdY,
                           ),
-                          pw.Text(playerId, style: pw.TextStyle(font: _ttf, fontSize: 10))
+                          pw.Text(playerId, style: pw.TextStyle(font: _ttf, fontSize: fontSize))
                         ],
                       ),
                     ],
@@ -209,8 +236,8 @@ class PokemonPdf {
                   pw.Row(children: <pw.Widget>[ // For Pokemon
                     pw.Container(
                       // Empty child to push the text to the right
-                      width: 289,
-                      height: 1654,
+                      width: nameFieldX,
+                      height: docA4Y,
                     ),
                     pw.Column(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -221,7 +248,7 @@ class PokemonPdf {
                     pw.Container(
                       // Empty child to push the text to the right
                       width: 263,
-                      height: 1654,
+                      height: docA4Y,
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -231,8 +258,8 @@ class PokemonPdf {
                   pw.Row(children: <pw.Widget>[ // For Pokemon Set Name
                     pw.Container(
                       // Empty child to push the text to the right
-                      width: 465,
-                      height: 1654,
+                      width: pokemonSetRowX,
+                      height: docA4Y,
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -243,8 +270,8 @@ class PokemonPdf {
                     children: <pw.Widget>[
                       pw.Container(
                         // Empty child to push the text to the right
-                        width: 289,
-                        height: 1654,
+                        width: nameFieldX,
+                        height: docA4Y,
                       ),
                       pw.Column(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -256,7 +283,7 @@ class PokemonPdf {
                     pw.Container(
                       // Empty child to push the text to the right
                       width: 263,
-                      height: 1654,
+                      height: docA4Y,
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -267,8 +294,8 @@ class PokemonPdf {
                     children: <pw.Widget>[
                       pw.Container(
                         // Empty child to push the text to the right
-                        width: 289,
-                        height: 1654,
+                        width: nameFieldX,
+                        height: docA4Y,
                       ),
                       pw.Column(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -280,7 +307,7 @@ class PokemonPdf {
                     pw.Container(
                       // Empty child to push the text to the right
                       width: 263,
-                      height: 1654,
+                      height: docA4Y,
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
