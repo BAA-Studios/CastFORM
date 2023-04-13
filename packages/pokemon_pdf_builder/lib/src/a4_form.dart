@@ -1,8 +1,10 @@
 import 'dart:typed_data';
 import 'package:pdf/pdf.dart';
 import 'package:pokemon_pdf_builder/src/generic_form.dart';
+import 'package:pokemon_pdf_builder/src/size.dart';
 
-class A4Form extends GenericForm {
+class A4Form extends GenericForm implements Size {
+  @override
   void initCoordinates() {
     super.pageFormat = PdfPageFormat.a4;
     // Page size-related coordinates -------------------------------------------------

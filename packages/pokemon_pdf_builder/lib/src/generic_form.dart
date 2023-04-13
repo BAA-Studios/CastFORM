@@ -3,6 +3,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/src/abstract_form.dart';
+import 'package:pokemon_pdf_builder/src/utility.dart';
 
 class GenericForm implements AbstractForm {
   Deck? deck;
@@ -70,122 +71,44 @@ class GenericForm implements AbstractForm {
 
   @override
   List<pw.Widget> generatePokemonColumn() {
-    List<pw.Widget> pokemon = [];
-    pokemon.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: pokemonRowY));
     var list = deck?.pokemonList ?? [];
-    for (var element in list) {
-      pokemon.add(pw.Text(
-        element.name,
-        style: textStyle,
-      ));
-    }
-
-    return pokemon;
+    return populateWithStrings(extractName(list), docX, pokemonRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generatePokemonQuantity() {
-    List<pw.Widget> pokemon = [];
-    pokemon.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: pokemonRowY));
     var list = deck?.pokemonList ?? [];
-    for (var element in list) {
-      pokemon.add(pw.Text(
-        element.quantity,
-        style: textStyle,
-      ));
-    }
-    return pokemon;
+    return populateWithStrings(extractQuantity(list), docX, pokemonRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generatePokemonSet() {
-    List<pw.Widget> pokemon = [];
-    pokemon.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: pokemonRowY));
     var list = deck?.pokemonList ?? [];
-    for (var element in list) {
-      pokemon.add(pw.Text(
-        element.set,
-        style: textStyle,
-      ));
-    }
-    return pokemon;
+    return populateWithStrings(extractSet(list), docX, pokemonRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generateTrainersColumn() {
-    List<pw.Widget> trainers = [];
-    trainers.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: trainerRowY));
     var list = deck?.trainerList ?? [];
-    for (var element in list) {
-      trainers.add(pw.Text(
-        element.name,
-        style: textStyle,
-      ));
-    }
-    return trainers;
+    return populateWithStrings(extractName(list), docX, trainerRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generateTrainerQuantity() {
-    List<pw.Widget> trainers = [];
-    trainers.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: trainerRowY));
     var list = deck?.trainerList ?? [];
-    for (var element in list) {
-      trainers.add(pw.Text(
-        element.quantity,
-        style: textStyle,
-      ));
-    }
-    return trainers;
+    return populateWithStrings(extractQuantity(list), docX, trainerRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generateEnergiesColumn() {
-    List<pw.Widget> energies = [];
-    energies.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: energyRowY));
     var list = deck?.energyList ?? [];
-    for (var element in list) {
-      energies.add(pw.Text(
-        element.name,
-        style: textStyle,
-      ));
-    }
-    return energies;
+    return populateWithStrings(extractName(list), docX, energyRowY, textStyle);
   }
 
   @override
   List<pw.Widget> generateEnergyQuantity() {
-    List<pw.Widget> energies = [];
-    energies.add(pw.Container(
-      // Empty child to push the text down
-        width: docX,
-        height: energyRowY));
     var list = deck?.energyList ?? [];
-    for (var element in list) {
-      energies.add(pw.Text(
-        element.quantity,
-        style: textStyle,
-      ));
-    }
-    return energies;
+    return populateWithStrings(extractQuantity(list), docX, energyRowY, textStyle);
   }
 
   @override
