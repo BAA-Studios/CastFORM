@@ -50,7 +50,8 @@ class _DocumentState extends State<Document> {
       );
     }
     // Note the new changes
-    if (_deckString != deckString) {
+    if (_deckString != deckString && isValidDeckString(deckString)) {
+      // Don't cache if it's not valid
       _deckString = deckString;
     }
     if (_name != name) {

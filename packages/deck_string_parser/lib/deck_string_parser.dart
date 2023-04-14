@@ -36,3 +36,16 @@ bool isValidDeckCount(Deck deck) {
 
   return quantity == 60;
 }
+
+bool isValidDeckString(String deckString) {
+  Deck deck;
+  try {
+    deck = parseDeck(deckString);
+    if (isValidDeckCount(deck)) {
+      return true;
+    }
+    return false;
+  } catch(_) {
+    return false;
+  }
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
+import 'package:deck_string_parser/deck_string_parser.dart';
 
 class DeckField extends StatefulWidget {
   const DeckField({Key? key}) : super(key: key);
@@ -33,6 +34,9 @@ class _DeckFieldState extends State<DeckField> {
       validator: (String? value) {
         if (value == null || value.isEmpty) {
           return "Deck string is a required field!";
+        }
+        if (!isValidDeckString(value)) {
+          return "Invalid deck string!";
         }
         return null;
       },
