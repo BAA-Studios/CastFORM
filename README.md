@@ -1,16 +1,26 @@
 # CastFORM
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/BAA-Studios/CastFORM?display_name=tag&label=latest%20version)
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://dart.dev/guides/language/effective-dart/style)
-![MVP](https://progress-bar.dev/100/?title=Minimum%20Viable%20Product)  
+![platform | windows](https://img.shields.io/badge/platform-windows-lightgrey)
+![MVP](https://progress-bar.dev/100/?title=Minimum%20Viable%20Product)
+![GitHub search hit counter](https://img.shields.io/github/search/BAA-Studios/CastFORM/goto?label=search%20counter)
+![GitHub all releases](https://img.shields.io/github/downloads/BAA-Studios/CastFORM/total)
+
 **CastFORM** is an easy-to-use Pokémon TCG Deck Registration Sheet generator.  
 **CastFORM** offers an elegant graphical interface for filling in Pokémon deck lists for tournaments, and creates beautiful PDFs from user input.
 
 This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Python script that served a similar purpose. **CastFORM** was spearheaded in response to the high demand for a user-friendly program in his local TCG community, most of whom were not comfortable with CLI tools.
 
 ## Gallery
-![image](https://user-images.githubusercontent.com/58405975/231961944-4b8a1611-16be-485c-8e42-02c429e2669c.png)
+
+***Light mode:***
+![light mode screenshot](https://user-images.githubusercontent.com/25145447/232040805-d48497e5-d709-487d-9646-342c0a441621.png)
+
+***Dark mode***
+![dark mode screenshot](https://user-images.githubusercontent.com/25145447/232040394-cb3da909-e51b-4736-9497-ee7be42641ce.png)
 
 ## Installation & Usage Instructions
-*Note: Only 64-bit Windows 11 machines are official supported*
+*Note: Only 64-bit Windows 11 machines are officially supported.*
 
 ### ZIP Archive
 1. Download `castform.zip` from the releases page
