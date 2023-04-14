@@ -1,6 +1,6 @@
 # CastFORM
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://dart.dev/guides/language/effective-dart/style)
-![MVP](https://progress-bar.dev/70/?title=Minimum%20Viable%20Product)  
+![MVP](https://progress-bar.dev/100/?title=Minimum%20Viable%20Product)  
 **CastFORM** is an easy-to-use Pokémon TCG Deck Registration Sheet generator.  
 **CastFORM** offers an elegant graphical interface for filling in Pokémon deck lists for tournaments, and creates beautiful PDFs from user input.
 
