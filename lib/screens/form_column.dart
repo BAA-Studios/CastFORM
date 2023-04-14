@@ -1,3 +1,4 @@
+import 'package:castform/screens/open_file.dart';
 import 'package:castform/screens/open_in_explorer.dart';
 import 'package:flutter/material.dart';
 import 'package:castform/constants.dart';
@@ -58,10 +59,8 @@ class _FormColumnState extends State<FormColumn> {
               ],
             ),
           ),
-          const Padding(
-            padding: defaultPadding,
-            child: OpenInExplorer(),
-          ),
+          const OpenInExplorer(),
+          const OpenFileOnSave(),
           Row(
             children: [
               Padding(

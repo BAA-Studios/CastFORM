@@ -12,7 +12,8 @@ class OpenInExplorer extends StatelessWidget {
         "Open folder in Explorer upon saving",
         textAlign: TextAlign.start,
       ),
-      value: context.select<UserProvider, bool?>((userProvider) => userProvider.isOpenInExplorer) ?? false,
+      dense: true,
+      value: context.select<UserProvider, bool?>((userProvider) => userProvider.openInExplorer) ?? false,
       onChanged: (_) => context.read<UserProvider>().toggleOpenInExplorer(),
     );
   }

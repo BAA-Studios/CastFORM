@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:castform/constants.dart';
 import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
@@ -10,7 +11,8 @@ class User {
   String? dateOfBirth;
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
-  bool? isOpenInExplorer = false;
+  bool? openInExplorer = false;
+  bool? openInViewer = false;
 
   bool isA4() {
     if (paperType == PaperType.a4) {
@@ -52,8 +54,24 @@ class User {
     await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());
     // TODO: Snackbar for save result
 
-    if (isOpenInExplorer ?? false) {
-      // url_launcher logic
+    // show in Explorer
+    if (openInExplorer ?? false) {
+      // strip the trailing file name
+      var temp = outputFilePath.split("\\");
+      var directoryPath = "file:/${temp.sublist(0, temp.length - 1).join("\\")}";
+      final Uri uri = Uri.parse(directoryPath);
+
+      if (!await launchUrl(uri)) {
+        // TODO: snackbar for failed open
+      }
+    }
+
+    // show in PDF viewer
+    if (openInViewer ?? false) {
+      final Uri uri = Uri.file(outputFilePath);
+      if (!await launchUrl(uri)) {
+        // TODO: snackbar for failed open
+      }
     }
   }
 }

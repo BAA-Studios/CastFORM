@@ -29,7 +29,12 @@ class UserProvider extends User with ChangeNotifier {
   }
 
   void toggleOpenInExplorer() {
-    isOpenInExplorer = !(isOpenInExplorer ?? false);
+    openInExplorer = !(openInExplorer ?? false);
+    notifyListeners();
+  }
+
+  void toggleOpenFile() {
+    openInViewer = !(openInViewer ?? false);
     notifyListeners();
   }
 }
