@@ -1,3 +1,11 @@
+## 1.0.1
+- PDF live render previews now ignore invalid deck strings
+  - Validation still performed on attempt to submit the form
+  - This allows the preview to not show error screens if users manually input/edit the deck string
+- Style changes
+  - Migrate from Material 2 to Material 3 design (Experimental)
+  - Addition of dark mode (automatically applied based on system settings)
+
 ## 1.0.0
 - Minimum viable product
 

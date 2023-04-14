@@ -309,7 +309,7 @@ packages:
       path: "packages/pokemon_pdf_builder"
       relative: true
     source: path
-    version: "0.0.2"
+    version: "1.0.0"
   printing:
     dependency: "direct main"
     description:
