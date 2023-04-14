@@ -41,7 +41,13 @@ class _DocumentState extends State<Document> {
         _dateOfBirth == dateOfBirth && _isDocCached) {
       return PdfPreview(build: (_) {
         return _lastDocument;
-      });
+      },
+        allowPrinting: false,
+        allowSharing: false,
+        canChangePageFormat: false,
+        canChangeOrientation: false,
+        canDebug: false,
+      );
     }
     // Note the new changes
     if (_deckString != deckString) {
@@ -70,6 +76,12 @@ class _DocumentState extends State<Document> {
       _lastDocument = document.buildPdf();
       _isDocCached = true;
       return _lastDocument;
-    });
+    },
+      allowPrinting: false,
+      allowSharing: false,
+      canChangePageFormat: false,
+      canChangeOrientation: false,
+      canDebug: false,
+    );
   }
 }
