@@ -50,8 +50,7 @@ class _DocumentState extends State<Document> {
       );
     }
     // Note the new changes
-    if (_deckString != deckString && isValidDeckString(deckString)) {
-      // Don't cache if it's not valid
+    if (_deckString != deckString) {
       _deckString = deckString;
     }
     if (_name != name) {
@@ -68,7 +67,7 @@ class _DocumentState extends State<Document> {
       // Preview in A4 only
       GenericForm document = getA4FormHandler(formTemplate, font);
 
-      if (deckString.isNotEmpty) {
+      if (deckString.isNotEmpty && isValidDeckString(deckString)) {
         document.deck = parseDeck(_deckString);
       }
       document.name = _name;
