@@ -6,8 +6,25 @@
 
 This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Python script that served a similar purpose. **CastFORM** was spearheaded in response to the high demand for a user-friendly program in his local TCG community, most of whom were not comfortable with CLI tools.
 
+## Gallery
+![image](https://user-images.githubusercontent.com/58405975/231961944-4b8a1611-16be-485c-8e42-02c429e2669c.png)
+
+## Installation & Usage Instructions
+*Note: Only 64-bit Windows 11 machines are official supported*
+
+### ZIP Archive
+1. Download `castform.zip` from the releases page
+   - Note: actual file name may vary
+2. Unzip it into your desired install location
+3. Run `CastFORM.exe` from that location
+
+### Windows Installer
+1. Download `CastFORM_x64.exe` from the releases page
+2. Run it **as administrator** to install CastFORM to `C:\Program Files\CastFORM`
+3. Run `CastFORM.exe` from `C:\Program Files\CastFORM\CastFORM.exe`, and/or create a shortcut for it
+
 ## Technical Information
-**CastFORM** is built with **Flutter 3.7.8** for **Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
+**CastFORM** is built with **Flutter 3.7.8** for **64-bit Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
 For testing, we aim to provide complete coverage for API behaviour internally by release.
 
 ### Development Environment Set-up
@@ -24,9 +41,50 @@ For testing, we aim to provide complete coverage for API behaviour internally by
     - The location of the button differs depending on IntelliJ version
     - For IntelliJ 2022.3 click here:
     ![illustration of where to click](https://i.imgur.com/0FGpLNN.png)
-## Gallery
-![image](https://user-images.githubusercontent.com/58405975/231961944-4b8a1611-16be-485c-8e42-02c429e2669c.png)
 
+### Build Instructions
+1. Run `flutter build windows`
+2. Navigate to the output folder `/build/windows/runner/Release`
+3. Add the following `dlls` (which can be found in a Visual Studio 2022 installation folder, e.g. `C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.32.31326\x64\Microsoft.VC143.CRT`)
+   - msvcp140.dll
+   - vcruntime140.dll
+   - vcruntime140_1.dll
+4. Package the contents of this folder as a ZIP file
+   - Users can unzip to their desired location and run `CastFORM.exe` from there
+
+### Bundle with Windows Installer (Optional)
+*Note: This assumes you've already run through steps 1-4 of the build instructions*  
+**First time bundling:**  
+1. Add a batch script `setup.bat` (refer to `/sample_setup.bat` for template)
+2. Run `iexpress.exe` as administrator
+3. Select `Create new Self Extraction Directive file`, and hit `Next`
+4. Select `Extract files and run an installation command`, and hit `Next`
+5. Input a title (e.g. `CastFORM Installer`), and hit `Next`
+6. Select `No prompt`, and hit `Next`
+7. Select `Do not display a license`, and hit `Next`
+8. Use the `Add` button to add all the files in the output folder from above, and hit `Next`
+   - The file picker dialog box allows `CTRL + A` to select all files
+   - The file picker dialog box ignores folders, and does not add them recursively
+   - You may use `CTRL + A` on the output folder and repeat for all nested folders to quickly add everything
+9. In the `Install Program` field, click on it and manually replace with `cmd /c setup.bat`, and hit `Next`
+   - You are able to type in this drop down box
+   - The `cmd /c` part is **REQUIRED**
+   - IExpress simply bundles/extracts as well as wrap around a batch script, so all installation logic should be written in `setup.bat`
+10. Select `Default`, and hit `Next`
+11. Input a message if you like, and hit `Next`
+12. Click `Browse` and select an output folder for the resulting installer EXE, and give it a name
+13. Check `Store files using Long File Name inside Package`, and hit `Next`
+14. Select `No restart`, and hit `Next`
+15. Select `Save Self Extraction Directive (SED) file`, and use `Browse` to choose a save location, then hit `Next`
+    - The SED file contains all the configuration you've done up to this point
+    - Importing this file will allow you to reuse the same configuration for future bundling attempts
+16. On the `Create package` page, hit `Next` to start the bundling process, and then `Finish` once it's done
+
+**For subsequent bundling:**
+1. Run `iexpress.exe` as administrator
+2. Select `Open existing Self Extraction Directive file`, and select the SED file with `Browse`
+3. Select `Create Package`
+4. On the `Create package` page, hit `Next` to start the bundling process, and then `Finish` once it's done 
 
 ## Disclaimer
 **CastFORM** is an open-source program for a generating a niche type of PDF documents. **CastFORM** is not affiliated with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. **CastFORM** is non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of **CastFORM**. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action, arising out of or in connection with the use of **CastFORM** (in part or in whole).
