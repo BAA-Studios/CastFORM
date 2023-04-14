@@ -24,6 +24,9 @@ For testing, we aim to provide complete coverage for API behaviour internally by
     - The location of the button differs depending on IntelliJ version
     - For IntelliJ 2022.3 click here:
     ![illustration of where to click](https://i.imgur.com/0FGpLNN.png)
+## Gallery
+![image](https://user-images.githubusercontent.com/58405975/231961944-4b8a1611-16be-485c-8e42-02c429e2669c.png)
+
 
 ## Disclaimer
 **CastFORM** is an open-source program for a generating a niche type of PDF documents. **CastFORM** is not affiliated with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. **CastFORM** is non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of **CastFORM**. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action, arising out of or in connection with the use of **CastFORM** (in part or in whole).
