@@ -1,6 +1,6 @@
 name: pokemon_pdf_builder
 description: Builds PDFs for Pokemon TCG decks for CastFORM.
-version: 0.0.2
+version: 1.0.0
 publish_to: none
 # repository: https://github.com/BAA-Studios/CastFORM
 
