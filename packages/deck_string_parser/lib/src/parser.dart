@@ -204,6 +204,24 @@ List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
   return buffer;
 }
 
+/// Checks if a particular card name already exists
+///
+/// Pokemon with the same name and set, but from different sets can be merged into
+/// the same line, since the set name doesn't need to be filled out.
+/// If a pokemon of the same name and set is found, the index is returned.
+/// `-1` is returned if there are no matches.
+int findExistingPokemon(String name, String set, List<Pokemon> buffer) {
+  if (buffer.isEmpty) {
+    return -1;
+  }
+  for (var i = 0; i < buffer.length; i++) {
+    if (buffer[i].name == name && buffer[i].set == set) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 /// Extract pokemon cards
 List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
   List<Pokemon> buffer = [];
@@ -214,11 +232,19 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
       words.removeLast();  // strip holo card info (PTCGL format)
     }
     var indexOfSetAbbreviation = words.length - 2;
-    buffer.add(Pokemon(
+    var name = words.sublist(1, indexOfSetAbbreviation).join(" ");
+    var existingPokemonIndex = findExistingPokemon(name, words[indexOfSetAbbreviation], buffer);
+
+    if (existingPokemonIndex == -1) {
+      buffer.add(Pokemon(
         quantity: words[0],
         name: words.sublist(1, indexOfSetAbbreviation).join(" "),
         set: words[indexOfSetAbbreviation],
-    ));
+      ));
+    } else {
+      var existingQuantity = buffer[existingPokemonIndex].quantity;
+      buffer[existingPokemonIndex].quantity = addQuantities(existingQuantity, words[0]);
+    }
   }
   return buffer;
 }
