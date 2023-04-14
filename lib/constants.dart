@@ -13,8 +13,8 @@ const defaultBorder = OutlineInputBorder(
 );
 
 
-late ByteData font;
-late Uint8List formTemplate;
+ByteData? font;
+Uint8List? formTemplate;
 
 void initPdfConstants() {
   rootBundle.load("assets/fonts/RobotoSlab-Regular.ttf").then((value) => font = value);

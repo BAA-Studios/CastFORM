@@ -12,9 +12,9 @@ class GenericForm implements AbstractForm {
   String playerId = "";
   String dateOfBirth = "";
 
-  late pw.MemoryImage pokemonFormImage;
+  pw.Image? pokemonFormImage;
 
-  late pw.Font font;
+  pw.Font? font;
   static const double fontSize = 10;
   late pw.TextStyle textStyle = pw.TextStyle(font: font, fontSize: fontSize);
 
@@ -49,12 +49,17 @@ class GenericForm implements AbstractForm {
   late double quantityFieldX;
 
   // ---------------------------------------------------------------------------
-  void setFormTemplate(Uint8List formTemplate) {
-    pokemonFormImage = pw.MemoryImage(formTemplate);
+  void setFormTemplate(Uint8List? formTemplate) {
+    if (formTemplate != null) {
+      var pokemonFormMemoryImage = pw.MemoryImage(formTemplate);
+      pokemonFormImage = pw.Image(pokemonFormMemoryImage);
+    }
   }
 
-  void setFont(ByteData fontData) {
-    font = pw.Font.ttf(fontData);
+  void setFont(ByteData? fontData) {
+    if (fontData != null) {
+      font = pw.Font.ttf(fontData);
+    }
   }
 
   void setDeck(Deck deck) {
@@ -62,8 +67,8 @@ class GenericForm implements AbstractForm {
   }
 
   GenericForm({
-    required Uint8List formTemplate,
-    required ByteData font,
+    Uint8List? formTemplate,
+    ByteData? font,
   }) {
     setFormTemplate(formTemplate);
     setFont(font);
@@ -154,6 +159,9 @@ class GenericForm implements AbstractForm {
   @override
   pw.Document build() {
     final pdf = pw.Document();
+    if (pokemonFormImage == null) {
+      return pdf;
+    }
 
     pdf.addPage(pw.Page(
         pageFormat: pageFormat,
@@ -162,7 +170,7 @@ class GenericForm implements AbstractForm {
               ignoreMargins: true,
               child: pw.Stack(
                 children: <pw.Widget>[
-                  pw.Image(pokemonFormImage), // The actual PDF
+                  pokemonFormImage ?? pw.Placeholder(), // The actual PDF
 
                   pw.Row(
                     children: <pw.Widget>[

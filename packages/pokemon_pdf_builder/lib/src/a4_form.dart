@@ -38,8 +38,8 @@ class A4Form extends GenericForm implements Size {
   }
 
   A4Form({
-    required Uint8List formTemplate,
-    required ByteData font,
+    Uint8List? formTemplate,
+    ByteData? font,
   }) : super(
     formTemplate: formTemplate,
     font: font,

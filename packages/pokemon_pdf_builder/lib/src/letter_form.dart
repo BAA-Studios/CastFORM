@@ -38,8 +38,8 @@ class LetterForm extends GenericForm implements Size {
   }
 
   LetterForm({
-    required Uint8List formTemplate,
-    required ByteData font,
+    Uint8List? formTemplate,
+    ByteData? font,
   }) : super(
     formTemplate: formTemplate,
     font: font,
