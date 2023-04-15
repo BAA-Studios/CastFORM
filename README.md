@@ -37,6 +37,9 @@ This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Py
 2. Run it **as administrator** to install CastFORM to `C:\Program Files\CastFORM`
 3. Run `CastFORM.exe` from `C:\Program Files\CastFORM\CastFORM.exe`, and/or create a shortcut for it
 
+### Video Instructions
+- A video of the installation and usage steps: https://youtu.be/a4peYpnhHg0
+
 ## Technical Information
 **CastFORM** is built with **Flutter 3.7.8** for **64-bit Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
 For testing, we aim to provide complete coverage for API behaviour internally by release.
