@@ -51,11 +51,10 @@
 <section class="desc markdown">
   <p>This package houses the business logic for turning decks into pdf generated documents.</p>
 <h2 id="features">Features</h2>
-<p>N/A</p>
-<h2 id="getting-started">Getting started</h2>
-<p>N/A</p>
+<p>This library wraps around the <a href="https://pub.dev/packages/pdf">pdf</a> library, and makes use of its PDF-construction functionality.<br>
+This library takes various input data, and places them in the correct position on top of either A4- or Letter-sized registration form templates.</p>
 <h2 id="usage">Usage</h2>
-<p>This package is fairly straightforward to use. Refer to <code>/example</code> folder for a console-based workflow.</p>
+<p>This package is fairly straightforward to use. Refer to <code>/example</code> folder for a working detailed examples that can be run.</p>
 <pre class="language-dart"><code class="language-dart">import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:deck_string_parser/pokemon_pdf.dart';
 import 'dart:io';
@@ -63,8 +62,15 @@ import 'dart:io';
 Future&lt;void&gt; main() async {
   print("Starting PDF Builder");
 
-  var deck = parseDeck(deckString);
-  final pokemonDoc = getA4FormHandler(formTemplate, font);
+  var deck = parseDeck(deckString);  // see deck_string_parser local library
+  final pokemonDoc = A4Form(
+    formTemplate: formTemplate,  // see /example
+    textStyle: textStyle,  // see /example
+    name: "Ash Ketchum",
+    playerId: "1234567890",
+    dateOfBirth: "02/20/2002",
+    deck: deck,
+  );
 
   final pdf = pokemonDoc.buildPdf();
 
@@ -75,7 +81,8 @@ Future&lt;void&gt; main() async {
 }
 </code></pre>
 <h2 id="additional-information">Additional information</h2>
-<p>Core parsing functionality developed by <a href="https://github.com/Bratah123">Brandon Nguyen</a>.</p>
+<p>Core parsing functionality developed by <a href="https://github.com/Bratah123">Brandon Nguyen</a>.<br>
+Refined by <a href="https://github.com/KOOKIIEStudios">Amos Chua</a>.</p>
 <p>This package is intended to be used and included as a core component
 of <a href="https://github.com/BAA-Studios/CastFORM">CastFORM</a>. Please direct any queries or bug reports to the issues page of
 the CastFORM repository.</p>
@@ -125,7 +132,7 @@ the CastFORM repository.</p>
 <footer>
   <span class="no-break">
     pokemon_pdf_builder
-      1.0.0
+      2.0.0
   </span>
 
   
