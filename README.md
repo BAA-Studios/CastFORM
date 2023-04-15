@@ -19,10 +19,6 @@ This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Py
 ***Dark mode***
 ![dark mode screenshot](https://user-images.githubusercontent.com/25145447/232040394-cb3da909-e51b-4736-9497-ee7be42641ce.png)
 
-<a href="https://www.youtube.com/embed/a4peYpnhHg0" target="_blank">
- <img src="http://img.youtube.com/vi/a4peYpnhHg0/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
-</a>
-
 ## Installation & Usage Instructions
 *Note: Only 64-bit Windows 11 machines are officially supported.*
 
@@ -39,6 +35,8 @@ This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Py
 
 ### Video Instructions
 - A video of the installation and usage steps: https://youtu.be/a4peYpnhHg0
+
+---
 
 ## Technical Information
 **CastFORM** is built with **Flutter 3.7.8** for **64-bit Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
@@ -108,6 +106,8 @@ After cloning the repository, navigate to the respective package to open them:
 2. Select `Open existing Self Extraction Directive file`, and select the SED file with `Browse`
 3. Select `Create Package`
 4. On the `Create package` page, hit `Next` to start the bundling process, and then `Finish` once it's done 
+
+---
 
 ## Disclaimer
 **CastFORM** is an open-source program for a generating a niche type of PDF documents. **CastFORM** is not affiliated with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. **CastFORM** is non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of **CastFORM**. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action, arising out of or in connection with the use of **CastFORM** (in part or in whole).
