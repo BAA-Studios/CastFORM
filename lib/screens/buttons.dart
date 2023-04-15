@@ -14,7 +14,15 @@ class SaveButton extends StatelessWidget {
         final form = formKey.currentState;
         if (form!.validate()) {
           form.save();
-          context.read<UserProvider>().save();
+
+          // Attempts to export as PDF
+          context.read<UserProvider>().save().then((response) {
+            // Feedback to user whether save was successful
+            SnackBar? feedback = response.notifyAfterSave();
+            if (feedback != null) {
+              ScaffoldMessenger.of(context).showSnackBar(feedback);
+            }
+          });
         }
       },
       child: const Text("Save"),

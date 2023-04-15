@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:castform/constants.dart';
+import 'package:castform/models/save_feedback.dart';
 import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
@@ -21,7 +22,11 @@ class User {
     return false;
   }
 
-  void save() async {
+  /// Attempts to save the input data as PDF
+  ///
+  /// Returns empty string if successful; null for no feedback;
+  /// and string for error message
+  Future<SaveResponse> save() async {
     // Open save-as dialog, which gives us the full save path as string
     var dateTime = DateTime.now();
     String? outputFilePath = await FilePicker.platform.saveFile(
@@ -31,29 +36,31 @@ class User {
 
     if (outputFilePath == null) {
       // User canceled the picker
-      return;
+      return const SaveResponse();
     }
-    // Generate the PDF with the latest attributes
+
+    // Create form template
     GenericForm formHandler;
     if (isA4()) {
       formHandler = getA4FormHandler(formTemplate, font);
     } else {
       formHandler = getLetterFormHandler(formTemplate, font);
     }
-
-    var deck = deckString ?? "";
-    if (deck.isNotEmpty) {
-      formHandler.deck = parseDeck(deck);
-    } else {
-      // TODO: snackbar for failed save
-      return;
+    // Generate the PDF with the latest attributes
+    try {
+      formHandler.deck = parseDeck(deckString ?? "");
+    } catch(_) {  // technically shouldn't ever happen
+      return const SaveResponse(notificationText: "Unable to parse deck!", isError: true);
     }
     formHandler.name = playerName ?? "";
     formHandler.playerId = playerId ?? "";
     formHandler.dateOfBirth = dateOfBirth ?? "";
-    await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());
-    // TODO: Snackbar for save result
-
+    // Export as PDF
+    try {
+      await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());
+    } catch(_) {
+      return const SaveResponse(notificationText: "Unable to export as PDF!", isError: true);
+    }
     // show in Explorer
     if (openInExplorer ?? false) {
       // strip the trailing file name
@@ -62,7 +69,7 @@ class User {
       final Uri uri = Uri.parse(directoryPath);
 
       if (!await launchUrl(uri)) {
-        // TODO: snackbar for failed open
+        return const SaveResponse(notificationText: "Unable to open in Explorer!", isError: true);
       }
     }
 
@@ -70,8 +77,9 @@ class User {
     if (openInViewer ?? false) {
       final Uri uri = Uri.file(outputFilePath);
       if (!await launchUrl(uri)) {
-        // TODO: snackbar for failed open
+        return const SaveResponse(notificationText: "Unable to open output file!", isError: true);
       }
     }
+    return const SaveResponse(notificationText: "Successfully saved as PDF!");
   }
 }
