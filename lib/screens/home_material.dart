@@ -18,6 +18,7 @@ class _HomeMaterialState extends State<HomeMaterial> {
   @override
   Widget build(BuildContext context) {
     initPdfConstants();
+    initPackageInfo();
     return ChangeNotifierProvider(
       create: (context) => UserProvider(),
       child: Scaffold(

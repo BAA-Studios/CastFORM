@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 enum PaperType { a4, letter }
 
@@ -23,11 +24,21 @@ void initPdfConstants() {
       .then((value) => formTemplate = value.buffer.asUint8List());
 }
 
+String? appName;
+String? appVersion;
+
+void initPackageInfo() {
+  PackageInfo.fromPlatform().then((packageInfo) {
+    appName = packageInfo.appName;
+    appVersion = packageInfo.version;
+  });
+}
+
 const aboutText = Text(
     "CastFORM is a free and easy to use tool for automatic filling out of Pokemon "
         "tournament registration sheets!\n"
         "\n"
         "Put together with love from Brandon Nguyen and Amos Chua of BAA Studios!\n"
         "If you enjoy our work, do follow us on GitHub; if you're feeling generous, you can "
-        "drop us some spare change for a coffee on ko-fi too!"
+        "buy us a coffee on ko-fi too!"
 );

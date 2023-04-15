@@ -48,6 +48,9 @@ dependencies:
   # For launching File Explorer on save
   url_launcher: ^6.1.10  # https://pub.dev/packages/url_launcher
 
+  # For reflecting the package version
+  package_info_plus: ^3.1.0  # https://pub.dev/packages/package_info_plus
+
   # Logger
   # logger: ^1.3.0  # https://pub.dev/packages/logger
 

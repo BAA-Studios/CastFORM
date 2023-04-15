@@ -31,7 +31,7 @@ class AboutButton extends StatelessWidget {
       onPressed: () => showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: const Text("About CastFORM"),
+          title: Text("About $appName v$appVersion"),
           content: aboutText,
           actions: <Widget>[
             TextButton(
