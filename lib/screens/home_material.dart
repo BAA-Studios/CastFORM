@@ -1,8 +1,9 @@
-import 'package:castform/screens/document.dart';
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
+import 'package:castform/screens/document.dart';
 import 'package:castform/screens/form_column.dart';
 
 
@@ -23,19 +24,48 @@ class _HomeMaterialState extends State<HomeMaterial> {
       create: (context) => UserProvider(),
       child: Scaffold(
         body: SafeArea(
-          child: Row(  // Left side for forms; right side for live preview
-            children: const [
-              Flexible(
-                child: FormColumn(),
-              ),
-              Expanded(
-                flex: 2,
-                child: Document(),
-              ),
-            ],
-          ),
+          child: getHomeScreen(),
         ),
       ),
+    );
+  }
+}
+
+StatelessWidget getHomeScreen() {
+  if (Platform.isWindows) {
+    return const WindowsScreen();
+  }
+  if (Platform.isAndroid) {
+    return const AndroidScreen();
+  }
+  throw UnsupportedError("This app is only intended to run on Windows or Android");
+}
+
+class AndroidScreen extends StatelessWidget {
+  const AndroidScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Implement Android home screen & routing
+    return const Placeholder();
+  }
+}
+
+class WindowsScreen extends StatelessWidget {
+  const WindowsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(  // Left side for forms; right side for live preview
+      children: const [
+        Flexible(
+          child: FormColumn(),
+        ),
+        Expanded(
+          flex: 2,
+          child: Document(),
+        ),
+      ],
     );
   }
 }
