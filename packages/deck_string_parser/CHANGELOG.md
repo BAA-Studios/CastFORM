@@ -1,6 +1,12 @@
+## 1.2.0
+- Holographic cards (sometimes denoted with a trailing `PH`) will now automatically merge into existing lines with otherwise non-holographic cards
+  - Similar to same-name trainer cards in v1.1.0
+- Add try-parse to public API, so allow for deck string validation
+
 ## 1.1.0 Feature Update
 ### New Features
 - Merge same-name trainer cards into the same entry
+  - Sometimes the same trainers can appear in different sets; for competition purposes, these are considered equal  
 - Add function to check the total number of cards in the deck
 - LimitlessTCG format support
 - Expand unit test comprehensiveness

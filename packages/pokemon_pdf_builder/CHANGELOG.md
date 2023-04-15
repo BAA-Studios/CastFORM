@@ -1,3 +1,10 @@
+## 2.0.0
+- Make the library take in `pdf/widget`-style arguments
+  - e.g. `widget.Image` and `widget.font` instead of `ByteArray` and `Uint8List`
+  - This allows these widgets to instantiated at start-up and kept in memory, rather than being converted from bytes to objects every pdf build/save
+- Expose class constructors directly, instead of using a getter function
+  - Unnecessary use of getter
+
 ## 1.0.0 - MVP
 - Able to handle Letter-sized PDF
 - Various bug fixes
