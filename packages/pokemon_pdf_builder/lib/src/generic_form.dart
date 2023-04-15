@@ -6,17 +6,15 @@ import 'package:pokemon_pdf_builder/src/abstract_form.dart';
 import 'package:pokemon_pdf_builder/src/utility.dart';
 
 class GenericForm implements AbstractForm {
-  Deck? deck;
+  final Deck? deck;
 
-  String name = "";
-  String playerId = "";
-  String dateOfBirth = "";
+  final String name;
+  final String playerId;
+  final String dateOfBirth;
 
-  pw.Image? pokemonFormImage;
+  final pw.Image? formTemplate;
 
-  pw.Font? font;
-  static const double fontSize = 10;
-  late pw.TextStyle textStyle = pw.TextStyle(font: font, fontSize: fontSize);
+  final pw.TextStyle? textStyle;
 
   late PdfPageFormat pageFormat;
   // Page size-related coordinates -------------------------------------------------
@@ -49,30 +47,15 @@ class GenericForm implements AbstractForm {
   late double quantityFieldX;
 
   // ---------------------------------------------------------------------------
-  void setFormTemplate(Uint8List? formTemplate) {
-    if (formTemplate != null) {
-      var pokemonFormMemoryImage = pw.MemoryImage(formTemplate);
-      pokemonFormImage = pw.Image(pokemonFormMemoryImage);
-    }
-  }
-
-  void setFont(ByteData? fontData) {
-    if (fontData != null) {
-      font = pw.Font.ttf(fontData);
-    }
-  }
-
-  void setDeck(Deck deck) {
-    this.deck = deck;
-  }
 
   GenericForm({
-    Uint8List? formTemplate,
-    ByteData? font,
-  }) {
-    setFormTemplate(formTemplate);
-    setFont(font);
-  }
+    this.formTemplate,
+    this.textStyle,
+    this.name = "",
+    this.playerId = "",
+    this.dateOfBirth = "",
+    this.deck,
+  });
 
   @override
   List<pw.Widget> generatePokemonColumn() {
@@ -159,7 +142,7 @@ class GenericForm implements AbstractForm {
   @override
   pw.Document build() {
     final pdf = pw.Document();
-    if (pokemonFormImage == null) {
+    if (formTemplate == null) {
       return pdf;
     }
 
@@ -170,7 +153,7 @@ class GenericForm implements AbstractForm {
               ignoreMargins: true,
               child: pw.Stack(
                 children: <pw.Widget>[
-                  pokemonFormImage ?? pw.Placeholder(), // The actual PDF
+                  formTemplate ?? pw.Placeholder(), // The actual PDF
 
                   pw.Row(
                     children: <pw.Widget>[
@@ -313,6 +296,7 @@ class GenericForm implements AbstractForm {
     return pdf;
   }
 
+  @override
   Future<Uint8List> buildPdf() async {
     return await build().save();
   }

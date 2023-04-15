@@ -39,22 +39,35 @@ class User {
       return const SaveResponse();
     }
 
-    // Create form template
-    GenericForm formHandler;
-    if (isA4()) {
-      formHandler = getA4FormHandler(formTemplate, font);
-    } else {
-      formHandler = getLetterFormHandler(formTemplate, font);
-    }
     // Generate the PDF with the latest attributes
+    Deck deck;
     try {
-      formHandler.deck = parseDeck(deckString ?? "");
+      deck = parseDeck(deckString ?? "");
     } catch(_) {  // technically shouldn't ever happen
       return const SaveResponse(notificationText: "Unable to parse deck!", isError: true);
     }
-    formHandler.name = playerName ?? "";
-    formHandler.playerId = playerId ?? "";
-    formHandler.dateOfBirth = dateOfBirth ?? "";
+
+    dynamic formHandler;
+    if (isA4()) {
+      formHandler = A4Form(
+        formTemplate: formTemplate,
+        textStyle: formTextStyle,
+        name: playerName ?? "",
+        playerId: playerId ?? "",
+        dateOfBirth: dateOfBirth ?? "",
+        deck: deck,
+      );
+    } else {
+      formHandler = LetterForm(
+        formTemplate: formTemplate,
+        textStyle: formTextStyle,
+        name: playerName ?? "",
+        playerId: playerId ?? "",
+        dateOfBirth: dateOfBirth ?? "",
+        deck: deck,
+      );
+    }
+
     // Export as PDF
     try {
       await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());

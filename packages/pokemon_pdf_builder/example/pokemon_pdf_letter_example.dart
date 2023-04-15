@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
@@ -40,26 +41,42 @@ Total Cards: 60
 Future<void> main() async {
   print("Starting PDF Builder for fully filled Letter forms.");
 
-  final ByteData font = File("./lib/assets/RobotoSlab-Regular.ttf")
+  /*
+  First grab the font and form template.
+  This example uses the files local to the package for convenience.
+  Please don't actually do this. This is for running this example file standalone only.
+
+  The proper way to do it in Flutter:
+  final ByteData fontAsBytes = await rootBundle.load("assets/fonts/RobotoSlab-Regular.ttf");
+  final pw.Font font = pw.Font.ttf(fontAsBytes);
+  final ByteData _templateBytes = await rootBundle.load("assets/form_templates/pokemon_decklist_a4.webp");
+  final pw.Image formTemplate = pw.Image(pw.MemoryImage(_templateBytes.buffer.asUint8List()));
+  */
+  // prepare font
+  final ByteData fontAsBytes = File("./lib/assets/RobotoSlab-Regular.ttf")
       .readAsBytesSync()
       .buffer
       .asByteData();
-  final Uint8List formTemplate = File("./lib/assets/pokemon_decklist_letter.webp")
+  final pw.Font font = pw.Font.ttf(fontAsBytes);
+  // create text style with font
+  final pw.TextStyle textStyle = pw.TextStyle(font: font, fontSize: 10.0);
+  // prepare background template
+  final Uint8List formTemplateAsBytes = File("./lib/assets/pokemon_decklist_letter.webp")
       .readAsBytesSync();
+  final pw.Image formTemplate = pw.Image(pw.MemoryImage(formTemplateAsBytes));
 
   // Instantiate the form handler
-  final pokemonDoc = getLetterFormHandler(formTemplate, font);
-
-  // Extract information from the deck string
-  var deck = parseDeck(deckString);
-  // Pass a full set of information to the handler
-  pokemonDoc.deck = deck;
-  pokemonDoc.name = "Brandon Nguyen";
-  pokemonDoc.playerId = "1234567890";
-  pokemonDoc.dateOfBirth = "04/14/2002";
+  final pokemonDoc = LetterForm(
+    formTemplate: formTemplate,
+    textStyle: textStyle,
+    name: "Ash Ketchum",
+    playerId: "1234567890",
+    dateOfBirth: "02/20/2002",
+    deck: parseDeck(deckString),  // Extract information from the deck string
+  );
 
   // Hydrate!
-  final pdf = pokemonDoc.build();
+  final pdf = pokemonDoc.build();  // note: .buildPdf() will call .save for you
 
   final file = File("D:/GitHub/CastFORM/example.pdf");
   await file.writeAsBytes(await pdf.save());

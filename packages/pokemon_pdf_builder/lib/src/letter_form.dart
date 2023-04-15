@@ -1,5 +1,6 @@
-import 'dart:typed_data';
 import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/src/generic_form.dart';
 import 'package:pokemon_pdf_builder/src/size.dart';
 
@@ -38,11 +39,19 @@ class LetterForm extends GenericForm implements Size {
   }
 
   LetterForm({
-    Uint8List? formTemplate,
-    ByteData? font,
+    pw.Image? formTemplate,
+    pw.TextStyle? textStyle,
+    String name = "",
+    String playerId = "",
+    String dateOfBirth = "",
+    Deck? deck,
   }) : super(
     formTemplate: formTemplate,
-    font: font,
+    textStyle: textStyle,
+    name: name,
+    playerId: playerId,
+    dateOfBirth: dateOfBirth,
+    deck: deck,
   ) {
     initCoordinates();
   }

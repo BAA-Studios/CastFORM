@@ -15,67 +15,34 @@ class Document extends StatefulWidget {
 }
 
 class _DocumentState extends State<Document> {
-  var _deckString = "";
-  var _name = "";
-  var _playerId = "";
-  var _dateOfBirth = "";
-  bool _isDocCached = false;
-  late Future<Uint8List> _lastDocument;
-
   @override
   Widget build(BuildContext context) {
-    /*String deckString = context.select<UserProvider, String?>((userProvider) => userProvider.deckString) ?? "";
+    String deckString = context.select<UserProvider, String?>((userProvider) => userProvider.deckString) ?? "";
     String name = context.select<UserProvider, String?>((userProvider) => userProvider.playerName) ?? "";
     String playerId = context.select<UserProvider, String?>((userProvider) => userProvider.playerId) ?? "";
-    String dateOfBirth = context.select<UserProvider, String?>((userProvider) => userProvider.dateOfBirth) ?? "";*/
-    String deckString = context.watch<UserProvider>().deckString ?? "";
+    String dateOfBirth = context.select<UserProvider, String?>((userProvider) => userProvider.dateOfBirth) ?? "";
+    /*String deckString = context.watch<UserProvider>().deckString ?? "";
     String name = context.watch<UserProvider>().playerName ?? "";
     String playerId = context.watch<UserProvider>().playerId ?? "";
-    String dateOfBirth = context.watch<UserProvider>().dateOfBirth ?? "";
+    String dateOfBirth = context.watch<UserProvider>().dateOfBirth ?? "";*/
 
-    // Assume build() is called every frame, omit and useless calls.
-    // If no changes were made to the strings, we omit this call
-    if (_deckString == deckString &&
-        _name == name &&
-        _playerId == playerId &&
-        _dateOfBirth == dateOfBirth && _isDocCached) {
-      return PdfPreview(build: (_) {
-        return _lastDocument;
-      },
-        allowPrinting: false,
-        allowSharing: false,
-        canChangePageFormat: false,
-        canChangeOrientation: false,
-        canDebug: false,
-      );
-    }
-    // Note the new changes
-    if (_deckString != deckString) {
-      _deckString = deckString;
-    }
-    if (_name != name) {
-      _name = name;
-    }
-    if (_playerId != playerId) {
-      _playerId = playerId;
-    }
-    if (_dateOfBirth != dateOfBirth) {
-      _dateOfBirth = dateOfBirth;
-    }
     return PdfPreview(build: (_) {
       // Create a fresh render every time a change is detected
       // Preview in A4 only
-      GenericForm document = getA4FormHandler(formTemplate, font);
-
+      Deck? deck;
       if (deckString.isNotEmpty && isValidDeckString(deckString)) {
-        document.deck = parseDeck(_deckString);
+        deck = parseDeck(deckString);
       }
-      document.name = _name;
-      document.playerId = _playerId;
-      document.dateOfBirth = _dateOfBirth;
-      _lastDocument = document.buildPdf();
-      _isDocCached = true;
-      return _lastDocument;
+      A4Form document = A4Form(
+        formTemplate: formTemplate,
+        textStyle: formTextStyle,
+        name: name,
+        playerId: playerId,
+        dateOfBirth: dateOfBirth,
+        deck: deck,
+      );
+
+      return document.buildPdf();
     },
       allowPrinting: false,
       allowSharing: false,

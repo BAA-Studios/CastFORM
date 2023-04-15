@@ -21,7 +21,7 @@ List<pw.Widget> populateWithStrings(
     List<String> cardAttributes,
     double width,
     double height,
-    pw.TextStyle textStyle,
+    pw.TextStyle? textStyle,
     ) {
   List<pw.Widget> buffer = [
     pw.Container(

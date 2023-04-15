@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;
 
 abstract class AbstractForm {
@@ -17,4 +18,5 @@ abstract class AbstractForm {
 
   // PDF generation ------------------------------------------------------------
   pw.Document build();
+  Future<Uint8List> buildPdf();  // builds and saves
 }

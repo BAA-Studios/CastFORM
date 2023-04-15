@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:package_info_plus/package_info_plus.dart';
 
 enum PaperType { a4, letter }
@@ -14,14 +15,21 @@ const defaultBorder = OutlineInputBorder(
 );
 
 
-ByteData? font;
-Uint8List? formTemplate;
+pw.TextStyle? formTextStyle;
+pw.Image? formTemplate;
 
 void initPdfConstants() {
-  rootBundle.load("assets/fonts/RobotoSlab-Regular.ttf").then((value) => font = value);
+  rootBundle
+      .load("assets/fonts/RobotoSlab-Regular.ttf")
+      .then((value) {
+    pw.Font font = pw.Font.ttf(value);
+    formTextStyle = pw.TextStyle(font: font, fontSize: 10.0);
+  });
   rootBundle
       .load("assets/form_templates/pokemon_decklist_a4.webp")
-      .then((value) => formTemplate = value.buffer.asUint8List());
+      .then((value) {
+    formTemplate = pw.Image(pw.MemoryImage(value.buffer.asUint8List()));
+      });
 }
 
 String? appName;
