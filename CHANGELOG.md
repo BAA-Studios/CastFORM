@@ -1,3 +1,9 @@
+## 1.1.0
+- Feedback via snackbar now provided on save
+  - E.g. Tells you whether the PDF file was successfully exported
+- **About** dialog now shows the app version number
+- Minor efficiency improvements
+
 ## 1.0.1
 - PDF live render previews now ignore invalid deck strings
   - Validation still performed on attempt to submit the form
