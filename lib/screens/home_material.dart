@@ -29,13 +29,13 @@ class _HomeMaterialState extends State<HomeMaterial> {
 }
 
 StatelessWidget getHomeScreen() {
-  if (Platform.isWindows) {
+  if (Platform.isWindows || Platform.isLinux) {
     return const WindowsScreen();
   }
   if (Platform.isAndroid) {
     return const AndroidScreen();
   }
-  throw UnsupportedError("This app is only intended to run on Windows or Android");
+  throw UnsupportedError("This app is only intended to run on Windows, Ubuntu, or Android");
 }
 
 class AndroidScreen extends StatelessWidget {
