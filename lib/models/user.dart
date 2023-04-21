@@ -27,6 +27,12 @@ class User {
   /// Returns empty string if successful; null for no feedback;
   /// and string for error message
   Future<SaveResponse> save() async {
+    // Deck validation
+    String cachedDeckString = deckString ?? "";
+    if (!isValidDeckString(cachedDeckString)) {
+      return const SaveResponse(notificationText: "Deck does not contain 60 cards!", isError: true);
+    }
+
     // Open save-as dialog, which gives us the full save path as string
     var dateTime = DateTime.now();
     String? outputFilePath = await FilePicker.platform.saveFile(
@@ -41,11 +47,7 @@ class User {
 
     // Generate the PDF with the latest attributes
     Deck deck;
-    try {
-      deck = parseDeck(deckString ?? "");
-    } catch(_) {  // technically shouldn't ever happen
-      return const SaveResponse(notificationText: "Unable to parse deck!", isError: true);
-    }
+    deck = parseDeck(cachedDeckString);
 
     dynamic formHandler;
     if (isA4()) {
