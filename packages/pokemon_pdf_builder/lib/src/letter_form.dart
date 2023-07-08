@@ -31,7 +31,7 @@ class LetterForm extends GenericForm implements Size {
     super.dobX = 498; // Indicates the X of the month
     super.dobY = 68;
     super.dobDayXOffset = 20; // This is dobX + thisOffset
-    super.dobYearXOffset = 20; // dobX + dobDayXOffset + thisOffset
+    super.dobYearXOffset = 16; // dobX + dobDayXOffset + thisOffset
 
     // Deck related fields
     super.nameFieldX = 297;
