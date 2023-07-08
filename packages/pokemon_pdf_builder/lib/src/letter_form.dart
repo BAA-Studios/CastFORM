@@ -28,10 +28,10 @@ class LetterForm extends GenericForm implements Size {
     super.playerIdY = 68;
 
     // DoB offsets
-    super.dobX = 495; // Indicates the X of the month
+    super.dobX = 498; // Indicates the X of the month
     super.dobY = 68;
-    super.dobDayXOffset = 17; // This is dobX + thisOffset
-    super.dobYearXOffset = 18; // dobX + dobDayXOffset + thisOffset
+    super.dobDayXOffset = 20; // This is dobX + thisOffset
+    super.dobYearXOffset = 20; // dobX + dobDayXOffset + thisOffset
 
     // Deck related fields
     super.nameFieldX = 297;

@@ -1,3 +1,6 @@
+## 1.2.1
+- Fix erroneous handling of letter-sized PDFs
+
 ## 1.2.0
 - Add `PAL` to list of known sets
 - Add support for PTCGL tokens

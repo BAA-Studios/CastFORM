@@ -16,7 +16,8 @@ const defaultBorder = OutlineInputBorder(
 
 
 pw.TextStyle? formTextStyle;
-pw.Image? formTemplate;
+pw.Image? a4FormTemplate;
+pw.Image? letterFormTemplate;
 
 void initPdfConstants() {
   rootBundle
@@ -28,8 +29,13 @@ void initPdfConstants() {
   rootBundle
       .load("assets/form_templates/pokemon_decklist_a4.webp")
       .then((value) {
-    formTemplate = pw.Image(pw.MemoryImage(value.buffer.asUint8List()));
-      });
+    a4FormTemplate = pw.Image(pw.MemoryImage(value.buffer.asUint8List()));
+  });
+  rootBundle
+      .load("assets/form_templates/pokemon_decklist_letter.webp")
+      .then((value) {
+    letterFormTemplate = pw.Image(pw.MemoryImage(value.buffer.asUint8List()));
+  });
 }
 
 String? appName;

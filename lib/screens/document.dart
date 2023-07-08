@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +33,7 @@ class _DocumentState extends State<Document> {
         deck = parseDeck(deckString);
       }
       A4Form document = A4Form(
-        formTemplate: formTemplate,
+        formTemplate: a4FormTemplate,
         textStyle: formTextStyle,
         name: name,
         playerId: playerId,
