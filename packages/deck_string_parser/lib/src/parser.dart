@@ -144,6 +144,7 @@ const Set<String> setAbbreviations = {
   "FUT20",
   "MCD21",
   "MCD22",
+  "PAL",
 };
 
 /// Checks if a given string is numeric
@@ -317,10 +318,35 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
       words.removeAt(indexOfSetAbbreviation);
     }
 
+    var name = words.sublist(1, words.length - 1).join(" ");
+    name = ptcglEnergyFormatToEnglish(name);
+
     buffer.add(Energy(
       quantity: words[0],
-      name: words.sublist(1, words.length - 1).join(" "),
+      name: name,
     ));
   }
   return buffer;
+}
+
+/// PTCGL Deck list formats typically show energy names as:
+/// {W} Energy Energy, {P} Energy Energy, etc..
+///
+/// This converts any energy Name:
+/// "{W} Energy Energy" -> "Water Energy" and so on.
+String ptcglEnergyFormatToEnglish(String energyName) {
+  final Map<String, String> energySymbols = {
+    "{D} Energy" : "Dark",
+    "{F} Energy" : "Fighting",
+    "{G} Energy" : "Grass",
+    "{L} Energy" : "Lightning",
+    "{M} Energy" : "Metal",
+    "{W} Energy" : "Water",
+    "{R} Energy" : "Fire",
+    "{P} Energy" : "Psychic",
+  };
+  energySymbols.forEach((key, value) {
+    energyName = energyName.replaceFirst(key, value);
+  });
+  return energyName;
 }
