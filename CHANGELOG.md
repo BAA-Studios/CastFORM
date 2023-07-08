@@ -1,3 +1,8 @@
+## 1.2.0
+- Add `PAL` to list of known sets
+- Add support for PTCGL tokens
+- Update included API docs in packages directory
+
 ## 1.1.0
 - Feedback via snackbar now provided on save
   - E.g. Tells you whether the PDF file was successfully exported
