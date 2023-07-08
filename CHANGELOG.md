@@ -1,7 +1,7 @@
 ## 1.2.0
 - Add `PAL` to list of known sets
 - Add support for PTCGL tokens
-- Update included API docs in packages directory
+- Update included API docs directory
 
 ## 1.1.0
 - Feedback via snackbar now provided on save
