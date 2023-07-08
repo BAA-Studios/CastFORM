@@ -52,7 +52,7 @@ class User {
     dynamic formHandler;
     if (isA4()) {
       formHandler = A4Form(
-        formTemplate: formTemplate,
+        formTemplate: a4FormTemplate,
         textStyle: formTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
@@ -61,7 +61,7 @@ class User {
       );
     } else {
       formHandler = LetterForm(
-        formTemplate: formTemplate,
+        formTemplate: letterFormTemplate,
         textStyle: formTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
