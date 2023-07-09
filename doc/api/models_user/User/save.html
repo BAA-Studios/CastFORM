@@ -100,7 +100,7 @@ and string for error message</p>
   dynamic formHandler;
   if (isA4()) {
     formHandler = A4Form(
-      formTemplate: formTemplate,
+      formTemplate: a4FormTemplate,
       textStyle: formTextStyle,
       name: playerName ?? &quot;&quot;,
       playerId: playerId ?? &quot;&quot;,
@@ -109,7 +109,7 @@ and string for error message</p>
     );
   } else {
     formHandler = LetterForm(
-      formTemplate: formTemplate,
+      formTemplate: letterFormTemplate,
       textStyle: formTextStyle,
       name: playerName ?? &quot;&quot;,
       playerId: playerId ?? &quot;&quot;,
@@ -209,7 +209,7 @@ and string for error message</p>
 <footer>
   <span class="no-break">
     castform
-      1.1.0+0
+      1.2.1+0
   </span>
 
   

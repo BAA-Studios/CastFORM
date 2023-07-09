@@ -1,3 +1,6 @@
+## 2.0.1
+- Tweak the coordinates for the `date` field in letter-sized documents
+
 ## 2.0.0
 - Make the library take in `pdf/widget`-style arguments
   - e.g. `widget.Image` and `widget.font` instead of `ByteArray` and `Uint8List`

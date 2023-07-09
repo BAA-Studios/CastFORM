@@ -1,3 +1,6 @@
+## 1.3.1
+- Routine updating of list of known sets (via Bulbapedia as of 9th July 2023)
+
 ## 1.3.0
 - Add `PAL` to list of known sets
 - Add support for PTCGL tokens

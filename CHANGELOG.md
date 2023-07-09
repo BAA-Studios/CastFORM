@@ -1,3 +1,10 @@
+## 1.2.2
+- Routine updating of known set abbreviations
+  - Includes the not yet released `OBF` and `MEW`
+  - Re-ordered according to Bulbapedia's new formatting
+  - Added comments in the set to make expansion series more searchable
+- [PENDING] Routine updating of form templates
+
 ## 1.2.1
 - Fix erroneous handling of letter-sized PDFs
 
