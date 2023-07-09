@@ -3,7 +3,8 @@
   - Includes the not yet released `OBF` and `MEW`
   - Re-ordered according to Bulbapedia's new formatting
   - Added comments in the set to make expansion series more searchable
-- [PENDING] Routine updating of form templates
+- Routine updating of form templates
+  - Credits: community contributor [Gaardus](https://github.com/Gaardus)
 
 ## 1.2.1
 - Fix erroneous handling of letter-sized PDFs
