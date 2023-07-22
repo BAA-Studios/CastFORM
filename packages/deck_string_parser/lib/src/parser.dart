@@ -286,6 +286,11 @@ List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
   var section = crudeDeckList[1];
   for (var line in section) {
     var words = line.split(" ");
+    // PTCGL full arts/alt arts seem to have "PH"
+    // appended to trainers unlike pokemon
+    if (words.last == "PH") {
+      words.removeLast();
+    }
     var indexOfSetAbbreviation = words.length - 2;
     var name = words.sublist(1, indexOfSetAbbreviation).join(" ");
     var existingTrainerIndex = findExistingTrainer(name, buffer);
