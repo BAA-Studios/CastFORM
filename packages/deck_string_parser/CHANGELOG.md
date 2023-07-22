@@ -1,3 +1,10 @@
+## 1.3.1
+- Routine updating of list of known sets (via Bulbapedia as of 9th July 2023)
+
+## 1.3.0
+- Add `PAL` to list of known sets
+- Add support for PTCGL tokens
+
 ## 1.2.0
 - Holographic cards (sometimes denoted with a trailing `PH`) will now automatically merge into existing lines with otherwise non-holographic cards
   - Similar to same-name trainer cards in v1.1.0

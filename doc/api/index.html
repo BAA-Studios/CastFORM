@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 6.1.5">
+  <meta name="description" content="castform API docs, for the Dart programming language.">
+  <title>castform - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">castform package</li>
+  </ol>
+  <div class="self-name">castform</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="castform">CastFORM</h1>
+<p><img src="https://img.shields.io/github/v/release/BAA-Studios/CastFORM?display_name=tag&amp;label=latest%20version" alt="GitHub release (latest by date)">
+<a href="https://dart.dev/guides/language/effective-dart/style"><img src="https://img.shields.io/badge/code%20style-google-blueviolet.svg" alt="Code Style: Google"></a>
+<img src="https://img.shields.io/badge/platform-windows-lightgrey" alt="platform | windows">
+<img src="https://progress-bar.dev/100/?title=Minimum%20Viable%20Product" alt="MVP">
+<img src="https://img.shields.io/github/search/BAA-Studios/CastFORM/goto?label=search%20counter" alt="GitHub search hit counter">
+<img src="https://img.shields.io/github/downloads/BAA-Studios/CastFORM/total" alt="GitHub all releases"></p>
+<p><strong>CastFORM</strong> is an easy-to-use Pokémon TCG Deck Registration Sheet generator.<br>
+<strong>CastFORM</strong> offers an elegant graphical interface for filling in Pokémon deck lists for tournaments, and creates beautiful PDFs from user input. This reduces the likelihood of human errors associated with filling out of forms by hand, and also integrates well with existing players' workflows, given the popularity of deck strings (of various formats) in the Pokémon TCG community.</p>
+<p>This project is based on <a href="https://github.com/Bratah123">Brandon Nguyen's</a> CLI Python script that served a similar purpose. <strong>CastFORM</strong> was spearheaded in response to the high demand for a user-friendly program in his local TCG community, most of whom were not comfortable with CLI tools.</p>
+<h2 id="gallery">Gallery</h2>
+<p><em><strong>Light mode:</strong></em>
+<img src="https://user-images.githubusercontent.com/25145447/232040805-d48497e5-d709-487d-9646-342c0a441621.png" alt="light mode screenshot"></p>
+<p><em><strong>Dark mode</strong></em>
+<img src="https://user-images.githubusercontent.com/25145447/232040394-cb3da909-e51b-4736-9497-ee7be42641ce.png" alt="dark mode screenshot"></p>
+<h2 id="installation--usage-instructions">Installation &amp; Usage Instructions</h2>
+<p><em>Note: Only 64-bit Windows 11 machines are officially supported.</em></p>
+<h3 id="zip-archive">ZIP Archive</h3>
+<ol>
+<li>Download <code>castform.zip</code> from the releases page
+<ul>
+<li>Note: actual file name may vary</li>
+</ul>
+</li>
+<li>Unzip it into your desired install location</li>
+<li>Run <code>CastFORM.exe</code> from that location</li>
+</ol>
+<h3 id="windows-installer">Windows Installer</h3>
+<ol>
+<li>Download <code>CastFORM_x64.exe</code> from the releases page</li>
+<li>Run it <strong>as administrator</strong> to install CastFORM to <code>C:\Program Files\CastFORM</code></li>
+<li>Run <code>CastFORM.exe</code> from <code>C:\Program Files\CastFORM\CastFORM.exe</code>, and/or create a shortcut for it</li>
+</ol>
+<h3 id="video-instructions">Video Instructions</h3>
+<ul>
+<li>A video of the installation and usage steps: <a href="https://youtu.be/a4peYpnhHg0">https://youtu.be/a4peYpnhHg0</a></li>
+</ul>
+<hr>
+<h2 id="technical-information">Technical Information</h2>
+<p><strong>CastFORM</strong> is built with <strong>Flutter 3.7.8</strong> for <strong>64-bit Windows 11</strong>, and targets <a href="https://dart.dev/guides/language/effective-dart/style"><strong>Google's Dart style guide</strong></a>.<br>
+For testing, we aim to provide complete coverage for API behaviour internally by release.</p>
+<h3 id="development-environment-set-up">Development Environment Set-up</h3>
+<ol>
+<li><a href="https://docs.flutter.dev/get-started/install">Install Flutter</a> and add it to PATH</li>
+<li>Clone the repository</li>
+<li>Open the repository in IntelliJ
+<ul>
+<li>You may use your IDE of choice, but we prefer IntelliJ here at BAA Studios</li>
+<li>Make sure you install the Dart and Flutter Plugin for IntelliJ</li>
+</ul>
+</li>
+<li>Make sure <code>Windows (desktop)</code> is selected in the list of devices
+<ul>
+<li>The location of the button differs depending on IntelliJ version</li>
+<li>For IntelliJ 2022.3 use the drop-down menu at the top right:
+<img src="https://i.imgur.com/kqMsy3g.png" alt="illustration of where the menu is found"></li>
+</ul>
+</li>
+<li>Hit the <code>Run</code> button at the top right of the window
+<ul>
+<li>The location of the button differs depending on IntelliJ version</li>
+<li>For IntelliJ 2022.3 click here:
+<img src="https://i.imgur.com/0FGpLNN.png" alt="illustration of where to click"></li>
+</ul>
+</li>
+</ol>
+<h3 id="internal-package-api">Internal Package API</h3>
+<p>API docs for the business logic are included as static HTML files in the repository.<br>
+After cloning the repository, navigate to the respective package to open them:</p>
+<ul>
+<li><code>packages/deck_string_parser/doc/api/index.html</code></li>
+<li><code>packages/pokemon_pdf_builder/doc/api/index.html</code></li>
+</ul>
+<h3 id="build-instructions">Build Instructions</h3>
+<ol>
+<li>Run <code>flutter build windows</code></li>
+<li>Navigate to the output folder <code>/build/windows/runner/Release</code></li>
+<li>Add the following <code>dlls</code> (which can be found in a Visual Studio 2022 installation folder, e.g. <code>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.32.31326\x64\Microsoft.VC143.CRT</code>)
+<ul>
+<li>msvcp140.dll</li>
+<li>vcruntime140.dll</li>
+<li>vcruntime140_1.dll</li>
+</ul>
+</li>
+<li>Package the contents of this folder as a ZIP file
+<ul>
+<li>Users can unzip to their desired location and run <code>CastFORM.exe</code> from there</li>
+</ul>
+</li>
+</ol>
+<h3 id="bundle-with-windows-installer-optional">Bundle with Windows Installer (Optional)</h3>
+<p><em>Note: This assumes you've already run through steps 1-4 of the build instructions</em><br>
+<strong>First time bundling:</strong></p>
+<ol>
+<li>Add a batch script <code>setup.bat</code> (refer to <code>/sample_setup.bat</code> for template)</li>
+<li>Run <code>iexpress.exe</code> as administrator</li>
+<li>Select <code>Create new Self Extraction Directive file</code>, and hit <code>Next</code></li>
+<li>Select <code>Extract files and run an installation command</code>, and hit <code>Next</code></li>
+<li>Input a title (e.g. <code>CastFORM Installer</code>), and hit <code>Next</code></li>
+<li>Select <code>No prompt</code>, and hit <code>Next</code></li>
+<li>Select <code>Do not display a license</code>, and hit <code>Next</code></li>
+<li>Use the <code>Add</code> button to add all the files in the output folder from above, and hit <code>Next</code>
+<ul>
+<li>The file picker dialog box allows <code>CTRL + A</code> to select all files</li>
+<li>The file picker dialog box ignores folders, and does not add them recursively</li>
+<li>You may use <code>CTRL + A</code> on the output folder and repeat for all nested folders to quickly add everything</li>
+</ul>
+</li>
+<li>In the <code>Install Program</code> field, click on it and manually replace with <code>cmd /c setup.bat</code>, and hit <code>Next</code>
+<ul>
+<li>You are able to type in this drop down box</li>
+<li>The <code>cmd /c</code> part is <strong>REQUIRED</strong></li>
+<li>IExpress simply bundles/extracts as well as wrap around a batch script, so all installation logic should be written in <code>setup.bat</code></li>
+</ul>
+</li>
+<li>Select <code>Default</code>, and hit <code>Next</code></li>
+<li>Input a message if you like, and hit <code>Next</code></li>
+<li>Click <code>Browse</code> and select an output folder for the resulting installer EXE, and give it a name</li>
+<li>Check <code>Store files using Long File Name inside Package</code>, and hit <code>Next</code></li>
+<li>Select <code>No restart</code>, and hit <code>Next</code></li>
+<li>Select <code>Save Self Extraction Directive (SED) file</code>, and use <code>Browse</code> to choose a save location, then hit <code>Next</code>
+<ul>
+<li>The SED file contains all the configuration you've done up to this point</li>
+<li>Importing this file will allow you to reuse the same configuration for future bundling attempts</li>
+</ul>
+</li>
+<li>On the <code>Create package</code> page, hit <code>Next</code> to start the bundling process, and then <code>Finish</code> once it's done</li>
+</ol>
+<p><strong>For subsequent bundling:</strong></p>
+<ol>
+<li>Run <code>iexpress.exe</code> as administrator</li>
+<li>Select <code>Open existing Self Extraction Directive file</code>, and select the SED file with <code>Browse</code></li>
+<li>Select <code>Create Package</code></li>
+<li>On the <code>Create package</code> page, hit <code>Next</code> to start the bundling process, and then <code>Finish</code> once it's done</li>
+</ol>
+<hr>
+<h2 id="disclaimer">Disclaimer</h2>
+<p><strong>CastFORM</strong> is an open-source program for a generating a niche type of PDF documents. <strong>CastFORM</strong> is not affiliated with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. <strong>CastFORM</strong> is non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of <strong>CastFORM</strong>. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action, arising out of or in connection with the use of <strong>CastFORM</strong> (in part or in whole).</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="app">
+  <span class="name"><a href="app/app-library.html">app</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="buttons">
+  <span class="name"><a href="screens_buttons/screens_buttons-library.html">buttons</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="constants">
+  <span class="name"><a href="constants/constants-library.html">constants</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="date_field">
+  <span class="name"><a href="screens_date_field/screens_date_field-library.html">date_field</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="deck_field">
+  <span class="name"><a href="screens_deck_field/screens_deck_field-library.html">deck_field</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="document">
+  <span class="name"><a href="screens_document/screens_document-library.html">document</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="form_column">
+  <span class="name"><a href="screens_form_column/screens_form_column-library.html">form_column</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="home_material">
+  <span class="name"><a href="screens_home_material/screens_home_material-library.html">home_material</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="id_field">
+  <span class="name"><a href="screens_id_field/screens_id_field-library.html">id_field</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="main">
+  <span class="name"><a href="main/main-library.html">main</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="name_field">
+  <span class="name"><a href="screens_name_field/screens_name_field-library.html">name_field</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="open_file">
+  <span class="name"><a href="screens_open_file/screens_open_file-library.html">open_file</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="open_in_explorer">
+  <span class="name"><a href="screens_open_in_explorer/screens_open_in_explorer-library.html">open_in_explorer</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="paper_size_radios">
+  <span class="name"><a href="screens_paper_size_radios/screens_paper_size_radios-library.html">paper_size_radios</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="save_feedback">
+  <span class="name"><a href="models_save_feedback/models_save_feedback-library.html">save_feedback</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="style">
+  <span class="name"><a href="style/style-library.html">style</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="user">
+  <span class="name"><a href="models_user/models_user-library.html">user</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="user_provider">
+  <span class="name"><a href="providers_user_provider/providers_user_provider-library.html">user_provider</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li class="self-crumb">castform package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">castform</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="app/app-library.html">app</a></li>
+      <li><a href="screens_buttons/screens_buttons-library.html">buttons</a></li>
+      <li><a href="constants/constants-library.html">constants</a></li>
+      <li><a href="screens_date_field/screens_date_field-library.html">date_field</a></li>
+      <li><a href="screens_deck_field/screens_deck_field-library.html">deck_field</a></li>
+      <li><a href="screens_document/screens_document-library.html">document</a></li>
+      <li><a href="screens_form_column/screens_form_column-library.html">form_column</a></li>
+      <li><a href="screens_home_material/screens_home_material-library.html">home_material</a></li>
+      <li><a href="screens_id_field/screens_id_field-library.html">id_field</a></li>
+      <li><a href="main/main-library.html">main</a></li>
+      <li><a href="screens_name_field/screens_name_field-library.html">name_field</a></li>
+      <li><a href="screens_open_file/screens_open_file-library.html">open_file</a></li>
+      <li><a href="screens_open_in_explorer/screens_open_in_explorer-library.html">open_in_explorer</a></li>
+      <li><a href="screens_paper_size_radios/screens_paper_size_radios-library.html">paper_size_radios</a></li>
+      <li><a href="models_save_feedback/models_save_feedback-library.html">save_feedback</a></li>
+      <li><a href="style/style-library.html">style</a></li>
+      <li><a href="models_user/models_user-library.html">user</a></li>
+      <li><a href="providers_user_provider/providers_user_provider-library.html">user_provider</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    castform
+      1.2.2+0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

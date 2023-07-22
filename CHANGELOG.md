@@ -1,3 +1,19 @@
+## 1.2.2
+- Routine updating of known set abbreviations
+  - Includes the not yet released `OBF` and `MEW`
+  - Re-ordered according to Bulbapedia's new formatting
+  - Added comments in the set to make expansion series more searchable
+- Routine updating of form templates
+  - Credits: community contributor [Gaardus](https://github.com/Gaardus)
+
+## 1.2.1
+- Fix erroneous handling of letter-sized PDFs
+
+## 1.2.0
+- Add `PAL` to list of known sets
+- Add support for PTCGL tokens
+- Update included API docs directory
+
 ## 1.1.0
 - Feedback via snackbar now provided on save
   - E.g. Tells you whether the PDF file was successfully exported

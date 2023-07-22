@@ -111,7 +111,7 @@ packages:
       path: "packages/deck_string_parser"
       relative: true
     source: path
-    version: "1.2.0"
+    version: "1.3.1"
   fake_async:
     dependency: transitive
     description:
@@ -325,7 +325,7 @@ packages:
       path: "packages/pokemon_pdf_builder"
       relative: true
     source: path
-    version: "2.0.0"
+    version: "2.0.1"
   printing:
     dependency: "direct main"
     description:
