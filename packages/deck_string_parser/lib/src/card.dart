@@ -9,4 +9,8 @@ class Card {
     required this.name,
     this.set = "",
   });
+
+  void setQuantity(String quantity) {
+    this.quantity = quantity;
+  }
 }

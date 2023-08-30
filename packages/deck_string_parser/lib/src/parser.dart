@@ -254,6 +254,18 @@ int findExistingPokemon(String name, String set, List<Pokemon> buffer) {
   return -1;
 }
 
+int findExistingEnergy(String name, List<Energy> buffer) {
+  if (buffer.isEmpty) {
+    return -1;
+  }
+  for (var i = 0; i < buffer.length; i++) {
+    if (buffer[i].name == name) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 /// Extract pokemon cards
 List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
   List<Pokemon> buffer = [];
@@ -357,10 +369,19 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
     var name = words.sublist(1, words.length - 1).join(" ");
     name = ptcglEnergyFormatToEnglish(name);
 
-    buffer.add(Energy(
-      quantity: words[0],
-      name: name,
-    ));
+    var existingEnergyIndex = findExistingEnergy(name, buffer);
+
+    if (existingEnergyIndex == -1) {
+      buffer.add(Energy(  // No cards with the same name
+        quantity: words[0],
+        name: name,
+      ));
+    } else {  // Merge with existing entry
+      var existingQuantity = buffer[existingEnergyIndex].quantity;
+      buffer[existingEnergyIndex].setQuantity(
+          addQuantities(existingQuantity, words[0])
+      );
+    }
   }
   return buffer;
 }
@@ -372,17 +393,22 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
 /// "{W} Energy Energy" -> "Water Energy" and so on.
 String ptcglEnergyFormatToEnglish(String energyName) {
   final Map<String, String> energySymbols = {
-    "{D} Energy" : "Dark",
-    "{F} Energy" : "Fighting",
-    "{G} Energy" : "Grass",
-    "{L} Energy" : "Lightning",
-    "{M} Energy" : "Metal",
-    "{W} Energy" : "Water",
-    "{R} Energy" : "Fire",
-    "{P} Energy" : "Psychic",
+    "{D}" : "Dark",
+    "{F}" : "Fighting",
+    "{G}" : "Grass",
+    "{L}" : "Lightning",
+    "{M}" : "Metal",
+    "{W}" : "Water",
+    "{R}" : "Fire",
+    "{P}" : "Psychic",
   };
   energySymbols.forEach((key, value) {
     energyName = energyName.replaceFirst(key, value);
   });
-  return energyName;
+  energyName = energyName.replaceFirst("Energy Energy", "Energy");
+  // Remove anything after Energy word
+  var endToken = "Energy";
+  var indexToEnd = energyName.indexOf(endToken)+endToken.length;
+  var cleanEnergyName = energyName.substring(0, indexToEnd);
+  return cleanEnergyName;
 }

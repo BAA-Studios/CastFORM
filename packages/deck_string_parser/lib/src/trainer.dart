@@ -6,8 +6,4 @@ class Trainer extends Card {
     required quantity,
     required name,
   }) : super(quantity: quantity, name: name);
-
-  void setQuantity(String quantity) {
-    super.quantity = quantity;
-  }
 }
