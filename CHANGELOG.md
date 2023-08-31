@@ -1,3 +1,9 @@
+## 1.2.3
+- Add support for trailing `PH` in PTCGL representation of full/alt art trainer cards' names
+- Routine updating of form templates (Obsidian Flames)
+  - Credits: community contributor [Gaardus](https://github.com/Gaardus)
+- Merge similar energy cards into the same entry
+
 ## 1.2.2
 - Routine updating of known set abbreviations
   - Includes the not yet released `OBF` and `MEW`

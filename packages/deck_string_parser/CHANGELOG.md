@@ -1,3 +1,7 @@
+## 1.3.2
+- Add support for trailing `PH` in PTCGL representation of full/alt art trainer cards' names
+- Merge similar energy cards into the same entry
+
 ## 1.3.1
 - Routine updating of list of known sets (via Bulbapedia as of 9th July 2023)
 
