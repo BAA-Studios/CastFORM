@@ -39,7 +39,7 @@ This project is based on [Brandon Nguyen's](https://github.com/Bratah123) CLI Py
 ---
 
 ## Technical Information
-**CastFORM** is built with **Flutter 3.7.8** for **64-bit Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
+**CastFORM** is built with **Flutter 3.13.9** for **64-bit Windows 11**, and targets [**Google's Dart style guide**](https://dart.dev/guides/language/effective-dart/style).  
 For testing, we aim to provide complete coverage for API behaviour internally by release.
 
 ### Development Environment Set-up
