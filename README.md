@@ -63,6 +63,15 @@ After cloning the repository, navigate to the respective package to open them:
 - `packages/deck_string_parser/doc/api/index.html`
 - `packages/pokemon_pdf_builder/doc/api/index.html`
 
+### Toolchain
+A number of standalone Python scripts have been make to automate metadata fetching and template creation:
+- [ForeCAST](https://github.com/KOOKIIEStudios/Forecast)
+  - Uses Bulbapedia's REST APIs to get all known set abbreviations
+- [WEATHERBall](https://github.com/KOOKIIEStudios/Weather-Ball)
+  - Remote mode: Scrapes the official Pokémon website for the registration form templates
+  - Local mode: Converts PDF files to WebP
+    - Added as a fallback option upon discovery that Pokémon uses Incapsula as an anti-scraping measure 
+
 ### Build Instructions
 1. Run `flutter build windows`
 2. Navigate to the output folder `/build/windows/runner/Release`
