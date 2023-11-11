@@ -39,15 +39,15 @@ dependencies:
   # cupertino_icons: ^1.0.2
 
   # For interacting with PDFs & exporting the final product
-  pdf: ^3.9.0  # https://pub.dev/packages/pdf
-  printing: ^5.10.3  # https://pub.dev/packages/printing
+  pdf: ^3.10.6  # https://pub.dev/packages/pdf
+  printing: ^5.11.1  # https://pub.dev/packages/printing
   file_picker: ^6.1.1  # https://pub.dev/packages/file_picker
 
   # For state management:
-  provider: ^6.0.5  # https://pub.dev/packages/provider
+  provider: ^6.1.1  # https://pub.dev/packages/provider
 
   # For launching File Explorer on save
-  url_launcher: ^6.1.10  # https://pub.dev/packages/url_launcher
+  url_launcher: ^6.2.1  # https://pub.dev/packages/url_launcher
 
   # For reflecting the package version
   package_info_plus: ^4.2.0  # https://pub.dev/packages/package_info_plus
