@@ -33,26 +33,25 @@ class A4Form extends GenericForm implements Size {
     super.dobDayXOffset = 20; // This is dobX + thisOffset
     super.dobYearXOffset = 17; // dobX + dobDayXOffset + thisOffset
 
+    // Division Checkmark offsets
+    super.divX = 350;
+    super.divY = 60;
+    super.divYOffset = 15;
+
     // Deck related fields
     super.nameFieldX = 289;
     super.quantityFieldX = 263;
   }
 
   A4Form({
-    pw.Image? formTemplate,
-    pw.TextStyle? textStyle,
-    String name = "",
-    String playerId = "",
-    String dateOfBirth = "",
-    Deck? deck,
-  }) : super(
-    formTemplate: formTemplate,
-    textStyle: textStyle,
-    name: name,
-    playerId: playerId,
-    dateOfBirth: dateOfBirth,
-    deck: deck,
-  ) {
+    super.formTemplate,
+    super.textStyle,
+    super.name,
+    super.playerId,
+    super.dateOfBirth,
+    super.division,
+    super.deck,
+  }) {
     initCoordinates();
   }
 }

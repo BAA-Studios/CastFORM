@@ -3,6 +3,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/src/abstract_form.dart';
+import 'package:pokemon_pdf_builder/src/division.dart';
 import 'package:pokemon_pdf_builder/src/utility.dart';
 
 class GenericForm implements AbstractForm {
@@ -11,6 +12,8 @@ class GenericForm implements AbstractForm {
   final String name;
   final String playerId;
   final String dateOfBirth;
+
+  final Division division;
 
   final pw.Image? formTemplate;
 
@@ -42,6 +45,11 @@ class GenericForm implements AbstractForm {
   late double dobDayXOffset; // This is dobX + thisOffset
   late double dobYearXOffset; // dobX + dobDayXOffset + thisOffset
 
+  // Division Checkmark offsets
+  late double divX;
+  late double divY;
+  late double divYOffset;
+
   // Deck related fields
   late double nameFieldX;
   late double quantityFieldX;
@@ -54,6 +62,7 @@ class GenericForm implements AbstractForm {
     this.name = "",
     this.playerId = "",
     this.dateOfBirth = "",
+    this.division = Division.auto,
     this.deck,
   });
 
@@ -99,17 +108,18 @@ class GenericForm implements AbstractForm {
     return populateWithStrings(extractQuantity(list), docX, energyRowY, textStyle);
   }
 
+  (String, String, String) splitDoB() {
+    var date = dateOfBirth.split("/");
+    if (date.length == 3) {
+      return (date[0], date[1], date[2]);
+    }
+    return ("", "", "");
+  }
+
   @override
   pw.Widget generateDoB() {
-    var date = dateOfBirth.split("/");
-    var month = "";
-    var day = "";
-    var year = "";
-    if (date.length == 3) {
-      month = date[0];
-      day = date[1];
-      year = date[2];
-    }
+    var (month, day, year) = splitDoB();
+
     return pw.Row(
       children: <pw.Widget>[
         pw.Container(
@@ -136,6 +146,47 @@ class GenericForm implements AbstractForm {
         ),
       ],
     );
+  }
+
+  int getDivOffsetMultiplier(Division estimatedDivision) {
+    if (estimatedDivision == Division.junior) {
+      return 0;
+    }
+    if (estimatedDivision == Division.senior) {
+      return 1;
+    }
+    return 2;
+  }
+
+  @override
+  pw.Widget generateDivisions() {
+    var (_, _, birth_year) = splitDoB();
+    var year = int.parse(birth_year);
+    var offsetMultiplier = 0;
+    var fill = division == Division.none ? "" : "/";
+
+    if (division == Division.auto) {
+      var estimatedDivision = getDivision(year);
+      offsetMultiplier = getDivOffsetMultiplier(estimatedDivision);
+    }
+
+    return pw.Row(children: <pw.Widget>[
+      pw.Container(
+        // Offset the division checkboxes
+        width: divX,
+        height: docY,
+      ),
+      pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: <pw.Widget>[
+          pw.Container(
+            width: docX,
+            height: divY + offsetMultiplier * divYOffset,
+          ),
+          pw.Text(fill, style: textStyle)
+        ],
+      ),
+    ]);
   }
 
   // This builds the entire pdf in one go
@@ -203,6 +254,9 @@ class GenericForm implements AbstractForm {
 
                   // Date of Birth
                   generateDoB(),
+
+                  // Division
+                  generateDivisions(),
 
                   // The Deck related information
                   pw.Row(children: <pw.Widget>[

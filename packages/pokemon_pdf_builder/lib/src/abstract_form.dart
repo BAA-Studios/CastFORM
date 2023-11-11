@@ -15,6 +15,7 @@ abstract class AbstractForm {
 
   // Other fields --------------------------------------------------------------
   pw.Widget generateDoB();
+  pw.Widget generateDivisions();
 
   // PDF generation ------------------------------------------------------------
   pw.Document build();
