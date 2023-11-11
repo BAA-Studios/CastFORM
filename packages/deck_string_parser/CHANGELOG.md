@@ -1,3 +1,8 @@
+## 1.4.0
+- Add support up to Pokemon Trading Card Game Classic
+  -  Includes support for Paradox Rift
+- Migrate to new ForeCAST-based tooling for set abbreviations
+
 ## 1.3.2
 - Add support for trailing `PH` in PTCGL representation of full/alt art trainer cards' names
 - Merge similar energy cards into the same entry

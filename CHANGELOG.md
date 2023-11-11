@@ -1,3 +1,8 @@
+## 2.0.0
+- Add support up to Pokemon Trading Card Game Classic
+  -  Includes support for Paradox Rift
+- Migrate to new [ForeCAST](https://github.com/KOOKIIEStudios/Forecast)-based tooling for set abbreviations
+
 ## 1.2.4
 - Routine updating of form templates (Paradox Rift)
   - Generated using [new tooling](https://github.com/KOOKIIEStudios/Weather-Ball)
