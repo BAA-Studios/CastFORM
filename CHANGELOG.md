@@ -1,4 +1,8 @@
 ## 2.0.0
+- Upgrade environments
+  - Flutter 3.13.9
+  - Dart 3.1.5
+- Update dependencies 
 - Add support up to Pokemon Trading Card Game Classic
   -  Includes support for Paradox Rift
 - Migrate to new [ForeCAST](https://github.com/KOOKIIEStudios/Forecast)-based tooling for set abbreviations

@@ -1,3 +1,8 @@
+## 2.0.2
+- Add title and author metadata
+  - Experimental - API docs are poorly documented
+- Update dependencies
+
 ## 2.0.1
 - Tweak the coordinates for the `date` field in letter-sized documents
 

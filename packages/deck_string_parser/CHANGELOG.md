@@ -1,3 +1,6 @@
+## 1.4.1
+- Update dependencies
+
 ## 1.4.0
 - Add support up to Pokemon Trading Card Game Classic
   -  Includes support for Paradox Rift
