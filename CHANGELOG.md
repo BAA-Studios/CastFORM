@@ -1,3 +1,7 @@
+## 1.2.4
+- Routine updating of form templates (Paradox Rift)
+  - Generated using [new tooling](https://github.com/KOOKIIEStudios/Weather-Ball)
+
 ## 1.2.3
 - Add support for trailing `PH` in PTCGL representation of full/alt art trainer cards' names
 - Routine updating of form templates (Obsidian Flames)
