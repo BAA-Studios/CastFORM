@@ -4,7 +4,7 @@ import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class A4Radio extends StatelessWidget {
-  const A4Radio({Key? key}) : super(key: key);
+  const A4Radio({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class A4Radio extends StatelessWidget {
 }
 
 class LetterRadio extends StatelessWidget {
-  const LetterRadio({Key? key}) : super(key: key);
+  const LetterRadio({super.key});
 
   @override
   Widget build(BuildContext context) {

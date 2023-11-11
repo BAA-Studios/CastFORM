@@ -4,7 +4,7 @@ import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class DateField extends StatefulWidget {
-  const DateField({Key? key}) : super(key: key);
+  const DateField({super.key});
 
   @override
   State<DateField> createState() => _DateFieldState();

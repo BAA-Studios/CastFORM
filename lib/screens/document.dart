@@ -7,7 +7,7 @@ import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
 class Document extends StatefulWidget {
-  const Document({Key? key}) : super(key: key);
+  const Document({super.key});
 
   @override
   State<Document> createState() => _DocumentState();

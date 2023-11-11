@@ -5,7 +5,7 @@ import 'package:castform/providers/user_provider.dart';
 
 class SaveButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
-  const SaveButton({Key? key, required this.formKey}) : super(key: key);
+  const SaveButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class SaveButton extends StatelessWidget {
 }
 
 class AboutButton extends StatelessWidget {
-  const AboutButton({Key? key}) : super(key: key);
+  const AboutButton({super.key});
 
   @override
   Widget build(BuildContext context) {

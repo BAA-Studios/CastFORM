@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class NameField extends StatefulWidget {
-  const NameField({Key? key}) : super(key: key);
+  const NameField({super.key});
 
   @override
   State<NameField> createState() => _NameFieldState();

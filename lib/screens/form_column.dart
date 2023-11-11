@@ -10,7 +10,7 @@ import 'package:castform/screens/name_field.dart';
 import 'package:castform/screens/paper_size_radios.dart';
 
 class FormColumn extends StatefulWidget {
-  const FormColumn({Key? key}) : super(key: key);
+  const FormColumn({super.key});
 
   @override
   State<FormColumn> createState() => _FormColumnState();
@@ -45,10 +45,10 @@ class _FormColumnState extends State<FormColumn> {
               child: DeckField(),
             ),
           ),
-          Padding(
+          const Padding(
             padding: defaultPadding,
             child: Row(
-              children: const [
+              children: [
                 Text("Paper size"),
                 Expanded(
                   child: A4Radio(),

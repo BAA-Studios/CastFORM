@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class OpenFileOnSave extends StatelessWidget {
-  const OpenFileOnSave({Key? key}) : super(key: key);
+  const OpenFileOnSave({super.key});
 
   @override
   Widget build(BuildContext context) {

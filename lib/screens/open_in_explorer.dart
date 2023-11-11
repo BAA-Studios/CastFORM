@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class OpenInExplorer extends StatelessWidget {
-  const OpenInExplorer({Key? key}) : super(key: key);
+  const OpenInExplorer({super.key});
 
   @override
   Widget build(BuildContext context) {

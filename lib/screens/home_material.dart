@@ -8,7 +8,7 @@ import 'package:castform/screens/form_column.dart';
 
 /// Holds the UI layout for the home page, with Material design
 class HomeMaterial extends StatefulWidget {
-  const HomeMaterial({Key? key}) : super(key: key);
+  const HomeMaterial({super.key});
 
   @override
   State<HomeMaterial> createState() => _HomeMaterialState();
@@ -39,7 +39,7 @@ StatelessWidget getHomeScreen() {
 }
 
 class AndroidScreen extends StatelessWidget {
-  const AndroidScreen({Key? key}) : super(key: key);
+  const AndroidScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +49,12 @@ class AndroidScreen extends StatelessWidget {
 }
 
 class WindowsScreen extends StatelessWidget {
-  const WindowsScreen({Key? key}) : super(key: key);
+  const WindowsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(  // Left side for forms; right side for live preview
-      children: const [
+    return const Row(  // Left side for forms; right side for live preview
+      children: [
         Flexible(
           child: FormColumn(),
         ),

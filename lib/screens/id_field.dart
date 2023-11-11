@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class IdField extends StatefulWidget {
-  const IdField({Key? key}) : super(key: key);
+  const IdField({super.key});
 
   @override
   State<IdField> createState() => _IdFieldState();

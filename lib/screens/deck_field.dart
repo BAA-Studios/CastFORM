@@ -4,7 +4,7 @@ import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
 
 class DeckField extends StatefulWidget {
-  const DeckField({Key? key}) : super(key: key);
+  const DeckField({super.key});
 
   @override
   State<DeckField> createState() => _DeckFieldState();
