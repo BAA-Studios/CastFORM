@@ -47,7 +47,7 @@ const Set<String> setAbbreviations = {
   "UL",  // HS\u2014Unleashed
   "UD",  // HS\u2014Undaunted
   "TM",  // HS\u2014Triumphant
-  "CL",  // Pok\u00e9mon TCG: Call of Legends
+  // "CL",  // Pok\u00e9mon TCG: Call of Legends - Clashes with the 2023 Pokémon Trading Card Game Classic
   "BLW",  // Black & White
   "EPO",  // Black & White\u2014Emerging Powers
   "NVI",  // Black & White\u2014Noble Victories
