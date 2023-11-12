@@ -56,10 +56,11 @@ class WindowsScreen extends StatelessWidget {
     return const Row(  // Left side for forms; right side for live preview
       children: [
         Flexible(
+          flex: 6,
           child: FormColumn(),
         ),
         Expanded(
-          flex: 2,
+          flex: 10,
           child: Document(),
         ),
       ],

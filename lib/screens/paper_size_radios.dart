@@ -13,6 +13,7 @@ class A4Radio extends StatelessWidget {
       value: PaperType.a4,
       groupValue: context.select<UserProvider, PaperType?>((userProvider) => userProvider.paperType),
       onChanged: (PaperType? value) => context.read<UserProvider>().setPaperType(value),
+      dense: true,
     );
   }
 }
@@ -27,6 +28,7 @@ class LetterRadio extends StatelessWidget {
       value: PaperType.letter,
       groupValue: context.select<UserProvider, PaperType?>((userProvider) => userProvider.paperType),
       onChanged: (PaperType? value) => context.read<UserProvider>().setPaperType(value),
+      dense: true,
     );
   }
 }

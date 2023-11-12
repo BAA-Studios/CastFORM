@@ -34,9 +34,9 @@ class LetterForm extends GenericForm implements Size {
     super.dobYearXOffset = 16; // dobX + dobDayXOffset + thisOffset
 
     // Division Checkmark offsets
-    super.divX = 350;
-    super.divY = 60;
-    super.divYOffset = 15;
+    super.divX = 374;
+    super.divY = 107;
+    super.divYOffset = 13;
 
     // Deck related fields
     super.nameFieldX = 297;

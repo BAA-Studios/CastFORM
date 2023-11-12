@@ -1,3 +1,4 @@
+import 'package:castform/screens/division_radios.dart';
 import 'package:castform/screens/open_file.dart';
 import 'package:castform/screens/open_in_explorer.dart';
 import 'package:flutter/material.dart';
@@ -46,10 +47,50 @@ class _FormColumnState extends State<FormColumn> {
             ),
           ),
           const Padding(
+            padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
+            child: Row(
+              children: [
+                Text("Age Division"),
+                SizedBox(
+                  width: 25.0,
+                ),
+                Expanded(
+                  child: AutoRadio(),
+                ),
+                Expanded(
+                  child: JuniorRadio(),
+                ),
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 0.0, 16.0, 4.0),
+            child: Row(
+              children: [
+                Spacer(),
+                Expanded(
+                  flex: 4,
+                  child: SeniorRadio(),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: MastersRadio(),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: NoneRadio(),
+                ),
+              ],
+            ),
+          ),
+          const Padding(
             padding: defaultPadding,
             child: Row(
               children: [
                 Text("Paper size"),
+                SizedBox(
+                  width: 42.0,
+                ),
                 Expanded(
                   child: A4Radio(),
                 ),

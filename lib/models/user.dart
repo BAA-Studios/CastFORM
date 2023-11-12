@@ -10,6 +10,7 @@ class User {
   String? playerName = "";
   String? playerId = "";
   String? dateOfBirth;
+  Division? division = Division.auto;
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
   bool? openInExplorer = false;
@@ -56,6 +57,7 @@ class User {
         textStyle: formTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
+        division: division ?? Division.auto,
         dateOfBirth: dateOfBirth ?? "",
         deck: deck,
       );
@@ -65,6 +67,7 @@ class User {
         textStyle: formTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
+        division: division ?? Division.auto,
         dateOfBirth: dateOfBirth ?? "",
         deck: deck,
       );

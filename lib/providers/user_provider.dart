@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/models/user.dart';
+import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
 class UserProvider extends User with ChangeNotifier {
   void setName(String? playerName) {
@@ -15,6 +16,11 @@ class UserProvider extends User with ChangeNotifier {
 
   void setDate(String? dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
+    notifyListeners();
+  }
+
+  void setDivision(Division? division) {
+    this.division = division;
     notifyListeners();
   }
 

@@ -34,9 +34,9 @@ class A4Form extends GenericForm implements Size {
     super.dobYearXOffset = 17; // dobX + dobDayXOffset + thisOffset
 
     // Division Checkmark offsets
-    super.divX = 350;
-    super.divY = 60;
-    super.divYOffset = 15;
+    super.divX = 367;
+    super.divY = 108;
+    super.divYOffset = 13;
 
     // Deck related fields
     super.nameFieldX = 289;

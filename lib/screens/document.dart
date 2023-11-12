@@ -20,6 +20,7 @@ class _DocumentState extends State<Document> {
     String name = context.select<UserProvider, String?>((userProvider) => userProvider.playerName) ?? "";
     String playerId = context.select<UserProvider, String?>((userProvider) => userProvider.playerId) ?? "";
     String dateOfBirth = context.select<UserProvider, String?>((userProvider) => userProvider.dateOfBirth) ?? "";
+    Division division = context.select<UserProvider, Division?>((userProvider) => userProvider.division) ?? Division.auto;
     /*String deckString = context.watch<UserProvider>().deckString ?? "";
     String name = context.watch<UserProvider>().playerName ?? "";
     String playerId = context.watch<UserProvider>().playerId ?? "";
@@ -38,6 +39,7 @@ class _DocumentState extends State<Document> {
         name: name,
         playerId: playerId,
         dateOfBirth: dateOfBirth,
+        division: division,
         deck: deck,
       );
 

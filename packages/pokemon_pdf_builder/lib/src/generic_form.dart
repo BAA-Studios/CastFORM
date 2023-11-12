@@ -148,27 +148,31 @@ class GenericForm implements AbstractForm {
     );
   }
 
-  int getDivOffsetMultiplier(Division estimatedDivision) {
+  double getDivOffsetMultiplier(Division estimatedDivision) {
     if (estimatedDivision == Division.junior) {
-      return 0;
+      return 0.0;
     }
     if (estimatedDivision == Division.senior) {
-      return 1;
+      return 1.0;
     }
-    return 2;
+    return 2.0;
   }
 
   @override
   pw.Widget generateDivisions() {
-    var (_, _, birth_year) = splitDoB();
-    var year = int.parse(birth_year);
-    var offsetMultiplier = 0;
-    var fill = division == Division.none ? "" : "/";
+    var (_, _, birthYear) = splitDoB();
+    var year = birthYear.isEmpty ? getCurrentYear() : int.parse(birthYear);
+    var offsetMultiplier = 0.0;
+    var fill = division == Division.none ? "" : "X";
 
     if (division == Division.auto) {
       var estimatedDivision = getDivision(year);
       offsetMultiplier = getDivOffsetMultiplier(estimatedDivision);
+    } else {
+      offsetMultiplier = getDivOffsetMultiplier(division);
     }
+
+    var yOffset = divY + (offsetMultiplier * divYOffset);
 
     return pw.Row(children: <pw.Widget>[
       pw.Container(
@@ -181,7 +185,7 @@ class GenericForm implements AbstractForm {
         children: <pw.Widget>[
           pw.Container(
             width: docX,
-            height: divY + offsetMultiplier * divYOffset,
+            height: yOffset,
           ),
           pw.Text(fill, style: textStyle)
         ],
