@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:printing/printing.dart';
 
 enum PaperType { a4, letter }
 
@@ -16,10 +17,14 @@ const defaultBorder = OutlineInputBorder(
 
 
 pw.TextStyle? formTextStyle;
+pw.TextStyle? unicodeTextStyle;
 pw.Image? a4FormTemplate;
 pw.Image? letterFormTemplate;
 
 void initPdfConstants() {
+  PdfGoogleFonts.mPLUS1pMedium().then((value) {
+    unicodeTextStyle = pw.TextStyle(font: value, fontSize: 15);
+  });
   rootBundle
       .load("assets/fonts/RobotoSlab-Regular.ttf")
       .then((value) {

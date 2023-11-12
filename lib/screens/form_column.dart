@@ -55,7 +55,7 @@ class _FormColumnState extends State<FormColumn> {
                   width: 25.0,
                 ),
                 Expanded(
-                  child: AutoRadio(),
+                  child: NoneRadio(),
                 ),
                 Expanded(
                   child: JuniorRadio(),
@@ -78,7 +78,7 @@ class _FormColumnState extends State<FormColumn> {
                 ),
                 Expanded(
                   flex: 4,
-                  child: NoneRadio(),
+                  child: AutoRadio(),
                 ),
               ],
             ),

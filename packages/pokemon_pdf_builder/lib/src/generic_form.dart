@@ -18,6 +18,7 @@ class GenericForm implements AbstractForm {
   final pw.Image? formTemplate;
 
   final pw.TextStyle? textStyle;
+  final pw.TextStyle? unicodeTextStyle;
 
   late PdfPageFormat pageFormat;
   // Page size-related coordinates -------------------------------------------------
@@ -59,10 +60,11 @@ class GenericForm implements AbstractForm {
   GenericForm({
     this.formTemplate,
     this.textStyle,
+    this.unicodeTextStyle,
     this.name = "",
     this.playerId = "",
     this.dateOfBirth = "",
-    this.division = Division.auto,
+    this.division = Division.none,
     this.deck,
   });
 
@@ -163,7 +165,7 @@ class GenericForm implements AbstractForm {
     var (_, _, birthYear) = splitDoB();
     var year = birthYear.isEmpty ? getCurrentYear() : int.parse(birthYear);
     var offsetMultiplier = 0.0;
-    var fill = division == Division.none ? "" : "X";
+    var fill = division == Division.none ? "" : "✕";
 
     if (division == Division.auto) {
       var estimatedDivision = getDivision(year);
@@ -187,7 +189,7 @@ class GenericForm implements AbstractForm {
             width: docX,
             height: yOffset,
           ),
-          pw.Text(fill, style: textStyle)
+          pw.Text(fill, style: unicodeTextStyle),
         ],
       ),
     ]);

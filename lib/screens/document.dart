@@ -20,7 +20,7 @@ class _DocumentState extends State<Document> {
     String name = context.select<UserProvider, String?>((userProvider) => userProvider.playerName) ?? "";
     String playerId = context.select<UserProvider, String?>((userProvider) => userProvider.playerId) ?? "";
     String dateOfBirth = context.select<UserProvider, String?>((userProvider) => userProvider.dateOfBirth) ?? "";
-    Division division = context.select<UserProvider, Division?>((userProvider) => userProvider.division) ?? Division.auto;
+    Division division = context.select<UserProvider, Division?>((userProvider) => userProvider.division) ?? Division.none;
     /*String deckString = context.watch<UserProvider>().deckString ?? "";
     String name = context.watch<UserProvider>().playerName ?? "";
     String playerId = context.watch<UserProvider>().playerId ?? "";
@@ -36,6 +36,7 @@ class _DocumentState extends State<Document> {
       A4Form document = A4Form(
         formTemplate: a4FormTemplate,
         textStyle: formTextStyle,
+        unicodeTextStyle: unicodeTextStyle,
         name: name,
         playerId: playerId,
         dateOfBirth: dateOfBirth,

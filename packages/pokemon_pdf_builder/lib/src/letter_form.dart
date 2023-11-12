@@ -1,6 +1,4 @@
 import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:deck_string_parser/deck_string_parser.dart';
 import 'package:pokemon_pdf_builder/src/generic_form.dart';
 import 'package:pokemon_pdf_builder/src/size.dart';
 
@@ -28,15 +26,15 @@ class LetterForm extends GenericForm implements Size {
     super.playerIdY = 68;
 
     // DoB offsets
-    super.dobX = 498; // Indicates the X of the month
+    super.dobX = 497; // Indicates the X of the month
     super.dobY = 68;
-    super.dobDayXOffset = 20; // This is dobX + thisOffset
-    super.dobYearXOffset = 16; // dobX + dobDayXOffset + thisOffset
+    super.dobDayXOffset = 19; // This is dobX + thisOffset
+    super.dobYearXOffset = 16.2; // dobX + dobDayXOffset + thisOffset
 
     // Division Checkmark offsets
-    super.divX = 374;
-    super.divY = 107;
-    super.divYOffset = 13;
+    super.divX = 370.5;
+    super.divY = 102.5;
+    super.divYOffset = 13.6;
 
     // Deck related fields
     super.nameFieldX = 297;
@@ -46,6 +44,7 @@ class LetterForm extends GenericForm implements Size {
   LetterForm({
     super.formTemplate,
     super.textStyle,
+    super.unicodeTextStyle,
     super.name,
     super.playerId,
     super.dateOfBirth,

@@ -10,7 +10,7 @@ class User {
   String? playerName = "";
   String? playerId = "";
   String? dateOfBirth;
-  Division? division = Division.auto;
+  Division? division = Division.none;
   String? deckString = "";
   PaperType? paperType = PaperType.a4;
   bool? openInExplorer = false;
@@ -55,9 +55,10 @@ class User {
       formHandler = A4Form(
         formTemplate: a4FormTemplate,
         textStyle: formTextStyle,
+        unicodeTextStyle: unicodeTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
-        division: division ?? Division.auto,
+        division: division ?? Division.none,
         dateOfBirth: dateOfBirth ?? "",
         deck: deck,
       );
@@ -65,9 +66,10 @@ class User {
       formHandler = LetterForm(
         formTemplate: letterFormTemplate,
         textStyle: formTextStyle,
+        unicodeTextStyle: unicodeTextStyle,
         name: playerName ?? "",
         playerId: playerId ?? "",
-        division: division ?? Division.auto,
+        division: division ?? Division.none,
         dateOfBirth: dateOfBirth ?? "",
         deck: deck,
       );
