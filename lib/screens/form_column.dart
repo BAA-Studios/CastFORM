@@ -1,14 +1,14 @@
-import 'package:castform/screens/division_radios.dart';
-import 'package:castform/screens/open_file.dart';
-import 'package:castform/screens/open_in_explorer.dart';
-import 'package:flutter/material.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/screens/buttons.dart';
 import 'package:castform/screens/date_field.dart';
 import 'package:castform/screens/deck_field.dart';
+import 'package:castform/screens/division_radios.dart';
 import 'package:castform/screens/id_field.dart';
 import 'package:castform/screens/name_field.dart';
+import 'package:castform/screens/open_file.dart';
+import 'package:castform/screens/open_in_explorer.dart';
 import 'package:castform/screens/paper_size_radios.dart';
+import 'package:flutter/material.dart';
 
 class FormColumn extends StatefulWidget {
   const FormColumn({super.key});
@@ -58,7 +58,7 @@ class _FormColumnState extends State<FormColumn> {
                   child: NoneRadio(),
                 ),
                 Expanded(
-                  child: JuniorRadio(),
+                  child: AutoRadio(),
                 ),
               ],
             ),
@@ -70,15 +70,15 @@ class _FormColumnState extends State<FormColumn> {
                 Spacer(),
                 Expanded(
                   flex: 4,
+                  child: JuniorRadio(),
+                ),
+                Expanded(
+                  flex: 4,
                   child: SeniorRadio(),
                 ),
                 Expanded(
                   flex: 4,
                   child: MastersRadio(),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: AutoRadio(),
                 ),
               ],
             ),
@@ -105,9 +105,8 @@ class _FormColumnState extends State<FormColumn> {
           Row(
             children: [
               Padding(
-                padding: defaultPadding,
-                child: SaveButton(formKey: _formKey)
-              ),
+                  padding: defaultPadding,
+                  child: SaveButton(formKey: _formKey)),
               const Padding(
                 padding: defaultPadding,
                 child: AboutButton(),
