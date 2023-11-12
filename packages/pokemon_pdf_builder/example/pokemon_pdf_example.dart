@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:pdf/widgets.dart' as pw;
+
 import 'package:deck_string_parser/deck_string_parser.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
 final deckString = """Pok?mon: 9
@@ -61,8 +62,8 @@ Future<void> main() async {
   // create text style with font
   final pw.TextStyle textStyle = pw.TextStyle(font: font, fontSize: 10.0);
   // prepare background template
-  final Uint8List formTemplateAsBytes = File("./lib/assets/pokemon_decklist_a4.webp")
-      .readAsBytesSync();
+  final Uint8List formTemplateAsBytes =
+      File("./lib/assets/pokemon_decklist_a4.webp").readAsBytesSync();
   final pw.Image formTemplate = pw.Image(pw.MemoryImage(formTemplateAsBytes));
 
   // Instantiate the form handler
@@ -72,12 +73,11 @@ Future<void> main() async {
     name: "Ash Ketchum",
     playerId: "1234567890",
     dateOfBirth: "02/20/2002",
-    deck: parseDeck(deckString),  // Extract information from the deck string
+    deck: parseDeck(deckString), // Extract information from the deck string
   );
 
-
   // Hydrate!
-  final pdf = pokemonDoc.build();  // note: .buildPdf() will call .save for you
+  final pdf = pokemonDoc.build(); // note: .buildPdf() will call .save for you
 
   final file = File("D:/GitHub/CastFORM/example.pdf");
   await file.writeAsBytes(await pdf.save());

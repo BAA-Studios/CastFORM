@@ -1,6 +1,6 @@
+import 'package:castform/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:castform/providers/user_provider.dart';
 
 class OpenFileOnSave extends StatelessWidget {
   const OpenFileOnSave({super.key});
@@ -13,7 +13,9 @@ class OpenFileOnSave extends StatelessWidget {
         textAlign: TextAlign.start,
       ),
       dense: true,
-      value: context.select<UserProvider, bool?>((userProvider) => userProvider.openInViewer) ?? false,
+      value: context.select<UserProvider, bool?>(
+              (userProvider) => userProvider.openInViewer) ??
+          false,
       onChanged: (_) => context.read<UserProvider>().toggleOpenFile(),
     );
   }

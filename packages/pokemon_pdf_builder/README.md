@@ -2,12 +2,15 @@ This package houses the business logic for turning decks into pdf generated docu
 
 ## Features
 
-This library wraps around the [pdf](https://pub.dev/packages/pdf) library, and makes use of its PDF-construction functionality.  
-This library takes various input data, and places them in the correct position on top of either A4- or Letter-sized registration form templates.
+This library wraps around the [pdf](https://pub.dev/packages/pdf) library, and makes use of its PDF-construction
+functionality.  
+This library takes various input data, and places them in the correct position on top of either A4- or Letter-sized
+registration form templates.
 
 ## Usage
 
-This package is fairly straightforward to use. Refer to `/example` folder for a working detailed examples that can be run.
+This package is fairly straightforward to use. Refer to `/example` folder for a working detailed examples that can be
+run.
 
 ```dart
 import 'package:deck_string_parser/deck_string_parser.dart';

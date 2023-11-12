@@ -101,32 +101,42 @@ Total Cards: 60""";
 
 11 Psychic Energy 5""";
 
-    test('`crudeSplit` correctly splits a PTCGO deck string into 3 sections', () {
+    test('`crudeSplit` correctly splits a PTCGO deck string into 3 sections',
+        () {
       expect(crudeSplit(ptcgoDeckString).length, 3);
     });
 
-    test('`crudeSplit` correctly splits a PTCGL deck string into 3 sections', () {
+    test('`crudeSplit` correctly splits a PTCGL deck string into 3 sections',
+        () {
       expect(crudeSplit(ptcglDeckString).length, 3);
     });
 
     // Limitless TCG Deck Strings
-    test('`crudeSplit` correctly splits a LimitlessTCG deck string into 3 sections', () {
+    test(
+        '`crudeSplit` correctly splits a LimitlessTCG deck string into 3 sections',
+        () {
       expect(crudeSplit(limitlessTcgDeckString).length, 3);
     });
 
-    test('`crudeSplit` extracts the correct number of pokemon for LimitlessTCG', () {
+    test('`crudeSplit` extracts the correct number of pokemon for LimitlessTCG',
+        () {
       expect(crudeSplit(limitlessTcgDeckString)[0].length, 13);
     });
 
-    test('`crudeSplit` extracts the correct number of trainers for LimitlessTCG', () {
+    test(
+        '`crudeSplit` extracts the correct number of trainers for LimitlessTCG',
+        () {
       expect(crudeSplit(limitlessTcgDeckString)[1].length, 16);
     });
 
-    test('`crudeSplit` extracts the correct number of energies for LimitlessTCG', () {
+    test(
+        '`crudeSplit` extracts the correct number of energies for LimitlessTCG',
+        () {
       expect(crudeSplit(limitlessTcgDeckString)[2].length, 1);
     });
 
-    test('`crudeSplit` extracts the exact pokemon deckList for LimitlessTCG', () {
+    test('`crudeSplit` extracts the exact pokemon deckList for LimitlessTCG',
+        () {
       var expectedDeckList = [
         [
           "4 Ralts ASR 60",
@@ -161,9 +171,7 @@ Total Cards: 60""";
           "1 Sky Seal Stone CRZ 143",
           "2 Temple of Sinnoh ASR 155",
         ],
-        [
-          "11 Psychic Energy 5"
-        ],
+        ["11 Psychic Energy 5"],
       ];
       expect(crudeSplit(limitlessTcgDeckString), expectedDeckList);
     });
@@ -234,15 +242,21 @@ Total Cards: 60""";
       [""],
     ];
 
-    test('`parsePokemonCards` extracts the correct number of lines from the crude deck list', () {
+    test(
+        '`parsePokemonCards` extracts the correct number of lines from the crude deck list',
+        () {
       expect(parsePokemonCards(deck).length, 8);
     });
 
-    test('`parseTrainerCards` extracts the correct number of lines from the crude deck list', () {
+    test(
+        '`parseTrainerCards` extracts the correct number of lines from the crude deck list',
+        () {
       expect(parseTrainerCards(deck).length, 15);
     });
 
-    test('`parseTrainerCards` extracts the first card correctly as a Trainer object', () {
+    test(
+        '`parseTrainerCards` extracts the first card correctly as a Trainer object',
+        () {
       expect(parseTrainerCards(deck)[0].quantity, "3");
       expect(parseTrainerCards(deck)[0].name, "Judge");
     });
@@ -256,11 +270,15 @@ Total Cards: 60""";
       expect(trainers.length, 2);
     });
 
-    test('`parseEnergyCards` extracts the correct number of lines from the crude deck list', () {
+    test(
+        '`parseEnergyCards` extracts the correct number of lines from the crude deck list',
+        () {
       expect(parseEnergyCards(deck).length, 1);
     });
 
-    test('`parsePokemonCards` extracts the first card correctly as a Pokemon object', () {
+    test(
+        '`parsePokemonCards` extracts the first card correctly as a Pokemon object',
+        () {
       expect(parsePokemonCards(deck)[0].quantity, "4");
       expect(parsePokemonCards(deck)[0].name, "Lechonk");
       expect(parsePokemonCards(deck)[0].set, "SVI");
@@ -272,11 +290,12 @@ Total Cards: 60""";
       expect(parsePokemonCards(deck)[4].set, "ASR");
     });
 
-    test('`parseEnergyCards` extracts the first card correctly as a Energy object', () {
+    test(
+        '`parseEnergyCards` extracts the first card correctly as a Energy object',
+        () {
       expect(parseEnergyCards(deck)[0].quantity, "4");
       expect(parseEnergyCards(deck)[0].name, "V Guard Energy");
     });
-
 
     // TODO: Add test involving delta energy
   });

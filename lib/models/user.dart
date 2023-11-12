@@ -31,14 +31,16 @@ class User {
     // Deck validation
     String cachedDeckString = deckString ?? "";
     if (!isValidDeckString(cachedDeckString)) {
-      return const SaveResponse(notificationText: "Deck does not contain 60 cards!", isError: true);
+      return const SaveResponse(
+          notificationText: "Deck does not contain 60 cards!", isError: true);
     }
 
     // Open save-as dialog, which gives us the full save path as string
     var dateTime = DateTime.now();
     String? outputFilePath = await FilePicker.platform.saveFile(
       dialogTitle: "Please select an output file:",
-      fileName: "pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf",
+      fileName:
+          "pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf",
     );
 
     if (outputFilePath == null) {
@@ -78,18 +80,21 @@ class User {
     // Export as PDF
     try {
       await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());
-    } catch(_) {
-      return const SaveResponse(notificationText: "Unable to export as PDF!", isError: true);
+    } catch (_) {
+      return const SaveResponse(
+          notificationText: "Unable to export as PDF!", isError: true);
     }
     // show in Explorer
     if (openInExplorer ?? false) {
       // strip the trailing file name
       var temp = outputFilePath.split("\\");
-      var directoryPath = "file:/${temp.sublist(0, temp.length - 1).join("\\")}";
+      var directoryPath =
+          "file:/${temp.sublist(0, temp.length - 1).join("\\")}";
       final Uri uri = Uri.parse(directoryPath);
 
       if (!await launchUrl(uri)) {
-        return const SaveResponse(notificationText: "Unable to open in Explorer!", isError: true);
+        return const SaveResponse(
+            notificationText: "Unable to open in Explorer!", isError: true);
       }
     }
 
@@ -97,7 +102,8 @@ class User {
     if (openInViewer ?? false) {
       final Uri uri = Uri.file(outputFilePath);
       if (!await launchUrl(uri)) {
-        return const SaveResponse(notificationText: "Unable to open output file!", isError: true);
+        return const SaveResponse(
+            notificationText: "Unable to open output file!", isError: true);
       }
     }
     return const SaveResponse(notificationText: "Successfully saved as PDF!");

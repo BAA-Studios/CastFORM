@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/providers/user_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DeckField extends StatefulWidget {
   const DeckField({super.key});
@@ -39,8 +39,10 @@ class _DeckFieldState extends State<DeckField> {
       maxLines: null,
       expands: true,
       keyboardType: TextInputType.multiline,
-      onChanged: (String? value) => context.read<UserProvider>().setDeckString(value),
-      onSaved: (String? value) => context.read<UserProvider>().setDeckString(value),
+      onChanged: (String? value) =>
+          context.read<UserProvider>().setDeckString(value),
+      onSaved: (String? value) =>
+          context.read<UserProvider>().setDeckString(value),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'dart:io' show Platform;
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:castform/providers/user_provider.dart';
 import 'package:castform/screens/document.dart';
 import 'package:castform/screens/form_column.dart';
-
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Holds the UI layout for the home page, with Material design
 class HomeMaterial extends StatefulWidget {
@@ -35,7 +35,8 @@ StatelessWidget getHomeScreen() {
   if (Platform.isAndroid) {
     return const AndroidScreen();
   }
-  throw UnsupportedError("This app is only intended to run on Windows, Ubuntu, or Android");
+  throw UnsupportedError(
+      "This app is only intended to run on Windows, Ubuntu, or Android");
 }
 
 class AndroidScreen extends StatelessWidget {
@@ -53,7 +54,8 @@ class WindowsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(  // Left side for forms; right side for live preview
+    return const Row(
+      // Left side for forms; right side for live preview
       children: [
         Flexible(
           flex: 6,

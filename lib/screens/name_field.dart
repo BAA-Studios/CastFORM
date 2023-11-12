@@ -1,6 +1,6 @@
+import 'package:castform/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:castform/providers/user_provider.dart';
 
 class NameField extends StatefulWidget {
   const NameField({super.key});
@@ -26,9 +26,11 @@ class _NameFieldState extends State<NameField> {
           }
           return null;
         },
-        onSaved: (_) => context.read<UserProvider>().setName(_nameController.text),
+        onSaved: (_) =>
+            context.read<UserProvider>().setName(_nameController.text),
       ),
-      onFocusChange: (_) => context.read<UserProvider>().setName(_nameController.text),
+      onFocusChange: (_) =>
+          context.read<UserProvider>().setName(_nameController.text),
     );
   }
 }

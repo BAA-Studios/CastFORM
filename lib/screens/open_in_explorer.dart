@@ -1,6 +1,6 @@
+import 'package:castform/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:castform/providers/user_provider.dart';
 
 class OpenInExplorer extends StatelessWidget {
   const OpenInExplorer({super.key});
@@ -13,7 +13,9 @@ class OpenInExplorer extends StatelessWidget {
         textAlign: TextAlign.start,
       ),
       dense: true,
-      value: context.select<UserProvider, bool?>((userProvider) => userProvider.openInExplorer) ?? false,
+      value: context.select<UserProvider, bool?>(
+              (userProvider) => userProvider.openInExplorer) ??
+          false,
       onChanged: (_) => context.read<UserProvider>().toggleOpenInExplorer(),
     );
   }

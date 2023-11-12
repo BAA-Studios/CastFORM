@@ -5,17 +5,17 @@ import 'package:deck_string_parser/src/deck.dart';
 import 'package:deck_string_parser/src/parser.dart';
 
 export 'src/card.dart';
+export 'src/deck.dart';
 export 'src/energy.dart';
 export 'src/pokemon.dart';
 export 'src/trainer.dart';
-export 'src/deck.dart';
 
 Deck parseDeck(String deckString) {
   var crudeDeckList = stripHeaders(crudeSplit(deckString));
   return Deck(
-      pokemonList: parsePokemonCards(crudeDeckList),
-      trainerList: parseTrainerCards(crudeDeckList),
-      energyList: parseEnergyCards(crudeDeckList),
+    pokemonList: parsePokemonCards(crudeDeckList),
+    trainerList: parseTrainerCards(crudeDeckList),
+    energyList: parseEnergyCards(crudeDeckList),
   );
 }
 
@@ -26,11 +26,11 @@ bool isValidDeckCount(Deck deck) {
     quantity += int.parse(element.quantity);
   }
 
-  for(var element in deck.trainerList) {
+  for (var element in deck.trainerList) {
     quantity += int.parse(element.quantity);
   }
 
-  for(var element in deck.energyList) {
+  for (var element in deck.energyList) {
     quantity += int.parse(element.quantity);
   }
 
@@ -45,7 +45,7 @@ bool isValidDeckString(String deckString) {
       return true;
     }
     return false;
-  } catch(_) {
+  } catch (_) {
     return false;
   }
 }

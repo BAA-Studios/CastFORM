@@ -1,6 +1,6 @@
+import 'package:castform/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:castform/providers/user_provider.dart';
 
 class IdField extends StatefulWidget {
   const IdField({super.key});
@@ -22,7 +22,8 @@ class _IdFieldState extends State<IdField> {
         ),
         onSaved: (_) => context.read<UserProvider>().setId(_idController.text),
       ),
-      onFocusChange: (_) => context.read<UserProvider>().setId(_idController.text),
+      onFocusChange: (_) =>
+          context.read<UserProvider>().setId(_idController.text),
     );
   }
 }

@@ -105,7 +105,6 @@ Total Cards: 60""";
   var limitlessDeck = parseDeck(limitlessTcgDeckString);
 
   group('Validation checks', () {
-
     test('`isValidDeckCount`: check if 60 cards in deck in ptcgoDeck', () {
       expect(isValidDeckCount(ptcgoDeck), true);
     });

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pokemon_pdf_builder/pokemon_pdf.dart';
 
@@ -24,8 +25,8 @@ Future<void> main() async {
   // create text style with font
   final pw.TextStyle textStyle = pw.TextStyle(font: font, fontSize: 10.0);
   // prepare background template
-  final Uint8List formTemplateAsBytes = File("./lib/assets/pokemon_decklist_a4.webp")
-      .readAsBytesSync();
+  final Uint8List formTemplateAsBytes =
+      File("./lib/assets/pokemon_decklist_a4.webp").readAsBytesSync();
   final pw.Image formTemplate = pw.Image(pw.MemoryImage(formTemplateAsBytes));
 
   // Let's try leaving fields empty, and see what happens this time

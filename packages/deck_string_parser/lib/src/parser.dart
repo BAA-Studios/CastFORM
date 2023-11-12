@@ -32,18 +32,20 @@ List<List<String>> crudeSplit(String deck) {
 
   // Sanity check
   if (breaks.length < 2 || breaks.length > 3) {
-    throw FormatException("Expected either 3 or 4 paragraphs. Received ${breaks.length + 1}.");
+    throw FormatException(
+        "Expected either 3 or 4 paragraphs. Received ${breaks.length + 1}.");
   }
 
   // Split into a list of list, based on section
   List<List<String>> buffer = [];
-  buffer.add(lines.sublist(0, breaks[0]));  // Pokemon section
+  buffer.add(lines.sublist(0, breaks[0])); // Pokemon section
   // +1 to index to skip the empty line:
-  buffer.add(lines.sublist(breaks[0] + 1, breaks[1]));  // Trainer section
+  buffer.add(lines.sublist(breaks[0] + 1, breaks[1])); // Trainer section
   // Energy section:
   if (breaks.length < 3) {
     buffer.add(lines.sublist(breaks[1] + 1));
-  } else {  // Strip off Total Cards section
+  } else {
+    // Strip off Total Cards section
     buffer.add(lines.sublist(breaks[1] + 1, breaks[2]));
   }
 
@@ -56,7 +58,8 @@ List<List<String>> stripHeaders(List<List<String>> crudeDeckList) {
 
   // Check if headers exist
   var firstWord = crudeDeckList[0][0].split(" ")[0];
-  if (isNumeric(firstWord)) {  // LimitlessTCG format; no headers
+  if (isNumeric(firstWord)) {
+    // LimitlessTCG format; no headers
     return crudeDeckList;
   }
 
@@ -103,11 +106,12 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
   for (var line in section) {
     var words = line.split(" ");
     if (!isNumeric(words.last)) {
-      words.removeLast();  // strip holo card info (PTCGL format)
+      words.removeLast(); // strip holo card info (PTCGL format)
     }
     var indexOfSetAbbreviation = words.length - 2;
     var name = words.sublist(1, indexOfSetAbbreviation).join(" ");
-    var existingPokemonIndex = findExistingPokemon(name, words[indexOfSetAbbreviation], buffer);
+    var existingPokemonIndex =
+        findExistingPokemon(name, words[indexOfSetAbbreviation], buffer);
 
     if (existingPokemonIndex == -1) {
       buffer.add(Pokemon(
@@ -117,7 +121,8 @@ List<Pokemon> parsePokemonCards(List<List<String>> crudeDeckList) {
       ));
     } else {
       var existingQuantity = buffer[existingPokemonIndex].quantity;
-      buffer[existingPokemonIndex].quantity = addQuantities(existingQuantity, words[0]);
+      buffer[existingPokemonIndex].quantity =
+          addQuantities(existingQuantity, words[0]);
     }
   }
   return buffer;
@@ -169,15 +174,16 @@ List<Trainer> parseTrainerCards(List<List<String>> crudeDeckList) {
     var existingTrainerIndex = findExistingTrainer(name, buffer);
 
     if (existingTrainerIndex == -1) {
-      buffer.add(Trainer(  // No cards with the same name
+      buffer.add(Trainer(
+        // No cards with the same name
         quantity: words[0],
         name: name,
       ));
-    } else {  // Merge with existing entry
+    } else {
+      // Merge with existing entry
       var existingQuantity = buffer[existingTrainerIndex].quantity;
-      buffer[existingTrainerIndex].setQuantity(
-          addQuantities(existingQuantity, words[0])
-      );
+      buffer[existingTrainerIndex]
+          .setQuantity(addQuantities(existingQuantity, words[0]));
     }
   }
   return buffer;
@@ -202,15 +208,16 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
     var existingEnergyIndex = findExistingEnergy(name, buffer);
 
     if (existingEnergyIndex == -1) {
-      buffer.add(Energy(  // No cards with the same name
+      buffer.add(Energy(
+        // No cards with the same name
         quantity: words[0],
         name: name,
       ));
-    } else {  // Merge with existing entry
+    } else {
+      // Merge with existing entry
       var existingQuantity = buffer[existingEnergyIndex].quantity;
-      buffer[existingEnergyIndex].setQuantity(
-          addQuantities(existingQuantity, words[0])
-      );
+      buffer[existingEnergyIndex]
+          .setQuantity(addQuantities(existingQuantity, words[0]));
     }
   }
   return buffer;
@@ -223,14 +230,14 @@ List<Energy> parseEnergyCards(List<List<String>> crudeDeckList) {
 /// "{W} Energy Energy" -> "Water Energy" and so on.
 String ptcglEnergyFormatToEnglish(String energyName) {
   final Map<String, String> energySymbols = {
-    "{D}" : "Dark",
-    "{F}" : "Fighting",
-    "{G}" : "Grass",
-    "{L}" : "Lightning",
-    "{M}" : "Metal",
-    "{W}" : "Water",
-    "{R}" : "Fire",
-    "{P}" : "Psychic",
+    "{D}": "Dark",
+    "{F}": "Fighting",
+    "{G}": "Grass",
+    "{L}": "Lightning",
+    "{M}": "Metal",
+    "{W}": "Water",
+    "{R}": "Fire",
+    "{P}": "Psychic",
   };
   energySymbols.forEach((key, value) {
     energyName = energyName.replaceFirst(key, value);
@@ -238,7 +245,7 @@ String ptcglEnergyFormatToEnglish(String energyName) {
   energyName = energyName.replaceFirst("Energy Energy", "Energy");
   // Remove anything after Energy word
   var endToken = "Energy";
-  var indexToEnd = energyName.indexOf(endToken)+endToken.length;
+  var indexToEnd = energyName.indexOf(endToken) + endToken.length;
   var cleanEnergyName = energyName.substring(0, indexToEnd);
   return cleanEnergyName;
 }
