@@ -39,18 +39,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="deck_string_parser&#47;deck_string_parser-library-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-function">parseDeck</span> function 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -73,9 +79,9 @@
   <pre class="language-dart"><code class="language-dart">Deck parseDeck(String deckString) {
   var crudeDeckList = stripHeaders(crudeSplit(deckString));
   return Deck(
-      pokemonList: parsePokemonCards(crudeDeckList),
-      trainerList: parseTrainerCards(crudeDeckList),
-      energyList: parseEnergyCards(crudeDeckList),
+    pokemonList: parsePokemonCards(crudeDeckList),
+    trainerList: parseTrainerCards(crudeDeckList),
+    energyList: parseEnergyCards(crudeDeckList),
   );
 }</code></pre>
 </section>
@@ -84,41 +90,21 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../index.html">deck_string_parser</a></li>
-  <li><a href="../deck_string_parser/deck_string_parser-library.html">deck_string_parser</a></li>
-  <li class="self-crumb">parseDeck function</li>
+    <li><a href="../index.html">deck_string_parser</a></li>
+    <li><a href="../deck_string_parser/deck_string_parser-library.html">deck_string_parser</a></li>
+    <li class="self-crumb">parseDeck function</li>
 </ol>
 
 
     <h5>deck_string_parser library</h5>
-    <ol>
-      <li class="section-title"><a href="../deck_string_parser/deck_string_parser-library.html#classes">Classes</a></li>
-        <li><a href="../deck_string_parser/Card-class.html">Card</a></li>
-        <li><a href="../deck_string_parser/Deck-class.html">Deck</a></li>
-        <li><a href="../deck_string_parser/Energy-class.html">Energy</a></li>
-        <li><a href="../deck_string_parser/Pokemon-class.html">Pokemon</a></li>
-        <li><a href="../deck_string_parser/Trainer-class.html">Trainer</a></li>
-
-
-
-
-
-      <li class="section-title"><a href="../deck_string_parser/deck_string_parser-library.html#functions">Functions</a></li>
-        <li><a href="../deck_string_parser/isValidDeckCount.html">isValidDeckCount</a></li>
-        <li><a href="../deck_string_parser/isValidDeckString.html">isValidDeckString</a></li>
-        <li><a href="../deck_string_parser/parseDeck.html">parseDeck</a></li>
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -129,7 +115,7 @@
 <footer>
   <span class="no-break">
     deck_string_parser
-      1.3.2
+      1.4.1
   </span>
 
   

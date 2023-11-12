@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 6.1.5">
+  <meta name="generator" content="made with love by dartdoc 7.0.0-dev">
   <meta name="description" content="deck_string_parser API docs, for the Dart programming language.">
   <title>deck_string_parser - Dart API docs</title>
 
@@ -38,8 +38,11 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
@@ -51,7 +54,8 @@
 <section class="desc markdown">
   <p>This package houses the business logic for parsing deck strings provided by users into relevant objects.</p>
 <h2 id="features">Features</h2>
-<p>PTCGO, PTCGL, and LimitlessTCG deck strings will be processed into <code>Deck</code> objects, which have <code>Pokemon</code>, <code>Trainer</code>, and <code>Energy</code> object
+<p>PTCGO, PTCGL, and LimitlessTCG deck strings will be processed into <code>Deck</code> objects, which have <code>Pokemon</code>, <code>Trainer</code>,
+and <code>Energy</code> object
 lists as attribute.
 These in turn have the relevant data (e.g. name and quantity) as attribute.</p>
 <h2 id="getting-started">Getting started</h2>
@@ -92,14 +96,15 @@ the CastFORM repository.</p>
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li class="self-crumb">deck_string_parser package</li>
+    <li class="self-crumb">deck_string_parser package</li>
 </ol>
 
 
@@ -119,7 +124,7 @@ the CastFORM repository.</p>
 <footer>
   <span class="no-break">
     deck_string_parser
-      1.3.2
+      1.4.1
   </span>
 
   

@@ -40,18 +40,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="models_user&#47;User-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-method">save</span> method 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
@@ -78,14 +84,16 @@ and string for error message</p>
   &#47;&#47; Deck validation
   String cachedDeckString = deckString ?? &quot;&quot;;
   if (!isValidDeckString(cachedDeckString)) {
-    return const SaveResponse(notificationText: &quot;Deck does not contain 60 cards!&quot;, isError: true);
+    return const SaveResponse(
+        notificationText: &quot;Deck does not contain 60 cards!&quot;, isError: true);
   }
 
   &#47;&#47; Open save-as dialog, which gives us the full save path as string
   var dateTime = DateTime.now();
   String? outputFilePath = await FilePicker.platform.saveFile(
     dialogTitle: &quot;Please select an output file:&quot;,
-    fileName: &quot;pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf&quot;,
+    fileName:
+        &quot;pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf&quot;,
   );
 
   if (outputFilePath == null) {
@@ -102,8 +110,10 @@ and string for error message</p>
     formHandler = A4Form(
       formTemplate: a4FormTemplate,
       textStyle: formTextStyle,
+      unicodeTextStyle: unicodeTextStyle,
       name: playerName ?? &quot;&quot;,
       playerId: playerId ?? &quot;&quot;,
+      division: division ?? Division.none,
       dateOfBirth: dateOfBirth ?? &quot;&quot;,
       deck: deck,
     );
@@ -111,8 +121,10 @@ and string for error message</p>
     formHandler = LetterForm(
       formTemplate: letterFormTemplate,
       textStyle: formTextStyle,
+      unicodeTextStyle: unicodeTextStyle,
       name: playerName ?? &quot;&quot;,
       playerId: playerId ?? &quot;&quot;,
+      division: division ?? Division.none,
       dateOfBirth: dateOfBirth ?? &quot;&quot;,
       deck: deck,
     );
@@ -121,18 +133,21 @@ and string for error message</p>
   &#47;&#47; Export as PDF
   try {
     await File(outputFilePath).writeAsBytes(await formHandler.buildPdf());
-  } catch(_) {
-    return const SaveResponse(notificationText: &quot;Unable to export as PDF!&quot;, isError: true);
+  } catch (_) {
+    return const SaveResponse(
+        notificationText: &quot;Unable to export as PDF!&quot;, isError: true);
   }
   &#47;&#47; show in Explorer
   if (openInExplorer ?? false) {
     &#47;&#47; strip the trailing file name
     var temp = outputFilePath.split(&quot;\\&quot;);
-    var directoryPath = &quot;file:&#47;${temp.sublist(0, temp.length - 1).join(&quot;\\&quot;)}&quot;;
+    var directoryPath =
+        &quot;file:&#47;${temp.sublist(0, temp.length - 1).join(&quot;\\&quot;)}&quot;;
     final Uri uri = Uri.parse(directoryPath);
 
     if (!await launchUrl(uri)) {
-      return const SaveResponse(notificationText: &quot;Unable to open in Explorer!&quot;, isError: true);
+      return const SaveResponse(
+          notificationText: &quot;Unable to open in Explorer!&quot;, isError: true);
     }
   }
 
@@ -140,7 +155,8 @@ and string for error message</p>
   if (openInViewer ?? false) {
     final Uri uri = Uri.file(outputFilePath);
     if (!await launchUrl(uri)) {
-      return const SaveResponse(notificationText: &quot;Unable to open output file!&quot;, isError: true);
+      return const SaveResponse(
+          notificationText: &quot;Unable to open output file!&quot;, isError: true);
     }
   }
   return const SaveResponse(notificationText: &quot;Successfully saved as PDF!&quot;);
@@ -151,54 +167,22 @@ and string for error message</p>
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">castform</a></li>
-  <li><a href="../../models_user/models_user-library.html">user</a></li>
-  <li><a href="../../models_user/User-class.html">User</a></li>
-  <li class="self-crumb">save method</li>
+    <li><a href="../../index.html">castform</a></li>
+    <li><a href="../../models_user/models_user-library.html">user</a></li>
+    <li><a href="../../models_user/User-class.html">User</a></li>
+    <li class="self-crumb">save method</li>
 </ol>
 
 
     <h5>User class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../models_user/User-class.html#constructors">Constructors</a></li>
-          <li><a href="../../models_user/User/User.html">User</a></li>
-
-
-        <li class="section-title">
-          <a href="../../models_user/User-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../models_user/User/dateOfBirth.html">dateOfBirth</a></li>
-          <li><a href="../../models_user/User/deckString.html">deckString</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li><a href="../../models_user/User/openInExplorer.html">openInExplorer</a></li>
-          <li><a href="../../models_user/User/openInViewer.html">openInViewer</a></li>
-          <li><a href="../../models_user/User/paperType.html">paperType</a></li>
-          <li><a href="../../models_user/User/playerId.html">playerId</a></li>
-          <li><a href="../../models_user/User/playerName.html">playerName</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-
-        <li class="section-title"><a href="../../models_user/User-class.html#instance-methods">Methods</a></li>
-          <li><a href="../../models_user/User/isA4.html">isA4</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../models_user/User/save.html">save</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../models_user/User-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -209,7 +193,7 @@ and string for error message</p>
 <footer>
   <span class="no-break">
     castform
-      1.2.3+0
+      2.0.1+0
   </span>
 
   

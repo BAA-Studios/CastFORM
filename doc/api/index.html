@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 6.1.5">
+  <meta name="generator" content="made with love by dartdoc 7.0.0-dev">
   <meta name="description" content="castform API docs, for the Dart programming language.">
   <title>castform - Dart API docs</title>
 
@@ -38,8 +38,11 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
@@ -57,8 +60,13 @@
 <img src="https://img.shields.io/github/search/BAA-Studios/CastFORM/goto?label=search%20counter" alt="GitHub search hit counter">
 <img src="https://img.shields.io/github/downloads/BAA-Studios/CastFORM/total" alt="GitHub all releases"></p>
 <p><strong>CastFORM</strong> is an easy-to-use Pokémon TCG Deck Registration Sheet generator.<br>
-<strong>CastFORM</strong> offers an elegant graphical interface for filling in Pokémon deck lists for tournaments, and creates beautiful PDFs from user input. This reduces the likelihood of human errors associated with filling out of forms by hand, and also integrates well with existing players' workflows, given the popularity of deck strings (of various formats) in the Pokémon TCG community.</p>
-<p>This project is based on <a href="https://github.com/Bratah123">Brandon Nguyen's</a> CLI Python script that served a similar purpose. <strong>CastFORM</strong> was spearheaded in response to the high demand for a user-friendly program in his local TCG community, most of whom were not comfortable with CLI tools.</p>
+<strong>CastFORM</strong> offers an elegant graphical interface for filling in Pokémon deck lists for tournaments, and creates
+beautiful PDFs from user input. This reduces the likelihood of human errors associated with filling out of forms by
+hand, and also integrates well with existing players' workflows, given the popularity of deck strings (of various
+formats) in the Pokémon TCG community.</p>
+<p>This project is based on <a href="https://github.com/Bratah123">Brandon Nguyen's</a> CLI Python script that served a similar
+purpose. <strong>CastFORM</strong> was spearheaded in response to the high demand for a user-friendly program in his local TCG
+community, most of whom were not comfortable with CLI tools.</p>
 <h2 id="gallery">Gallery</h2>
 <p><em><strong>Light mode:</strong></em>
 <img src="https://user-images.githubusercontent.com/25145447/232040805-d48497e5-d709-487d-9646-342c0a441621.png" alt="light mode screenshot"></p>
@@ -88,7 +96,8 @@
 </ul>
 <hr>
 <h2 id="technical-information">Technical Information</h2>
-<p><strong>CastFORM</strong> is built with <strong>Flutter 3.7.8</strong> for <strong>64-bit Windows 11</strong>, and targets <a href="https://dart.dev/guides/language/effective-dart/style"><strong>Google's Dart style guide</strong></a>.<br>
+<p><strong>CastFORM</strong> is built with <strong>Flutter 3.13.9</strong> for <strong>64-bit Windows 11</strong>, and targets <a href="https://dart.dev/guides/language/effective-dart/style">**Google's Dart style guide
+**</a>.<br>
 For testing, we aim to provide complete coverage for API behaviour internally by release.</p>
 <h3 id="development-environment-set-up">Development Environment Set-up</h3>
 <ol>
@@ -122,11 +131,31 @@ After cloning the repository, navigate to the respective package to open them:</
 <li><code>packages/deck_string_parser/doc/api/index.html</code></li>
 <li><code>packages/pokemon_pdf_builder/doc/api/index.html</code></li>
 </ul>
+<h3 id="toolchain">Toolchain</h3>
+<p>A number of standalone Python scripts have been make to automate metadata fetching and template creation:</p>
+<ul>
+<li><a href="https://github.com/KOOKIIEStudios/Forecast">ForeCAST</a>
+<ul>
+<li>Uses Bulbapedia's REST APIs to get all known set abbreviations</li>
+</ul>
+</li>
+<li><a href="https://github.com/KOOKIIEStudios/Weather-Ball">WEATHERBall</a>
+<ul>
+<li>Remote mode: Scrapes the official Pokémon website for the registration form templates</li>
+<li>Local mode: Converts PDF files to WebP
+<ul>
+<li>Added as a fallback option upon discovery that Pokémon uses Incapsula as an anti-scraping measure</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="build-instructions">Build Instructions</h3>
 <ol>
 <li>Run <code>flutter build windows</code></li>
 <li>Navigate to the output folder <code>/build/windows/runner/Release</code></li>
-<li>Add the following <code>dlls</code> (which can be found in a Visual Studio 2022 installation folder, e.g. <code>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.32.31326\x64\Microsoft.VC143.CRT</code>)
+<li>Add the following <code>dlls</code> (which can be found in a Visual Studio 2022 installation folder,
+e.g. <code>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.32.31326\x64\Microsoft.VC143.CRT</code>)
 <ul>
 <li>msvcp140.dll</li>
 <li>vcruntime140.dll</li>
@@ -161,7 +190,8 @@ After cloning the repository, navigate to the respective package to open them:</
 <ul>
 <li>You are able to type in this drop down box</li>
 <li>The <code>cmd /c</code> part is <strong>REQUIRED</strong></li>
-<li>IExpress simply bundles/extracts as well as wrap around a batch script, so all installation logic should be written in <code>setup.bat</code></li>
+<li>IExpress simply bundles/extracts as well as wrap around a batch script, so all installation logic should be
+written in <code>setup.bat</code></li>
 </ul>
 </li>
 <li>Select <code>Default</code>, and hit <code>Next</code></li>
@@ -186,7 +216,12 @@ After cloning the repository, navigate to the respective package to open them:</
 </ol>
 <hr>
 <h2 id="disclaimer">Disclaimer</h2>
-<p><strong>CastFORM</strong> is an open-source program for a generating a niche type of PDF documents. <strong>CastFORM</strong> is not affiliated with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. <strong>CastFORM</strong> is non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of <strong>CastFORM</strong>. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action, arising out of or in connection with the use of <strong>CastFORM</strong> (in part or in whole).</p>
+<p><strong>CastFORM</strong> is an open-source program for a generating a niche type of PDF documents. <strong>CastFORM</strong> is not affiliated
+with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. <strong>CastFORM</strong> is
+non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of *
+<em>CastFORM</em>*. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever
+resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action,
+arising out of or in connection with the use of <strong>CastFORM</strong> (in part or in whole).</p>
 </section>
 
 
@@ -223,6 +258,13 @@ After cloning the repository, navigate to the respective package to open them:</
 
           <dt id="deck_field">
   <span class="name"><a href="screens_deck_field/screens_deck_field-library.html">deck_field</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="division_radios">
+  <span class="name"><a href="screens_division_radios/screens_division_radios-library.html">division_radios</a></span> 
 
 </dt>
 <dd>
@@ -325,14 +367,15 @@ After cloning the repository, navigate to the respective package to open them:</
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li class="self-crumb">castform package</li>
+    <li class="self-crumb">castform package</li>
 </ol>
 
 
@@ -344,6 +387,7 @@ After cloning the repository, navigate to the respective package to open them:</
       <li><a href="constants/constants-library.html">constants</a></li>
       <li><a href="screens_date_field/screens_date_field-library.html">date_field</a></li>
       <li><a href="screens_deck_field/screens_deck_field-library.html">deck_field</a></li>
+      <li><a href="screens_division_radios/screens_division_radios-library.html">division_radios</a></li>
       <li><a href="screens_document/screens_document-library.html">document</a></li>
       <li><a href="screens_form_column/screens_form_column-library.html">form_column</a></li>
       <li><a href="screens_home_material/screens_home_material-library.html">home_material</a></li>
@@ -369,7 +413,7 @@ After cloning the repository, navigate to the respective package to open them:</
 <footer>
   <span class="no-break">
     castform
-      1.2.3+0
+      2.0.1+0
   </span>
 
   

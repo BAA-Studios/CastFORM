@@ -39,18 +39,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="constants&#47;constants-library-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-function">initPdfConstants</span> function 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -70,9 +76,10 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void initPdfConstants() {
-  rootBundle
-      .load(&quot;assets&#47;fonts&#47;RobotoSlab-Regular.ttf&quot;)
-      .then((value) {
+  PdfGoogleFonts.mPLUS1pMedium().then((value) {
+    unicodeTextStyle = pw.TextStyle(font: value, fontSize: 15);
+  });
+  rootBundle.load(&quot;assets&#47;fonts&#47;RobotoSlab-Regular.ttf&quot;).then((value) {
     pw.Font font = pw.Font.ttf(value);
     formTextStyle = pw.TextStyle(font: font, fontSize: 10.0);
   });
@@ -93,47 +100,21 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../index.html">castform</a></li>
-  <li><a href="../constants/constants-library.html">constants</a></li>
-  <li class="self-crumb">initPdfConstants function</li>
+    <li><a href="../index.html">castform</a></li>
+    <li><a href="../constants/constants-library.html">constants</a></li>
+    <li class="self-crumb">initPdfConstants function</li>
 </ol>
 
 
     <h5>constants library</h5>
-    <ol>
-
-
-
-      <li class="section-title"><a href="../constants/constants-library.html#constants">Constants</a></li>
-        <li><a href="../constants/aboutText-constant.html">aboutText</a></li>
-        <li><a href="../constants/defaultBorder-constant.html">defaultBorder</a></li>
-        <li><a href="../constants/defaultPadding-constant.html">defaultPadding</a></li>
-        <li><a href="../constants/maximumHumanLifespan-constant.html">maximumHumanLifespan</a></li>
-
-      <li class="section-title"><a href="../constants/constants-library.html#properties">Properties</a></li>
-        <li><a href="../constants/a4FormTemplate.html">a4FormTemplate</a></li>
-        <li><a href="../constants/appName.html">appName</a></li>
-        <li><a href="../constants/appVersion.html">appVersion</a></li>
-        <li><a href="../constants/formTextStyle.html">formTextStyle</a></li>
-        <li><a href="../constants/letterFormTemplate.html">letterFormTemplate</a></li>
-
-      <li class="section-title"><a href="../constants/constants-library.html#functions">Functions</a></li>
-        <li><a href="../constants/initPackageInfo.html">initPackageInfo</a></li>
-        <li><a href="../constants/initPdfConstants.html">initPdfConstants</a></li>
-
-      <li class="section-title"><a href="../constants/constants-library.html#enums">Enums</a></li>
-        <li><a href="../constants/PaperType.html">PaperType</a></li>
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -144,7 +125,7 @@
 <footer>
   <span class="no-break">
     castform
-      1.2.3+0
+      2.0.1+0
   </span>
 
   
