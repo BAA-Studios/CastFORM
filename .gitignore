@@ -36,3 +36,6 @@ build/
 # Test files
 example.pdf
 example_*.pdf
+
+.flutter-plugins
+.flutter-plugins-dependencies
