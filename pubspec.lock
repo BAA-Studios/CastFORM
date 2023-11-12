@@ -325,7 +325,7 @@ packages:
       path: "packages/pokemon_pdf_builder"
       relative: true
     source: path
-    version: "2.0.2"
+    version: "2.2.0"
   printing:
     dependency: "direct main"
     description:

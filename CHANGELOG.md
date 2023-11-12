@@ -6,6 +6,8 @@
 - Add support up to Pokemon Trading Card Game Classic
   -  Includes support for Paradox Rift
 - Migrate to new [ForeCAST](https://github.com/KOOKIIEStudios/Forecast)-based tooling for set abbreviations
+- Add age division selector
+- Change aspect ratio to 16:10 on Windows
 
 ## 1.2.4
 - Routine updating of form templates (Paradox Rift)

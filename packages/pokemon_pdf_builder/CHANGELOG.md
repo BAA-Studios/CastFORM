@@ -1,3 +1,7 @@
+## 2.2.0
+- Add age division marking
+- Add unicode font for checkbox symbol
+
 ## 2.0.2
 - Add title and author metadata
   - Experimental - API docs are poorly documented
