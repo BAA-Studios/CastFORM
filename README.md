@@ -29,18 +29,27 @@ community, most of whom were not comfortable with CLI tools.
 
 *Note: Only 64-bit Windows 11 machines are officially supported.*
 
-### ZIP Archive
+### ZIP Archive (Portable)
 
 1. Download `castform.zip` from the releases page
     - Note: actual file name may vary
 2. Unzip it into your desired install location
 3. Run `CastFORM.exe` from that location
+    - Uninstall by deleting the folder
 
-### Windows Installer
+### Windows Installer - New (WiX)
+
+1. Download `Installer.msi` from the releases page
+2. Run the installer to install CastFORM to `C:\Program Files\CastFORM`
+3. CastFORM should now be available in the Start menu
+    - Uninstall by going to `Settings > Apps > Installed Apps`, clicking on the ellipsis for CastFORM and selecting `Uninstall`
+
+### Windows Installer - Old (IExpress)
 
 1. Download `CastFORM_x64.exe` from the releases page
 2. Run it **as administrator** to install CastFORM to `C:\Program Files\CastFORM`
 3. Run `CastFORM.exe` from `C:\Program Files\CastFORM\CastFORM.exe`, and/or create a shortcut for it
+    - Uninstall by deleting the folder with administrator permissions
 
 ### Video Instructions
 
@@ -88,6 +97,8 @@ A number of standalone Python scripts have been make to automate metadata fetchi
     - Remote mode: Scrapes the official Pokémon website for the registration form templates
     - Local mode: Converts PDF files to WebP
         - Added as a fallback option upon discovery that Pokémon uses Incapsula as an anti-scraping measure
+- [SunnyFORM](https://github.com/BAA-Studios/SunnyFORM)
+    - A WiX Toolset project for a custom Windows Installer for CastFORM
 
 ### Build Instructions
 
@@ -101,7 +112,11 @@ A number of standalone Python scripts have been make to automate metadata fetchi
 4. Package the contents of this folder as a ZIP file
     - Users can unzip to their desired location and run `CastFORM.exe` from there
 
-### Bundle with Windows Installer (Optional)
+### Bundle with Windows Installer (New - WiX Toolset)
+
+A sample WiX-based project has been made to simplify this. Refer to SunnyFORM's [README](https://github.com/BAA-Studios/SunnyFORM) for instructions.
+    
+### Bundle with Windows Installer (Legacy)
 
 *Note: This assumes you've already run through steps 1-4 of the build instructions*  
 **First time bundling:**
