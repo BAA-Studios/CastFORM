@@ -31,15 +31,18 @@ community, most of whom were not comfortable with CLI tools.
 
 ### ZIP Archive (Portable)
 
+*This is the portable/standalone version that can be used immediately after unzipping*
+
 1. Download `castform.zip` from the releases page
     - Note: actual file name may vary
 2. Unzip it into your desired install location
 3. Run `CastFORM.exe` from that location
+    - You can hold `SHIFT` and right-click it, then under `Send to` select `Desktop` to create a desktop shortcut
     - Uninstall by deleting the folder
 
 ### Windows Installer - New (WiX)
 
-1. Download `Installer.msi` from the releases page
+1. Download `CastFORM_Installer_x64.msi` from the releases page
 2. Run the installer to install CastFORM to `C:\Program Files\CastFORM`
 3. CastFORM should now be available in the Start menu
     - Uninstall by going to `Settings > Apps > Installed Apps`, clicking on the ellipsis for CastFORM and selecting `Uninstall`
