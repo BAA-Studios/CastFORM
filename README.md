@@ -43,9 +43,10 @@ community, most of whom were not comfortable with CLI tools.
 ### Windows Installer - New (WiX)
 
 1. Download `CastFORM_Installer_x64.msi` from the releases page
-2. Run the installer to install CastFORM to `C:\Program Files\CastFORM`
+2. Double-click on the installer (installs to `C:\Program Files\CastFORM`)
 3. CastFORM should now be available in the Start menu
-    - Uninstall by going to `Settings > Apps > Installed Apps`, clicking on the ellipsis for CastFORM and selecting `Uninstall`
+    - Uninstall method 1: Open Start menu, and start typing "CastFORM", you should see the context menu for CastFORM, with the option to uninstall
+    - Uninstall method 2: Go to `Settings > Apps > Installed Apps`, clicking on the ellipsis for CastFORM and selecting `Uninstall`
 
 ### Windows Installer - Old (IExpress)
 
@@ -102,6 +103,11 @@ A number of standalone Python scripts have been make to automate metadata fetchi
         - Added as a fallback option upon discovery that Pokémon uses Incapsula as an anti-scraping measure
 - [SunnyFORM](https://github.com/BAA-Studios/SunnyFORM)
     - A WiX Toolset project for a custom Windows Installer for CastFORM
+    - This is our new packaging method, intended for CastFORM v3 onwards
+- [RainyFORM](https://github.com/KOOKIIEStudios/RainyFORM)
+    - A new consolidated dependency generator for CastFORM that consolidates and replaces [ForeCAST](https://github.com/KOOKIIEStudios/Forecast) and [WEATHERBall](https://github.com/KOOKIIEStudios/Weather-Ball)
+    - This is a work in progress, slated for CastFORM v3
+    - Repository to be made public once we have completed migration of internal processes
 
 ### Build Instructions
 
