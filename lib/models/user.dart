@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:castform/constants.dart';
 import 'package:castform/models/save_feedback.dart';
@@ -15,9 +16,22 @@ class User {
   PaperType? paperType = PaperType.a4;
   bool? openInExplorer = false;
   bool? openInViewer = false;
+  List<String> file_extensions = ["pdf"];
 
   bool isA4() {
     if (paperType == PaperType.a4) {
+      return true;
+    }
+    return false;
+  }
+
+  static bool isCorrectExtension(String? filePath) {
+    if (filePath == null) {
+      return false;
+    }
+
+    final fileExtension = p.extension(filePath);
+    if (fileExtension == ".pdf") {
       return true;
     }
     return false;
@@ -41,11 +55,18 @@ class User {
       dialogTitle: "Please select an output file:",
       fileName:
           "pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf",
+      type: FileType.custom,
+      allowedExtensions: file_extensions,
     );
 
     if (outputFilePath == null) {
       // User canceled the picker
       return const SaveResponse();
+    }
+
+    // Sanity check for file extension
+    if (!isCorrectExtension(outputFilePath)) {
+      outputFilePath = outputFilePath + ".pdf";
     }
 
     // Generate the PDF with the latest attributes
