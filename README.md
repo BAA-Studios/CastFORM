@@ -170,6 +170,6 @@ A sample WiX-based project has been made to simplify this. Refer to SunnyFORM's 
 **CastFORM** is an open-source program for a generating a niche type of PDF documents. **CastFORM** is not affiliated
 with Nintendo, The Pokémon Company, or any Pokémon-related organisations fan-driven or otherwise. **CastFORM** is
 non-monetised, and provided as is. Every reasonable effort has been taken to ensure correctness and reliability of *
-*CastFORM**. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever
+**CastFORM**. We will not be liable for any special, direct, indirect, or consequential damages or any damages whatsoever
 resulting from loss of use, data or profits, whether in an action if contract, negligence or other tortious action,
 arising out of or in connection with the use of **CastFORM** (in part or in whole).
