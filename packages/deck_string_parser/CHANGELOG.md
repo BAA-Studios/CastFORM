@@ -1,3 +1,12 @@
+## 1.5.0
+- Update set abbreviations
+  - Add support up to SSP Scarlet & Violet - Surging Sparks (2024)
+  - Use new format for 2025 season
+    - Include TK
+    - Except for SVP Black Star Promos (2023), all other Black Star Promos will now use the PR set abbreviation
+    - All McDonald's Collection sets will now use the MCD set abbreviation
+- Fix style according to Dart Analysis
+
 ## 1.4.1
 
 - Update dependencies
