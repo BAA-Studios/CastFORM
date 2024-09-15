@@ -3,7 +3,7 @@ import 'package:deck_string_parser/src/card.dart';
 class Trainer extends Card {
   /// This represents Trainer-cards
   Trainer({
-    required quantity,
-    required name,
-  }) : super(quantity: quantity, name: name);
+    required super.quantity,
+    required super.name,
+  });
 }

@@ -16,7 +16,7 @@ class User {
   PaperType? paperType = PaperType.a4;
   bool? openInExplorer = false;
   bool? openInViewer = false;
-  List<String> file_extensions = ["pdf"];
+  List<String> fileExtensions = ["pdf"];
 
   bool isA4() {
     if (paperType == PaperType.a4) {
@@ -56,7 +56,7 @@ class User {
       fileName:
           "pokemon_registration_sheet_${dateTime.month}${dateTime.day}${dateTime.second}.pdf",
       type: FileType.custom,
-      allowedExtensions: file_extensions,
+      allowedExtensions: fileExtensions,
     );
 
     if (outputFilePath == null) {
@@ -66,7 +66,7 @@ class User {
 
     // Sanity check for file extension
     if (!isCorrectExtension(outputFilePath)) {
-      outputFilePath = outputFilePath + ".pdf";
+      outputFilePath = "$outputFilePath.pdf";
     }
 
     // Generate the PDF with the latest attributes

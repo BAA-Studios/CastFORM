@@ -5,7 +5,7 @@ class Energy extends Card {
   ///
   /// `name` represents the name (and set, if applicable) of the card.
   Energy({
-    required quantity,
-    required name,
-  }) : super(quantity: quantity, name: name);
+    required super.quantity,
+    required super.name,
+  });
 }
